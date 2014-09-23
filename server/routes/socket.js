@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(socket){
+
   socket.on('test', function(data){
     socket.emit('test');
   });

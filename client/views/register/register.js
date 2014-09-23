@@ -7,11 +7,11 @@
 
     function success(response){
       toastr.success('User successfully registered.');
-      $location.path('/login');
+      $location.path('/lobby');
     }
 
     function failure(response){
-      toastr.error('Error during user registration, try again.');
+      toastr.error('Error during user registration, email/alias is taken, try again.');
       $scope.user = {};
     }
 

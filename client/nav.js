@@ -3,15 +3,15 @@
 
   angular.module('mean-ah')
   .controller('NavCtrl', ['$scope', '$localForage', function($scope, $localForage){
-    $localForage.getItem('email').then(function(email){
-      $scope.email = email;
+    $localForage.getItem('alias').then(function(alias){
+      $scope.alias = alias;
     });
 
-    $scope.$on('authenticated', function(event, email){
-      if(email === 'anonymous'){email = null;}
+    $scope.$on('authenticated', function(event, alias){
+      if(alias === 'anonymous'){alias = null;}
 
-      $localForage.setItem('email', email).then(function(){
-        $scope.email = email;
+      $localForage.setItem('alias', alias).then(function(){
+        $scope.alias = alias;
       });
     });
   }]);

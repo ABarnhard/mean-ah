@@ -1,19 +1,19 @@
 .navbar.navbar-default(role='navigation', ng-controller='NavCtrl')
   .container
     .navbar-header
-      button.navbar-toggle(data-toggle='collapse', data-target='#bs-navbar-collapse')
+      button.navbar-toggle(data-toggle='collapse', data-target='#mean-navbar-collapse')
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
       a.navbar-brand(href='/') MEAN Against Humanity
 
-    .collapse.navbar-collapse#bs-navbar-collapse
-      ul.nav.navbar-nav.navbar-right(ng-hide='email')
+    .collapse.navbar-collapse#mean-navbar-collapse
+      ul.nav.navbar-nav.navbar-right(ng-hide='alias')
         li: a(href='/#/') Home
         li: a(href='/#/register') Register
         li: a(href='/#/login') Login
-      ul.nav.navbar-nav.navbar-right(ng-show='email')
+      ul.nav.navbar-nav.navbar-right(ng-show='alias')
         li: a(href='/#/') Home
-        li: a(href='/#/logout') {{email}}
+        li: a(href='/#/logout') {{alias}}
 
