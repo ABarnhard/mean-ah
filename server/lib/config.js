@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(app){
-  console.log('Express: Port', process.env.PORT);
+  app.set('port', process.env.PORT);
+  console.log('Express: Port', app.get('port'));
 };
 
