@@ -28,6 +28,13 @@ module.exports = function(socket){
     });
   });
 
+  socket.on('join-game', function(data){
+    data.player.socketId = socketId;
+    Game.join(data, function(err, gameInfo){
+      socket.emit('game-joined', gameInfo);
+    });
+  });
+
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });

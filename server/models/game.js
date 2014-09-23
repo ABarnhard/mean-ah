@@ -35,5 +35,15 @@ Game.create = function(data, cb){
   });
 };
 
+Game.join = function(data, cb){
+  console.log(data);
+  Game.findById(data.gameId, function(err, game){
+    game.players.push(data.player);
+    Game.collection.save(game, function(err, count){
+      cb(err, game);
+    });
+  });
+};
+
 module.exports = Game;
 

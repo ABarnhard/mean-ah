@@ -16,6 +16,7 @@
           tbody
             tr(ng-repeat='game in games')
               td {{game.name}}
-              td {{game.owner}}
+              td {{game.owner.alias}}
               td {{game.players.length}}
+              td: button.btn.btn-success(type='button', ng-click='joinGame(game._id)') Join
 
