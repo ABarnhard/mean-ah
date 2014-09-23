@@ -2,7 +2,17 @@
 
 var Mongo  = require('mongodb');
 
-function Game(){
+function Game(o){
+  this._id    = Mongo.ObjectID();
+  this.roomId = this._id.toString();
+  this.name   = o.name;
+  this.owner  = o.owner;
+  this.cardCzar = o.owner;
+  this.players = [o.owner];
+  this.decks = o.decks;
+  this.dealtQs = [];
+  this.dealtAs = [];
+  this.isOpen = true;
 }
 
 Object.defineProperty(Game, 'collection', {
@@ -16,6 +26,13 @@ Game.findById = function(id, cb){
 
 Game.findAllOpen = function(cb){
   Game.collection.find({isOpen:true}).toArray(cb);
+};
+
+Game.create = function(data, cb){
+  var g = new Game(data);
+  Game.collection.save(g, function(err, count){
+    cb(err, g);
+  });
 };
 
 module.exports = Game;
