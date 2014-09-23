@@ -1,0 +1,88 @@
+.panel
+  .panel-body
+    .row
+      .col-xs-12
+        h3 Create A New Game:
+    br
+    form(role='form', novalidate, name='gameForm')
+      .row
+        .col-xs-4
+          .form-group
+            label Give It A Name (So your "friends" can find it):
+            input.form-control#alias(type='text', name='gameName', ng-model='game.name', autofocus, required, ng-minlength='3')
+        .col-xs-8
+      .row
+        .col-xs-12
+          .row
+            .col-xs-12
+              h4 Choose Your Deck
+              .form-group
+                .checkbox
+                  label
+                    input(type='checkbox', ng-model='expansions.base', name='base', disabled)
+                    | Base
+          .row
+            .col-xs-3
+              p Official Expansions
+              .form-group
+                .checkbox
+                  label
+                    input(type='checkbox', ng-model='expansions.e1', name='e1')
+                    | Expansion 1
+                .checkbox
+                  label
+                    input(type='checkbox', ng-model='expansions.e2', name='e2')
+                    | Expansion 2
+                .checkbox
+                  label
+                    input(type='checkbox', ng-model='expansions.e3', name='e3')
+                    | Expansion 3
+                .checkbox
+                  label
+                    input(type='checkbox', ng-model='expansions.e4', name='e4')
+                    | Expansion 4
+            .col-xs-9
+              p Horrors From the Internet
+              .form-group
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.dd', name='dd')
+                  | D&D
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.xmas', name='xmas')
+                  | Xmas
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.got', name='got')
+                  | GoT
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.pax13', name='pax13')
+                  | PAX 2013
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.weeaboo', name='weeaboo')
+                  | Weeaboo
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.alternia', name='alternia')
+                  | Homestuck
+              .form-group
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.hipster', name='hipster')
+                  | Hipsters
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.hacker', name='hacker')
+                  | Hackers
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.lah', name='lah')
+                  | Ladies Against Humanity
+                label.checkbox-inline
+                  input(type='checkbox', ng-model='expansions.drwho', name='drwho')
+                  | Dr. Who
+              h5.your-eyes-will-bleed
+                span.fa.fa-exclamation-triangle &nbsp;
+                | DANGER WILL ROBINSON, DANGER!
+              .form-group
+                label.checkbox-inline.dont-click
+                  input(type='checkbox', ng-model='expansions.nsfh', name='nsfh')
+                  | Not Safe For Humanity
+                label.checkbox-inline.dont-click
+                  input(type='checkbox', ng-model='expansions.cck', name='cck')
+                  | Canadian Conversion Kit
+       button.btn.btn-primary(ng-show='gameForm.$valid', ng-click='createGame()') Create
