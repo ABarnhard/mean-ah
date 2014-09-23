@@ -1,0 +1,21 @@
+.panel
+  .panel-body
+    .row
+      .col-xs-12
+        h3 Welcome To The Lobby
+        span Click an open game to join or &nbsp;
+        a.btn.btn-danger(href='/#/newgame') Create New Game
+    .row
+      .col-xs-12
+        table.table
+          thead
+            tr
+              th Game Name
+              th Owner
+              th Number of Players
+          tbody
+            tr(ng-repeat='game in games')
+              td {{game.name}}
+              td {{game.owner}}
+              td {{game.players.length}}
+
