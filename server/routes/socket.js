@@ -1,5 +1,12 @@
 'use strict';
 
 module.exports = function(socket){
-  console.log('Socket Connected:', socket);
+  socket.on('test', function(data){
+    socket.emit('test');
+  });
+
+  socket.on('data-test', function(data){
+    socket.emit('data-test', data);
+  });
+
 };
