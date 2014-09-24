@@ -2,6 +2,29 @@
   .panel-body
     .row
       .col-xs-12
-        h3 {{title}}
+        h3 Game: {{game.name}}
+        button.btn.btn-primary(type='button', ng-click='startGame()') Start Game
+        button.btn.btn-primary(type='button', ng-click='leaveGame()') Leave Game
+    .row
+      .col-xs-2
+        .qdeck Q Deck Here
+        .adeck A Deck Here
+        button.btn.btn-primary(type='button', ng-click='reDraw()') Redraw
+      .col-xs-8
+        .row
+          .col-xs-12
+            .player Players 6 total
+        .row
+          .col-xs-12
+            .gameboard Q Card goes here
+        .row
+          .col-xs-12
+            .cards 10 Cards Total
+      .col-xs-2
+        .cardCzar isCardCzar
+        .awesomePoints # Wins
 
+.row
+  .col-xs-12
+    pre {{game | json}}
 

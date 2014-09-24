@@ -3,8 +3,6 @@
 
   angular.module('mean-ah')
   .controller('NewGameCtrl', ['$scope', '$location', '$localForage', 'Socket', function($scope, $location, $localForage, Socket){
-    Socket.forward(['game-created']);
-
     $scope.game = {};
     $scope.expansions = {base:true};
 
@@ -17,17 +15,15 @@
         }
       });
       $scope.game.decks = expansions;
-      $scope.game.owner = {alias:$scope.$$prevSibling.alias};
+      $scope.game.player = $scope.$$prevSibling.alias;
       // console.log($scope.game);
-      Socket.emit('create-game', $scope.game);
-    };
-
-    $scope.$on('socket:game-created', function(event, data){
-      // console.log(data);
-      $localForage.setItem('gameInfo', data).then(function(){
-        $location.path('/game');
+      Socket.emit('create-game', $scope.game, function(err, gameId){
+        // console.log(gameInfo);
+        $localForage.setItem('gameId', gameId).then(function(){
+          $location.path('/game');
+        });
       });
-    });
+    };
 
   }]);
 })();

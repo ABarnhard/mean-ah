@@ -7,7 +7,11 @@
       return $http.get('/games');
     }
 
-    return {findAllOpen:findAllOpen};
+    function findById(id){
+      return $http.get('/games/' + id);
+    }
+
+    return {findAllOpen:findAllOpen, findById:findById};
   }]);
 })();
 

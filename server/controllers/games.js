@@ -7,3 +7,9 @@ exports.index = function(req, res){
     res.send({games:games});
   });
 };
+
+exports.show = function(req, res){
+  Game.findById(req.params.id, function(err, game){
+    res.send({game:game});
+  });
+};

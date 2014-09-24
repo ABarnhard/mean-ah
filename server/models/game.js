@@ -6,9 +6,9 @@ function Game(o){
   this._id    = Mongo.ObjectID();
   this.roomId = this._id.toString();
   this.name   = o.name;
-  this.owner  = o.owner;
-  this.cardCzar = o.owner;
-  this.players = [o.owner];
+  this.owner  = o.player;
+  this.cardCzar = o.player;
+  this.players = [o.player];
   this.decks = o.decks;
   this.dealtQs = [];
   this.dealtAs = [];
@@ -30,17 +30,19 @@ Game.findAllOpen = function(cb){
 
 Game.create = function(data, cb){
   var g = new Game(data);
+  console.log(g);
   Game.collection.save(g, function(err, count){
-    cb(err, g);
+    cb(err, g.roomId);
   });
 };
 
 Game.join = function(data, cb){
-  console.log(data);
-  Game.findById(data.gameId, function(err, game){
-    game.players.push(data.player);
-    Game.collection.save(game, function(err, count){
-      cb(err, game);
+  console.log('Game.join Model Raw Data', data);
+  Game.findById(data.gameId, function(err, g){
+    g.players.push(data.player);
+    Game.collection.save(g, function(err, count){
+      console.log('Game.join Model Game', g);
+      cb(err, g.roomId);
     });
   });
 };

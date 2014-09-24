@@ -1,5 +1,13 @@
 /* global io */
 
+/*
+* Rewritten from angular-socket-io for my education
+* @license
+* angular-socket-io v0.6.0
+* (c) 2014 Brian Ford http://briantford.com
+* License: MIT
+*/
+
 (function(){
   'use strict';
 

@@ -3,35 +3,32 @@
 var Game = require('../models/game');
 
 module.exports = function(socket){
-  var roomId,
+  var roomId;
       // save off reference to io object
       // io = this,
       // console.log('io test', io);
-      socketId = socket.id;
+      // socketId = socket.id;
 
-  socket.on('test', function(data){
-    socket.emit('test');
-  });
-
-  socket.on('data-test', function(data){
-    socket.emit('data-test', data);
-  });
-
-  socket.on('create-game', function(data){
-    data.owner.socketId = socketId;
-    console.log('raw in', data);
+  socket.on('create-game', function(data, cb){
+    // console.log('raw in', data);
     Game.create(data, function(err, gameInfo){
-      console.log('gameInfo', gameInfo);
+      // console.log('gameInfo', gameInfo);
       roomId = gameInfo.roomId;
       socket.join(roomId);
-      socket.emit('game-created', gameInfo);
+      socket.join(data.player);
+      cb(err, gameInfo);
     });
   });
 
-  socket.on('join-game', function(data){
-    data.player.socketId = socketId;
+  socket.on('join-game', function(data, cb){
+    console.log('I Fired', 'socket.on join-game');
     Game.join(data, function(err, gameInfo){
-      socket.emit('game-joined', gameInfo);
+      console.log('I Fired', 'Game.join CB');
+      roomId = gameInfo.roomId;
+      socket.join(roomId);
+      socket.join(data.player);
+      socket.broadcast.to(roomId).emit('player-joined', data.player);
+      cb(err, gameInfo);
     });
   });
 

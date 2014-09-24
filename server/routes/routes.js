@@ -29,6 +29,7 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.delete('/logout', users.logout);
   app.get('/games', games.index);
+  app.get('/games/:id', games.show);
 
   console.log('Express: Routes Loaded');
 };
