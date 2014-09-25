@@ -6,23 +6,39 @@
         button.btn.btn-primary(type='button', ng-click='startGame()') Start Game
         button.btn.btn-primary(type='button', ng-click='leaveGame()') Leave Game
     .row
-      .col-xs-2
-        .qdeck Q Deck Here
-        .adeck A Deck Here
-        button.btn.btn-primary(type='button', ng-click='reDraw()') Redraw
-      .col-xs-8
-        .row
-          .col-xs-12
-            .player Players 6 total
-        .row
-          .col-xs-12
-            .gameboard Q Card goes here
-        .row
-          .col-xs-12
-            .cards 10 Cards Total
-      .col-xs-2
-        .cardCzar isCardCzar
-        .awesomePoints # Wins
+      .col-xs-12
+        .players
+          .player Player 1
+          .player Player 2
+          .player Player 3
+          .player Player 4
+          .player Player 5
+          .player Player 6
+    .row
+      .col-xs-12
+        .gameboard
+          .qcard Question Card
+    .row
+      .col-xs-12
+        .hand
+          .card Card Text 1
+          .card Card Text 2
+          .card Card Text 3
+          .card Card Text 4
+          .card Card Text 5
+          .card Card Text 6
+          .card Card Text 7
+          .card Card Text 8
+          .card Card Text 9
+          .card Card Text 10
+    .row
+      .col-xs-12
+        .gameinfo
+          .deck Q Deck Here
+          .deck A Deck Here
+          .cardCzar isCardCzar
+          .awesome-points # Awesome Points (wins)
+          button.btn.btn-primary(type='button', ng-click='reDeal()') Redeal Hand
 
 .row
   .col-xs-12
