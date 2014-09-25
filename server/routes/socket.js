@@ -9,26 +9,26 @@ module.exports = function(socket){
 
   socket.on('create-game', function(data, cb){
     // console.log('raw in', data);
-    Game.create(data, function(err, gameInfo){
+    Game.create(data, function(err, id){
       // console.log('gameInfo', gameInfo);
-      roomId = gameInfo.roomId;
+      roomId = id;
       socket.join(roomId);
       socket.join(data.player);
-      cb(err, gameInfo);
+      cb(err, roomId);
     });
   });
 
   socket.on('join-game', function(data, cb){
     // console.log('I Fired', 'socket.on join-game');
-    Game.join(data, function(err, gameInfo){
+    Game.join(data, function(err, id){
       // console.log('I Fired', 'Game.join CB');
       if(!err){
-        roomId = gameInfo.roomId;
+        roomId = id;
         socket.join(roomId);
         socket.join(data.player);
         socket.broadcast.to(roomId).emit('player-joined', data.player);
       }
-      cb(err, gameInfo);
+      cb(err, id);
     });
   });
 

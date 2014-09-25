@@ -1,36 +1,26 @@
 'use strict';
 
-var bcrypt = require('bcrypt'),
-    Mongo  = require('mongodb');
+var Mongo = require('mongodb'),
+    Card  = require('./card');
 
-function User(){
+function Deck(gameId, cards){
 }
 
-Object.defineProperty(User, 'collection', {
-  get: function(){return global.mongodb.collection('users');}
+Object.defineProperty(Deck, 'collection', {
+  get: function(){return global.mongodb.collection('decks');}
 });
 
-User.findById = function(id, cb){
+Deck.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  User.collection.findOne({_id:_id}, cb);
+  Deck.collection.findOne({_id:_id}, cb);
 };
 
-User.register = function(o, cb){
-  User.collection.find({$or:[{email:o.email},{alias:o.alias}]}).toArray(function(err, users){
-    if(users.length || o.password.length < 3){return cb();}
-    o.password = bcrypt.hashSync(o.password, 10);
-    User.collection.save(o, cb);
+Deck.create = function(data, cb){
+  Card.getCards(data.deck, function(err, cards){
+    var d = new Deck(data.gameId, cards);
+    Deck.collection.save(d, cb);
   });
 };
 
-User.login = function(o, cb){
-  User.collection.findOne({email:o.email}, function(err, user){
-    if(!user){return cb();}
-    var isOk = bcrypt.compareSync(o.password, user.password);
-    if(!isOk){return cb();}
-    cb(null, user);
-  });
-};
-
-module.exports = User;
+module.exports = Deck;
 
