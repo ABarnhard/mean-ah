@@ -32,7 +32,8 @@ Game.create = function(data, cb){
   var g = new Game(data);
   // console.log(g);
   Game.collection.save(g, function(err, count){
-    cb(err, g.roomId);
+    var gameInfo = {roomId:g.roomId, decks:g.decks};
+    cb(err, gameInfo);
   });
 };
 

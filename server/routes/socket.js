@@ -1,6 +1,7 @@
 'use strict';
 
-var Game = require('../models/game');
+var Game = require('../models/game'),
+    Deck = require('../models/deck');
 
 module.exports = function(socket){
   var roomId,
@@ -9,12 +10,14 @@ module.exports = function(socket){
 
   socket.on('create-game', function(data, cb){
     // console.log('raw in', data);
-    Game.create(data, function(err, id){
+    Game.create(data, function(err, gameInfo){
       // console.log('gameInfo', gameInfo);
-      roomId = id;
-      socket.join(roomId);
-      socket.join(data.player);
-      cb(err, roomId);
+      Deck.create(gameInfo, function(err, deck){
+        roomId = gameInfo.roomId;
+        socket.join(roomId);
+        socket.join(data.player);
+        cb(err, roomId);
+      });
     });
   });
 

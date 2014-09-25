@@ -1,9 +1,13 @@
 'use strict';
 
 var Mongo = require('mongodb'),
-    Card  = require('./card');
+    Card  = require('./card'),
+    _     = require('underscore');
 
 function Deck(gameId, cards){
+  this.gameId = Mongo.ObjectID(gameId);
+  this.questions = filter('Q', cards);
+  this.answers = filter('A', cards);
 }
 
 Object.defineProperty(Deck, 'collection', {
@@ -16,11 +20,15 @@ Deck.findById = function(id, cb){
 };
 
 Deck.create = function(data, cb){
-  Card.getCards(data.deck, function(err, cards){
-    var d = new Deck(data.gameId, cards);
+  Card.getCards(data.decks, function(err, cards){
+    var d = new Deck(data.roomId, cards);
     Deck.collection.save(d, cb);
   });
 };
 
 module.exports = Deck;
 
+// Helper Functions
+function filter(type, cards){
+  return _.filter(cards, function(c){return c.cardType === type;});
+}
