@@ -3,17 +3,12 @@
     .row
       .col-xs-12
         h3 Game: {{game.name}}
-        button.btn.btn-primary(type='button', ng-click='startGame()') Start Game
+        button.btn.btn-primary(type='button', ng-show='isOwner && isWaiting', ng-click='startGame(game._id)') Start Game
         button.btn.btn-primary(type='button', ng-click='leaveGame()') Leave Game
     .row
       .col-xs-12
         .players
-          .player Player 1
-          .player Player 2
-          .player Player 3
-          .player Player 4
-          .player Player 5
-          .player Player 6
+          .player(ng-repeat='player in game.players') {{player}}
     .row
       .col-xs-12
         .gameboard
@@ -42,5 +37,7 @@
 
 .row
   .col-xs-12
+    pre isOwner {{isOwner | json}}
+    pre isWaiting {{isWaiting | json}}
     pre {{game | json}}
 

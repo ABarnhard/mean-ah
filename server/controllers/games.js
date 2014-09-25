@@ -9,7 +9,9 @@ exports.index = function(req, res){
 };
 
 exports.show = function(req, res){
-  Game.findById(req.params.id, function(err, game){
+  req.params.alias = req.user.alias;
+  Game.load(req.params, function(err, game){
     res.send({game:game});
   });
 };
+

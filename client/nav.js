@@ -7,6 +7,10 @@
       $scope.alias = alias;
     });
 
+    $localForage.getItem('gameId').then(function(gameId){
+      $scope.gameId = gameId;
+    });
+
     $scope.$on('authenticated', function(event, alias){
       if(alias === 'anonymous'){alias = null;}
 
