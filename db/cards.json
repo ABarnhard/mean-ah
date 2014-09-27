@@ -473,7 +473,7 @@
 {"id":473,"cardType":"Q","text":"I drink to forget _.","numAnswers":1,"expansion": "base"}
 {"id":474,"cardType":"Q","text":"I'm sorry professor, but I couldn't complete my homework because of _.","numAnswers":1,"expansion": "base"}
 {"id":475,"cardType":"Q","text":"What is Batman's guilty pleasure?","numAnswers":1,"expansion": "base"}
-{"id":476,"cardType":"Q","text":"This is the way the world ends <br> This is the way the world ends <br> Not with a bang but with _.","numAnswers":1,"expansion": "base"}
+{"id":476,"cardType":"Q","text":"This is the way the world ends. Not with a bang but with _.","numAnswers":1,"expansion": "base"}
 {"id":477,"cardType":"Q","text":"What's a girl's best friend?","numAnswers":1,"expansion": "base"}
 {"id":478,"cardType":"Q","text":"TSA guidelines now prohibit _ on airplanes.","numAnswers":1,"expansion": "base"}
 {"id":479,"cardType":"Q","text":"_. That's how I want to die.","numAnswers":1,"expansion": "base"}

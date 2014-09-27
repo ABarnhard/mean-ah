@@ -1,0 +1,18 @@
+{
+  "_id" : {"$oid":"200000000000000000000001"},
+  "roomId" : "200000000000000000000001",
+  "name" : "Test Game",
+  "owner" : "bob",
+  "cardCzar" : "bob",
+  "players" : [
+      "bob",
+      "sue"
+  ],
+  "decks" : [
+      "base",
+      "e2",
+      "hipster"
+  ],
+  "status" : "in-progress",
+  "isOpen" : false
+}
