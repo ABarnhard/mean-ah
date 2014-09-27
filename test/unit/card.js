@@ -23,11 +23,14 @@ describe('Card', function(){
     });
   });
 
-  describe('constructor', function(){
-    it('should create a new User object', function(){
-      var c = new Card();
-      expect(c).to.be.instanceof(Card);
+  describe('.getCards', function(){
+    it('should return an array of cards from selected deck', function(done){
+      Card.getCards(['base'], function(err, cards){
+        expect(cards).to.have.length(4);
+        done();
+      });
     });
   });
+
 });
 
