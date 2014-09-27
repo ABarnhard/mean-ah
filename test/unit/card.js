@@ -4,12 +4,12 @@
 'use strict';
 
 var expect    = require('chai').expect,
-    User      = require('../../server/models/user'),
+    Card      = require('../../server/models/card'),
     dbConnect = require('../../server/lib/mongodb'),
     cp        = require('child_process'),
     db        = 'mean-ah-test';
 
-describe('User', function(){
+describe('Card', function(){
   before(function(done){
     dbConnect(db, function(){
       done();
@@ -18,14 +18,15 @@ describe('User', function(){
 
   beforeEach(function(done){
     cp.execFile(__dirname + '/../scripts/clean-db.sh', [db], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
+      console.log(err, stdout, stderr);
       done();
     });
   });
 
   describe('constructor', function(){
     it('should create a new User object', function(){
-      var u = new User();
-      expect(u).to.be.instanceof(User);
+      var c = new Card();
+      expect(c).to.be.instanceof(Card);
     });
   });
 });
