@@ -46,5 +46,21 @@ describe('Deck', function(){
     });
   });
 
+  describe('.remove', function(){
+    it('should delete a deck from the database', function(done){
+      Deck.remove('200000000000000000000002', function(err, count){
+        Deck.collection.count(function(err, count){
+          expect(count).to.equal(1);
+          done();
+        });
+      });
+    });
+  });
+
 });
 
+/*
+  describe('', function(){
+    it('', function(done){});
+  });
+*/

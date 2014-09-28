@@ -26,6 +26,11 @@ Deck.create = function(data, cb){
   });
 };
 
+Deck.remove = function(gameId, cb){
+  var id = Mongo.ObjectID(gameId);
+  Deck.collection.remove({gameId:id}, cb);
+};
+
 module.exports = Deck;
 
 // Helper Functions
