@@ -19,9 +19,15 @@ Deck.findById = function(id, cb){
   Deck.collection.findOne({_id:_id}, cb);
 };
 
-Deck.findByGameId = function(gameId, cb){
-  gameId = Mongo.ObjectID(gameId);
-  Deck.collection.findOne({gameId:gameId}, cb);
+Deck.getCards = function(data, cb){
+  var gameId = Mongo.ObjectID(data.gameId),
+      filter = {};
+  filter[data.cardType] = 1;
+  Deck.collection.findOne({gameId:gameId}, filter, function(err, obj){
+    var deck = Object.create(Deck.prototype);
+        deck = _.extend(deck, obj);
+    cb(err, deck);
+  });
 };
 
 Deck.create = function(data, cb){
@@ -36,7 +42,23 @@ Deck.remove = function(gameId, cb){
   Deck.collection.remove({gameId:id}, cb);
 };
 
-Deck.draw = function(data, cb){
+Deck.deal = function(data, cb){
+  Deck.getCards(data, function(err, d){
+    var cards = d.draw(data);
+    d.update(data, function(err, count){
+      cb(err, cards);
+    });
+  });
+};
+
+Deck.prototype.draw = function(data){
+  return this[data.cardType].splice(0, data.count * 1);
+};
+
+Deck.prototype.update = function(data, cb){
+  var setField = {};
+  setField[data.cardType] = this[data.cardType];
+  Deck.collection.update({_id:this._id}, {$set:setField}, cb);
 };
 
 module.exports = Deck;

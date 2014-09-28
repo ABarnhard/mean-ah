@@ -57,10 +57,26 @@ describe('Deck', function(){
     });
   });
 
+  describe('.deal', function(){
+    it('should return the requested type & number of cards from the deck', function(done){
+      var data = {gameId:'200000000000000000000001', cardType:'answers', count:'1'};
+      Deck.deal(data, function(err, cards){
+        Deck.findById('300000000000000000000001', function(err, d){
+          expect(d.answers).to.have.length(3);
+          expect(d.answers[0].id).to.equal(2);
+          expect(cards).to.have.length(1);
+          expect(cards[0].id).to.equal(1);
+          done();
+        });
+      });
+    });
+  });
+
 });
 
 /*
   describe('', function(){
     it('', function(done){});
   });
+
 */

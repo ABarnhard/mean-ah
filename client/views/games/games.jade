@@ -3,7 +3,7 @@
     .row
       .col-xs-12
         h3 Game: {{game.name}}
-        button.btn.btn-primary(type='button', ng-show='isOwner && isWaiting', ng-click='startGame(game._id)') Start Game
+        button.btn.btn-primary(type='button', ng-show='isOwner && game.status === \'open\'', ng-click='startGame(game._id)') Start Game
         button.btn.btn-primary(type='button', ng-click='leaveGame()') Leave Game
     .row
       .col-xs-12
