@@ -1,7 +1,7 @@
 {
   "_id" : {"$oid":"200000000000000000000001"},
   "roomId" : "200000000000000000000001",
-  "name" : "Test Game",
+  "name" : "Game 1",
   "owner" : "bob",
   "cardCzar" : "bob",
   "players" : [
@@ -19,7 +19,7 @@
 {
   "_id" : {"$oid":"200000000000000000000002"},
   "roomId" : "200000000000000000000002",
-  "name" : "Game 1",
+  "name" : "Game 2",
   "owner" : "john",
   "cardCzar" : "bob",
   "players" : [
@@ -38,7 +38,7 @@
 {
   "_id" : {"$oid":"200000000000000000000003"},
   "roomId" : "200000000000000000000003",
-  "name" : "Game 2",
+  "name" : "Game 3",
   "owner" : "bob",
   "cardCzar" : "bob",
   "players" : [
@@ -49,5 +49,22 @@
       "nsfh"
   ],
   "status" : "new",
+  "isOpen" : false
+}
+{
+  "_id" : {"$oid":"200000000000000000000004"},
+  "roomId" : "200000000000000000000004",
+  "name" : "Game 4",
+  "owner" : "john",
+  "cardCzar" : "bob",
+  "players" : [
+      "john",
+      "bob",
+      "sue"
+  ],
+  "decks" : [
+      "base"
+  ],
+  "status" : "done",
   "isOpen" : false
 }

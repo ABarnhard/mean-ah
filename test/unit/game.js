@@ -27,7 +27,7 @@ describe('Game', function(){
     it('should find a game by it\'s ID', function(done){
       Game.findById('200000000000000000000001', function(err, g){
         expect(g).to.be.ok;
-        expect(g.name).to.equal('Test Game');
+        expect(g.name).to.equal('Game 1');
         done();
       });
     });
@@ -61,6 +61,45 @@ describe('Game', function(){
         Game.findById(id, function(err, g){
           expect(g.players).to.have.length(3);
           expect(g.players[2]).to.equal('NewPlayer');
+          done();
+        });
+      });
+    });
+  });
+
+  describe('.load', function(){
+    it('should load game (open and waiting)', function(done){
+      var data = {id:'200000000000000000000001', alias:'bob'};
+      Game.load(data, function(err, g){
+        expect(g.players).to.have.length(1);
+        done();
+      });
+    });
+    it('should initialize a new game', function(done){
+      var data = {id:'200000000000000000000003', alias:'bob'};
+      Game.load(data, function(err, g){
+        expect(g.status).to.equal('open');
+        expect(g.isOpen).to.equal(true);
+        done();
+      });
+    });
+    it('should return an error from a completed game', function(done){
+      var data = {id:'200000000000000000000004', alias:'bob'};
+      Game.load(data, function(err, g){
+        expect(err).to.be.ok;
+        expect(g).to.be.not.ok;
+        done();
+      });
+    });
+  });
+
+  describe('.start', function(){
+    it('should begin a game and set it to closed', function(done){
+      var id = '200000000000000000000001';
+      Game.start(id, function(err, count){
+        Game.findById(id, function(err, g){
+          expect(g.status).to.equal('in-progress');
+          expect(g.isOpen).to.equal(false);
           done();
         });
       });
