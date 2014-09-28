@@ -10,7 +10,7 @@ var expect    = require('chai').expect,
     cp        = require('child_process'),
     db        = 'mean-ah-test';
 
-describe('User', function(){
+describe('Deck', function(){
   before(function(done){
     dbConnect(db, function(){
       done();

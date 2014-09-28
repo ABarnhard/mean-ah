@@ -13,6 +13,41 @@
       "e2",
       "hipster"
   ],
+  "status" : "open",
+  "isOpen" : true
+}
+{
+  "_id" : {"$oid":"200000000000000000000002"},
+  "roomId" : "200000000000000000000002",
+  "name" : "Game 1",
+  "owner" : "john",
+  "cardCzar" : "bob",
+  "players" : [
+      "john",
+      "bob",
+      "sue"
+  ],
+  "decks" : [
+      "base",
+      "e3",
+      "nsfh"
+  ],
   "status" : "in-progress",
+  "isOpen" : false
+}
+{
+  "_id" : {"$oid":"200000000000000000000003"},
+  "roomId" : "200000000000000000000003",
+  "name" : "Game 2",
+  "owner" : "bob",
+  "cardCzar" : "bob",
+  "players" : [
+      "bob"
+  ],
+  "decks" : [
+      "base",
+      "nsfh"
+  ],
+  "status" : "new",
   "isOpen" : false
 }

@@ -8,7 +8,7 @@ var db      = process.env.DB,
 
 require('./lib/config')(app);
 require('./routes/routes')(app, express);
-io.sockets.on('connection', require('./routes/socket'));
+io.sockets.on('connection', require('./routes/socket-routes'));
 
 require('./lib/mongodb')(db, function(){
   server.listen(app.get('port'), function(){
