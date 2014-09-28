@@ -26,6 +26,7 @@
       console.log('game started');
       $scope.game.status = 'in-progress';
       $scope.game.isOpen = 'false';
+      $scope.isWaiting = $scope.game.status === 'open';
     });
 
     $scope.startGame = function(id){
