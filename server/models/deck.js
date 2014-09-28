@@ -5,9 +5,9 @@ var Mongo = require('mongodb'),
     _     = require('underscore');
 
 function Deck(gameId, cards){
-  this.gameId = Mongo.ObjectID(gameId);
-  this.questions = filter('Q', cards);
-  this.answers = filter('A', cards);
+  this.gameId    = Mongo.ObjectID(gameId);
+  this.questions = filterAndShuffle('Q', cards);
+  this.answers   = filterAndShuffle('A', cards);
 }
 
 Object.defineProperty(Deck, 'collection', {
@@ -17,6 +17,11 @@ Object.defineProperty(Deck, 'collection', {
 Deck.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
   Deck.collection.findOne({_id:_id}, cb);
+};
+
+Deck.findByGameId = function(gameId, cb){
+  gameId = Mongo.ObjectID(gameId);
+  Deck.collection.findOne({gameId:gameId}, cb);
 };
 
 Deck.create = function(data, cb){
@@ -31,9 +36,13 @@ Deck.remove = function(gameId, cb){
   Deck.collection.remove({gameId:id}, cb);
 };
 
+Deck.draw = function(data, cb){
+};
+
 module.exports = Deck;
 
 // Helper Functions
-function filter(type, cards){
-  return _.filter(cards, function(c){return c.cardType === type;});
+function filterAndShuffle(type, cards){
+  cards = _.filter(cards, function(c){return c.cardType === type;});
+  return _.shuffle(cards);
 }
