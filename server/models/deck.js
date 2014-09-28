@@ -42,6 +42,11 @@ Deck.remove = function(gameId, cb){
   Deck.collection.remove({gameId:id}, cb);
 };
 
+// data = {
+//  gameId:'_id/roomId',
+//  cardType:'questions/answers',
+//  count:'num cards needed'
+// }
 Deck.deal = function(data, cb){
   Deck.getCards(data, function(err, d){
     var cards = d.draw(data);

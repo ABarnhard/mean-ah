@@ -3,8 +3,9 @@
     .row
       .col-xs-12
         h3 Game: {{game.name}}
-        button.btn.btn-primary(type='button', ng-show='isOwner && game.status === \'open\'', ng-click='startGame(game._id)') Start Game
+        button.btn.btn-primary(type='button', ng-show='game.isOwner && game.status === \'open\'', ng-click='startGame(game._id)') Start Game
         button.btn.btn-primary(type='button', ng-click='leaveGame()') Leave Game
+        button.btn.btn-primary(type='button', ng-click='drawHand()') Draw Hand
     .row
       .col-xs-12
         .players
@@ -16,16 +17,7 @@
     .row
       .col-xs-12
         .hand
-          .card Card Text 1
-          .card Card Text 2
-          .card Card Text 3
-          .card Card Text 4
-          .card Card Text 5
-          .card Card Text 6
-          .card Card Text 7
-          .card Card Text 8
-          .card Card Text 9
-          .card Card Text 10
+          .card(ng-repeat='card in game.hand') {{card.text}}
     .row
       .col-xs-12
         .gameinfo
@@ -37,7 +29,5 @@
 
 .row
   .col-xs-12
-    pre isOwner {{isOwner | json}}
-    pre isWaiting {{isWaiting | json}}
     pre {{game | json}}
 

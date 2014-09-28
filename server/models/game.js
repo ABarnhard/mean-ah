@@ -1,6 +1,7 @@
 'use strict';
 
 var Mongo  = require('mongodb'),
+    Deck   = require('./deck'),
     _      = require('underscore');
 
 function Game(o){
@@ -13,6 +14,7 @@ function Game(o){
   this.decks    = o.decks;
   this.status   = 'new';
   this.isOpen   = false;
+  this.handNum  = 0;
 }
 
 Object.defineProperty(Game, 'collection', {
@@ -24,6 +26,13 @@ Game.findById = function(id, cb){
   Game.collection.findOne({_id:_id}, cb);
 };
 
+Game.getPlayers = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  Game.collection.findOne({_id:_id}, {players:1}, function(err, obj){
+    cb(err, obj.players);
+  });
+};
+
 Game.findAllOpen = function(cb){
   Game.collection.find({isOpen:true}).toArray(cb);
 };
@@ -33,7 +42,9 @@ Game.create = function(data, cb){
   // console.log(g);
   Game.collection.save(g, function(err, count){
     var gameInfo = {roomId:g.roomId, decks:g.decks};
-    cb(err, gameInfo);
+    Deck.create(gameInfo, function(err, deck){
+      cb(err, gameInfo);
+    });
   });
 };
 
@@ -79,6 +90,20 @@ Game.load = function(data, cb){
 Game.start = function(gameId, cb){
   var id = Mongo.ObjectID(gameId);
   Game.collection.update({_id:id}, {$set:{isOpen:false, status:'in-progress'}}, cb);
+};
+
+Game.dealHand = function(gameId, cb){
+  Game.getPlayers(gameId, function(err, players){
+    var count = players.length * 10,
+        data = {
+          gameId:gameId,
+          cardType:'answers',
+          count:count
+        };
+    Deck.deal(data, function(err, cards){
+      cb(err, players, cards);
+    });
+  });
 };
 
 module.exports = Game;

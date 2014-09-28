@@ -1,7 +1,6 @@
 'use strict';
 
 var Game = require('../models/game'),
-    Deck = require('../models/deck'),
     roomId;
 
 function Io(){
@@ -16,12 +15,10 @@ exports.createGame = function(data, cb){
   // console.log('raw in', data);
   Game.create(data, function(err, gameInfo){
     // console.log('gameInfo', gameInfo);
-    Deck.create(gameInfo, function(err, deck){
-      roomId = gameInfo.roomId;
-      socket.join(roomId);
-      socket.join(data.player);
-      cb(err, roomId);
-    });
+    roomId = gameInfo.roomId;
+    socket.join(roomId);
+    socket.join(data.player);
+    cb(err, roomId);
   });
 };
 
@@ -52,6 +49,16 @@ exports.playerConnect = function(data, cb){
   this.join(roomId);
   this.join(data.player);
   cb();
+};
+
+// data = {gameId:'roomId of game'}
+exports.drawHand = function(data){
+  Game.dealHand(data.gameId, function(err, players, cards){
+    players.forEach(function(player){
+      var hand = cards.splice(0, 10);
+      Io.sio.to(player).emit('deal-hand', {hand:hand});
+    });
+  });
 };
 
 exports.disconnect = function(){
