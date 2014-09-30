@@ -2,7 +2,6 @@
 
 var Mongo  = require('mongodb'),
     Deck   = require('./deck'),
-    Hand   = require('./hand'),
     _      = require('underscore');
 
 function Game(o){
@@ -15,7 +14,8 @@ function Game(o){
   this.decks    = o.decks;
   this.status   = 'new';
   this.isOpen   = false;
-  this.handNum  = 0;
+  this.roundNum = 0;
+  this.round    = {};
 }
 
 Object.defineProperty(Game, 'collection', {
@@ -120,12 +120,6 @@ Game.dealQuestion = function(gameId, cb){
           count:1
         };
     Deck.deal(data, function(err, cards){
-      Game.incHandNum(gameId, function(err, recordsUpdated){
-        var obj = {gameId:gameId, qcard:cards[0]};
-        Hand.create(obj, function(err, hand){
-          cb(err, players, cards[0]);
-        });
-      });
     });
   });
 };

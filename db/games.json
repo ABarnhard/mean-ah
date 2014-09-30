@@ -14,7 +14,8 @@
       "hipster"
   ],
   "status" : "open",
-  "handNum" : 0,
+  "roundNum" : 0,
+  "round" : {},
   "isOpen" : true
 }
 {
@@ -34,7 +35,8 @@
       "nsfh"
   ],
   "status" : "in-progress",
-  "handNum" : 4,
+  "roundNum" : 4,
+  "round" : {},
   "isOpen" : false
 }
 {
@@ -51,7 +53,7 @@
       "nsfh"
   ],
   "status" : "new",
-  "handNum" : 0,
+  "roundNum" : 0,
   "isOpen" : false
 }
 {
@@ -69,6 +71,7 @@
       "base"
   ],
   "status" : "done",
-  "handNum" : 37,
+  "roundNum" : 37,
+  "round" : {},
   "isOpen" : false
 }
