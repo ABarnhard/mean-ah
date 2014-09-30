@@ -2,6 +2,7 @@
 
 var Mongo  = require('mongodb'),
     Deck   = require('./deck'),
+    Hand   = require('./hand'),
     _      = require('underscore');
 
 function Game(o){
@@ -31,6 +32,11 @@ Game.getPlayers = function(id, cb){
   Game.collection.findOne({_id:_id}, {players:1}, function(err, obj){
     cb(err, obj.players);
   });
+};
+
+Game.incHandNum = function(gameId, cb){
+  var id = Mongo.ObjectID(gameId);
+  Game.collection.update({_id:id}, {$inc:{handNum:1}}, cb);
 };
 
 Game.findAllOpen = function(cb){
@@ -114,7 +120,12 @@ Game.dealQuestion = function(gameId, cb){
           count:1
         };
     Deck.deal(data, function(err, cards){
-      cb(err, players, cards[0]);
+      Game.incHandNum(gameId, function(err, recordsUpdated){
+        var obj = {gameId:gameId, qcard:cards[0]};
+        Hand.create(obj, function(err, hand){
+          cb(err, players, cards[0]);
+        });
+      });
     });
   });
 };

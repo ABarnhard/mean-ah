@@ -1,15 +1,28 @@
 'use strict';
 
-function Card(){
+var Mongo = require('mongodb');
+
+function Hand(o){
+  this.gameId  = Mongo.ObjectID(o.gameId);
+  this.qcard   = o.qcard;
+  this.answers = [];
 }
 
-Object.defineProperty(Card, 'collection', {
-  get: function(){return global.mongodb.collection('cards');}
+Object.defineProperty(Hand, 'collection', {
+  get: function(){return global.mongodb.collection('hands');}
 });
 
-Card.getCards = function(expansions, cb){
-  Card.collection.find({expansion:{$in:expansions}}).toArray(cb);
+// data.gameId = string representing the _id of a game
+// data.qcard = the question card that was drawn for the hand (full object)
+Hand.create = function(data, cb){
+  var h = new Hand(data);
+  Hand.collection.save(h, cb);
 };
 
-module.exports = Card;
+Hand.findOne = function(gameId, cb){
+  var id = Mongo.ObjectID(gameId);
+  Hand.collection.findOne({gameId:id}, cb);
+};
+
+module.exports = Hand;
 
