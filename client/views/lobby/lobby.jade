@@ -21,5 +21,5 @@
               td {{game.owner}}
               td {{game.decks.join(', ')}}
               td {{game.players.length}}
-              td: button.btn.btn-success(type='button', ng-click='joinGame(game._id)') Join
+              td: button.btn.btn-success(type='button', ng-hide='inGame', ng-click='joinGame(game._id)') Join
 

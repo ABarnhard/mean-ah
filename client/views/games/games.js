@@ -18,7 +18,7 @@
       });
     });
 
-    Socket.forward(['player-joined', 'game-start', 'deal-hand']);
+    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'deal-question']);
 
     $scope.$on('socket:player-joined', function(event, data){
       // console.log('I Fired');
@@ -30,12 +30,20 @@
       $scope.game.status = 'in-progress';
       $scope.game.isOpen = 'false';
       $scope.isWaiting = $scope.game.status === 'open';
-      Socket.emit('draw-hand', {gameId:$scope.game._id});
+      Socket.emit('draw-hand', {gameId:$scope.game._id}, function(){
+        Socket.emit('draw-question', {gameId:$scope.game._id});
+      });
     });
 
     $scope.$on('socket:deal-hand', function(event, data){
       $localForage.setItem('hand', data.hand).then(function(){
         $scope.game.hand = data.hand;
+      });
+    });
+
+    $scope.$on('socket:deal-question', function(event, data){
+      $localForage.setItem('qcard', data.qcard).then(function(){
+        $scope.game.question = data.qcard;
       });
     });
 

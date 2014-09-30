@@ -106,5 +106,18 @@ Game.dealHand = function(gameId, cb){
   });
 };
 
+Game.dealQuestion = function(gameId, cb){
+  Game.getPlayers(gameId, function(err, players){
+    var data = {
+          gameId:gameId,
+          cardType:'questions',
+          count:1
+        };
+    Deck.deal(data, function(err, cards){
+      cb(err, players, cards[0]);
+    });
+  });
+};
+
 module.exports = Game;
 

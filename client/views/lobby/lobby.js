@@ -4,6 +4,11 @@
   angular.module('mean-ah')
   .controller('LobbyCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
 
+    $localForage.getItem('gameId').then(function(gameId){
+      // Need better method. Should look up game and kick out if already in one
+      $scope.inGame = !!gameId;
+    });
+
     findGames();
 
     $scope.joinGame = function(gameId){

@@ -13,7 +13,7 @@
     .row
       .col-xs-12
         .gameboard
-          .qcard Question Card
+          .qcard(ng-show='game.question') {{game.question.text}}
     .row
       .col-xs-12
         .hand
