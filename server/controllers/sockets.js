@@ -1,14 +1,8 @@
 'use strict';
 
 var Game = require('../models/game'),
+    Io   = require('../models/io'),
     roomId;
-
-function Io(){
-}
-
-Object.defineProperty(Io, 'sio', {
-  get: function(){return global.sio;}
-});
 
 exports.createGame = function(data, cb){
   var socket = this;
@@ -40,7 +34,7 @@ exports.joinGame = function(data, cb){
 exports.startGame = function(data, cb){
   // console.log('socked recieved start-game');
   Game.start(data.gameId, function(err, count){
-    Io.sio.to(roomId).emit('game-start');
+    Io.to(roomId).emit('game-start');
     cb();
   });
 };
@@ -57,17 +51,15 @@ exports.drawHand = function(data){
   Game.dealHand(data.gameId, function(err, players, cards){
     players.forEach(function(player){
       var hand = cards.splice(0, 10);
-      Io.sio.to(player).emit('deal-hand', {hand:hand});
+      Io.to(player).emit('deal-hand', {hand:hand});
     });
   });
 };
 
 // data = {gameId:'roomId of game'}
-exports.drawQCard = function(data){
-  Game.dealQuestion(data.gameId, function(err, players, qcard){
-    players.forEach(function(player){
-      Io.sio.to(player).emit('deal-question', {qcard:qcard});
-    });
+exports.startRound = function(data){
+  Game.startRound(data.gameId, function(err, qcard){
+    Io.to(roomId).emit('round-start', {qcard:qcard});
   });
 };
 

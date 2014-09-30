@@ -31,7 +31,7 @@
       $scope.game.isOpen = 'false';
       $scope.isWaiting = $scope.game.status === 'open';
       Socket.emit('draw-hand', {gameId:$scope.game._id}, function(){
-        Socket.emit('draw-question', {gameId:$scope.game._id});
+        Socket.emit('start-round', {gameId:$scope.game._id});
       });
     });
 
