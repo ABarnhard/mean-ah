@@ -14,6 +14,7 @@
       "hipster"
   ],
   "status" : "open",
+  "handNum" : 0,
   "isOpen" : true
 }
 {
@@ -33,6 +34,7 @@
       "nsfh"
   ],
   "status" : "in-progress",
+  "handNum" : 4,
   "isOpen" : false
 }
 {
@@ -49,6 +51,7 @@
       "nsfh"
   ],
   "status" : "new",
+  "handNum" : 0,
   "isOpen" : false
 }
 {
@@ -66,5 +69,6 @@
       "base"
   ],
   "status" : "done",
+  "handNum" : 37,
   "isOpen" : false
 }
