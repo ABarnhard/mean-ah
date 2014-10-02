@@ -34,7 +34,7 @@ exports.joinGame = function(data, cb){
 exports.startGame = function(data, cb){
   // console.log('socked recieved start-game');
   Game.start(data.gameId, function(err, count){
-    Io.to(roomId).emit('game-start');
+    Io.sio.to(roomId).emit('game-start');
     cb();
   });
 };
@@ -51,7 +51,7 @@ exports.drawHand = function(data){
   Game.dealHand(data.gameId, function(err, players, cards){
     players.forEach(function(player){
       var hand = cards.splice(0, 10);
-      Io.to(player).emit('deal-hand', {hand:hand});
+      Io.sio.to(player).emit('deal-hand', {hand:hand});
     });
   });
 };
