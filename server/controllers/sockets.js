@@ -31,11 +31,10 @@ exports.joinGame = function(data, cb){
   });
 };
 
-exports.startGame = function(data, cb){
+exports.startGame = function(data){
   // console.log('socked recieved start-game');
   Game.start(data.gameId, function(err, count){
-    Io.sio.to(roomId).emit('game-start');
-    cb();
+    Io.to(roomId).emit('game-start');
   });
 };
 
@@ -47,12 +46,13 @@ exports.playerConnect = function(data, cb){
 };
 
 // data = {gameId:'roomId of game'}
-exports.drawHand = function(data){
+exports.drawHand = function(data, cb){
   Game.dealHand(data.gameId, function(err, players, cards){
     players.forEach(function(player){
       var hand = cards.splice(0, 10);
-      Io.sio.to(player).emit('deal-hand', {hand:hand});
+      Io.to(player).emit('deal-hand', {hand:hand});
     });
+    cb();
   });
 };
 

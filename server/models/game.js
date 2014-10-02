@@ -5,17 +5,18 @@ var Mongo  = require('mongodb'),
     _      = require('underscore');
 
 function Game(o){
-  this._id      = Mongo.ObjectID();
-  this.roomId   = this._id.toString();
-  this.name     = o.name;
-  this.owner    = o.player;
-  this.cardCzar = o.player;
-  this.players  = [o.player];
-  this.decks    = o.decks;
-  this.status   = 'new';
-  this.isOpen   = false;
-  this.roundNum = 0;
-  this.round    = {};
+  this._id        = Mongo.ObjectID();
+  this.roomId     = this._id.toString();
+  this.name       = o.name;
+  this.owner      = o.player;
+  this.cardCzar   = o.player;
+  this.players    = [o.player];
+  this.decks      = o.decks;
+  this.status     = 'new';
+  this.isOpen     = false;
+  this.roundNum   = 0;
+  this.round      = {};
+  this.lastUpdate = null;
 }
 
 Object.defineProperty(Game, 'collection', {
@@ -55,14 +56,18 @@ Game.create = function(data, cb){
 };
 
 Game.join = function(data, cb){
-  // console.log('Game.join Model Raw Data', data);
-  var id = Mongo.ObjectID(data.gameId);
-  Game.collection.findAndModify({_id:id, isOpen:true}, [], {$set:{isOpen:false}}, function(err, g){
+  Game.findForUpdate(data.gameId, function(err, g){
     if(!g){return cb('ERROR: Requested Game Not Found');}
     g.players.push(data.player);
     g.isOpen = g.players.length < 7;
-    Game.collection.save(g, function(err, count){
-      cb(err, g.roomId);
+    Game.lastUpdate(g._id, function(err, timeStamp){
+      if(g.lastUpdate === timeStamp){
+        g.save(function(err, count){
+          cb(err, g.roomId);
+        });
+      }else{
+        Game.join(data, cb);
+      }
     });
   });
 };
@@ -126,3 +131,9 @@ Game.dealQuestion = function(gameId, cb){
 
 module.exports = Game;
 
+// HELPER FUNCTIONS
+
+function reproto(proto, obj){
+  var tempObj = Object.create(proto);
+  return _.extend(tempObj, obj);
+}
