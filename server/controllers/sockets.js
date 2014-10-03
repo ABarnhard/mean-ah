@@ -52,7 +52,7 @@ exports.drawHand = function(data, cb){
       var hand = cards.splice(0, 10);
       Io.to(player).emit('deal-hand', {hand:hand});
     });
-    cb();
+    if(cb){cb();}
   });
 };
 
@@ -60,6 +60,15 @@ exports.drawHand = function(data, cb){
 exports.startRound = function(data){
   Game.startRound(data.gameId, function(err, qcard){
     Io.to(roomId).emit('round-start', {qcard:qcard});
+  });
+};
+
+// data = {gameId:, player:}
+exports.leaveGame = function(data, cb){
+  var socket = this;
+  Game.leave(data, function(err, player){
+    socket.broadcast.to(roomId).emit('player-left', player);
+    cb(err, player);
   });
 };
 

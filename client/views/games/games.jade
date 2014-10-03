@@ -4,8 +4,9 @@
       .col-xs-12
         h3 Game: {{game.name}}
         button.btn.btn-primary(type='button', ng-show='game.isOwner && game.status === \'open\'', ng-click='startGame(game._id)') Start Game
-        button.btn.btn-primary(type='button', ng-click='leaveGame()') Leave Game
+        button.btn.btn-primary(type='button', ng-click='leaveGame(game._id)') Leave Game
         button.btn.btn-primary(type='button', ng-click='drawHand()') Draw Hand
+        button.btn.btn-primary(type='button', ng-click='startRound()') Start Round
     .row
       .col-xs-12
         .players

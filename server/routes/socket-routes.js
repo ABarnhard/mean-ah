@@ -9,6 +9,7 @@ module.exports = function(socket){
   socket.on('create-game',    sockets.createGame);
   socket.on('join-game',      sockets.joinGame);
   socket.on('start-game',     sockets.startGame);
+  socket.on('leave-game',     sockets.leaveGame);
   socket.on('player-connect', sockets.playerConnect);
   socket.on('draw-hand',      sockets.drawHand);
   socket.on('start-round',    sockets.startRound);

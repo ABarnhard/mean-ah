@@ -57,7 +57,7 @@ Game.create = function(data, cb){
 
 Game.join = function(data, cb){
   Game.findForUpdate(data.gameId, function(err, g){
-    if(!g){return cb('ERROR: Requested Game Not Found');}
+    if(!g){return cb('ERROR: Requested game is closed');}
     g.players.push(data.player);
     g.isOpen = g.players.length < 7;
     Game.lastUpdate(g._id, function(err, timeStamp){
@@ -69,6 +69,61 @@ Game.join = function(data, cb){
         Game.join(data, cb);
       }
     });
+  });
+};
+
+Game.leave = function(data, cb){
+  Game.findForUpdate(data.gameId, function(err, game){
+    game.players = _.reject(game.players, function(player){return player === data.player;});
+    if(game.round.answers){
+      game.round.answers = _.reject(game.round.answers, function(ans){return ans.player === data.player;});
+    }
+    Game.lastUpdate(game._id, function(err, timeStamp){
+      if(game.lastUpdate === timeStamp){
+        game.save(function(err, count){
+          cb(err, data.player);
+        });
+      }else{
+        Game.leave(data, cb);
+      }
+    });
+  });
+};
+
+Game.startRound = function(id, cb){
+  Game.findForUpdate(id, function(err, game){
+    var data = {gameId:id, cardType:'questions', count:1};
+    Deck.deal(data, function(err, cards){
+      game.round = {qcard:cards[0], answers:[]};
+      game.roundNum += 1;
+      Game.lastUpdate(game._id, function(err, timeStamp){
+        if(game.lastUpdate === timeStamp){
+          game.save(function(err, count){
+            cb(err, game.round.qcard);
+          });
+        }else{
+          Game.startRound(id, cb);
+        }
+      });
+    });
+  });
+};
+
+Game.findForUpdate = function(id, cb){
+  var timeStamp = new Date().valueOf();
+  id = mongofy(id);
+
+  Game.collection.findAndModify({_id:id}, [['_id', 1]], {$set:{lastUpdate:timeStamp}}, {new:true}, function(err, obj){
+    var game = reproto(Game.prototype, obj);
+    cb(err, game);
+  });
+};
+
+Game.lastUpdate = function(id, cb){
+  id = mongofy(id);
+  Game.collection.findOne({_id:id}, {fields:{lastUpdate:1}}, function(err, obj){
+    var timeStamp = obj ? obj.lastUpdate : null;
+    cb(err, timeStamp);
   });
 };
 
@@ -91,7 +146,7 @@ Game.load = function(data, cb){
       cb('ERROR: Requested Game has ended');
      }else{
       // all is good, load game data
-      // remove user from games player list
+      // remove user from the games player list so they are not displayed on screen
       g.players = _.reject(g.players, function(player){return player === data.alias;});
       cb(err, g);
      }
@@ -117,16 +172,8 @@ Game.dealHand = function(gameId, cb){
   });
 };
 
-Game.dealQuestion = function(gameId, cb){
-  Game.getPlayers(gameId, function(err, players){
-    var data = {
-          gameId:gameId,
-          cardType:'questions',
-          count:1
-        };
-    Deck.deal(data, function(err, cards){
-    });
-  });
+Game.prototype.save = function(cb){
+  Game.collection.save(this, cb);
 };
 
 module.exports = Game;
@@ -136,4 +183,9 @@ module.exports = Game;
 function reproto(proto, obj){
   var tempObj = Object.create(proto);
   return _.extend(tempObj, obj);
+}
+
+function mongofy(id){
+  id = (typeof id === 'string') ? Mongo.ObjectID(id) : id;
+  return id;
 }

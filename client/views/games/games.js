@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('mean-ah')
-  .controller('GamesCtrl', ['$scope', '$localForage', 'Socket', 'Game', function($scope, $localForage, Socket, Game){
+  .controller('GamesCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
 
     $localForage.getItem('gameId').then(function(gameId){
       Game.load(gameId).then(function(res){
@@ -18,11 +18,16 @@
       });
     });
 
-    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'deal-question']);
+    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left']);
 
-    $scope.$on('socket:player-joined', function(event, data){
+    $scope.$on('socket:player-joined', function(event, player){
       // console.log('I Fired');
-      $scope.game.players.push(data);
+      $scope.game.players.push(player);
+    });
+
+    $scope.$on('socket:player-left', function(event, player){
+      console.log('socket:player-left fired');
+      $scope.game.players = $scope.game.players.filter(function(p){return p !== player;});
     });
 
     $scope.$on('socket:game-start', function(event, data){
@@ -41,7 +46,8 @@
       });
     });
 
-    $scope.$on('socket:deal-question', function(event, data){
+    $scope.$on('socket:round-start', function(event, data){
+      // console.log('socket:round-start fired');
       $localForage.setItem('qcard', data.qcard).then(function(){
         $scope.game.question = data.qcard;
       });
@@ -52,9 +58,19 @@
       Socket.emit('start-game', {gameId:id});
     };
 
+    $scope.leaveGame = function(id){
+      // console.log('leaveGame Fired');
+      Socket.emit('leave-game', {gameId:id, player:$scope.$$prevSibling.alias}, function(err, data){
+        $location.path('/lobby');
+      });
+    };
+
     // FOR TESTING
     $scope.drawHand = function(){
       Socket.emit('draw-hand', {gameId:$scope.game._id});
+    };
+    $scope.startRound = function(){
+      Socket.emit('start-round', {gameId:$scope.game._id});
     };
     // END TESTING
 
