@@ -58,8 +58,8 @@ exports.drawHand = function(data, cb){
 
 // data = {gameId:'roomId of game'}
 exports.startRound = function(data){
-  Game.startRound(data.gameId, function(err, qcard){
-    Io.to(roomId).emit('round-start', {qcard:qcard});
+  Game.startRound(data.gameId, function(err, round){
+    Io.to(roomId).emit('round-start', {round:round});
   });
 };
 

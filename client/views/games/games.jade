@@ -14,11 +14,15 @@
     .row
       .col-xs-12
         .gameboard
-          .qcard(ng-show='game.question') {{game.question.text}}
+          .qcard(ng-show='game.round.qcard') {{game.round.qcard.text}}
     .row
       .col-xs-12
         .hand
-          .card(ng-repeat='card in game.hand') {{card.text}}
+          .card(ng-repeat='card in game.hand', ng-click='selectAnswer(card)') {{card.text}}
+    .row
+      .col-xs-12
+        .play-hand
+          button.btn.btn-danger(type='button', ng-click='playAnswers()') Play Card(s)
     .row
       .col-xs-12
         .gameinfo

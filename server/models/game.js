@@ -99,7 +99,7 @@ Game.startRound = function(id, cb){
       Game.lastUpdate(game._id, function(err, timeStamp){
         if(game.lastUpdate === timeStamp){
           game.save(function(err, count){
-            cb(err, game.round.qcard);
+            cb(err, game.round);
           });
         }else{
           Game.startRound(id, cb);
