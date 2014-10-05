@@ -72,6 +72,19 @@ exports.leaveGame = function(data, cb){
   });
 };
 
+// data = {gameId:'', play:{player:'', answers:[]}}
+exports.playCards = function(data){
+  var socket = this;
+  Game.makePlay(data, function(err, obj){
+    socket.broadcast.to(roomId).emit('play-made', obj.player);
+    if(obj.roundOver){
+      Game.endRound(data.gameId, function(err, roundInfo){
+        Io.to(roundInfo.cardCzar).emit('end-round', roundInfo.round);
+      });
+    }
+  });
+};
+
 exports.disconnect = function(){
   console.log('user disconnected');
 };

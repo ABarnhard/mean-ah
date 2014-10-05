@@ -109,6 +109,38 @@ Game.startRound = function(id, cb){
   });
 };
 
+Game.makePlay = function(data, cb){
+  Game.findForUpdate(data.gameId, function(err, game){
+    game.round.answers.push(data.play);
+    Game.lastUpdate(game._id, function(err, timeStamp){
+      if(game.lastUpdate === timeStamp){
+        game.save(function(err, count){
+          var obj = {player:data.play.player};
+          if(game.players.length === game.round.answers.length){
+            obj.roundOver = true;
+          }
+          cb(err, obj);
+        });
+      }else{
+        Game.makePlay(data, cb);
+      }
+    });
+  });
+};
+
+Game.endRound = function(gameId, cb){
+  Game.findForUpdate(gameId, function(err, game){
+    var info = {cardCzar:game.cardCzar, round:game.round};
+    Game.lastUpdate(game._id, function(err, timeStamp){
+      if(game.lastUpdate === timeStamp){
+        cb(err, info);
+      }else{
+        Game.endRound(gameId, cb);
+      }
+    });
+  });
+};
+
 Game.findForUpdate = function(id, cb){
   var timeStamp = new Date().valueOf();
   id = mongofy(id);

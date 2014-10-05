@@ -5,7 +5,7 @@
   .controller('GamesCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
 
     // Register game events to be forwarded from Socket.IO to Angulars event system
-    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left']);
+    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'end-round']);
 
     // Get player from Nav (could look up alias with $localForage)
     $scope.player = $scope.$$prevSibling.alias;
@@ -62,7 +62,8 @@
         var play = {player:$scope.player, answers:$scope.game.answers};
         $scope.game.play = play;
         $scope.game.answers = [];
-        Socket.emit('play-cards', play);
+        var data = {gameId:$scope.game._id, play:play};
+        Socket.emit('play-cards', data);
       });
     };
 
@@ -95,6 +96,10 @@
 
     $scope.$on('socket:round-start', function(event, data){
       $scope.game.round = data.round;
+    });
+
+    $scope.$on('socket:end-round', function(event, data){
+      // TODO End the round
     });
 
     // FOR TESTING
