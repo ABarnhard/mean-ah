@@ -74,13 +74,16 @@ exports.leaveGame = function(data, cb){
 
 // data = {gameId:'', play:{player:'', answers:[]}}
 exports.playCards = function(data){
+  console.log('sockets.playCards', data);
   var socket = this;
   Game.makePlay(data, function(err, obj){
-    socket.broadcast.to(roomId).emit('play-made', obj.player);
     if(obj.roundOver){
       Game.endRound(data.gameId, function(err, roundInfo){
+        socket.broadcast.to(roomId).emit('play-made', obj.player);
         Io.to(roundInfo.cardCzar).emit('answers-submitted', roundInfo.round);
       });
+    }else{
+      socket.broadcast.to(roomId).emit('play-made', obj.player);
     }
   });
 };

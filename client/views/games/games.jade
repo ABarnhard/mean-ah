@@ -17,7 +17,7 @@
           .row
             .col-xs-12
               .qcard(ng-show='game.round.qcard') {{game.round.qcard.text}}
-          .row#czar-wrapper(ng-show='game.cardCzar === alias')
+          .row#czar-wrapper(ng-show='game.cardCzar === alias && game.hand.length')
             .col-xs-12
               .row(ng-hide='playedAnswers')
                 .col-xs-12

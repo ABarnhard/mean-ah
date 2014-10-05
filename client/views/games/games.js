@@ -66,6 +66,7 @@
         $scope.game.answers = [];
         var data = {gameId:$scope.game._id, play:play};
         Socket.emit('play-cards', data);
+        console.log('play-cards', data);
       });
     };
 

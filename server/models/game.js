@@ -28,18 +28,6 @@ Game.findById = function(id, cb){
   Game.collection.findOne({_id:_id}, cb);
 };
 
-Game.getPlayers = function(id, cb){
-  var _id = Mongo.ObjectID(id);
-  Game.collection.findOne({_id:_id}, {players:1}, function(err, obj){
-    cb(err, obj.players);
-  });
-};
-
-Game.incHandNum = function(gameId, cb){
-  var id = Mongo.ObjectID(gameId);
-  Game.collection.update({_id:id}, {$inc:{handNum:1}}, cb);
-};
-
 Game.findAllOpen = function(cb){
   Game.collection.find({isOpen:true}).toArray(cb);
 };
@@ -110,8 +98,10 @@ Game.startRound = function(id, cb){
 };
 
 Game.makePlay = function(data, cb){
+  // console.log('game.makePlay', data);
   Game.findForUpdate(data.gameId, function(err, game){
     game.round.answers.push(data.play);
+    // console.log('Game.makePlay game after pushing play', game);
     var obj = {player:data.play.player};
     if((game.players.length - 1) === game.round.answers.length){
       obj.roundOver = true;
@@ -119,6 +109,9 @@ Game.makePlay = function(data, cb){
     Game.lastUpdate(game._id, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
         game.save(function(err, count){
+          // console.log('err & count from save', err, count);
+          // console.log('Game.makePlay game after save', game);
+          // console.log('Game.makePlay cb info after save', obj);
           cb(err, obj);
         });
       }else{
@@ -130,9 +123,11 @@ Game.makePlay = function(data, cb){
 
 Game.endRound = function(gameId, cb){
   Game.findForUpdate(gameId, function(err, game){
+    // console.log('Game.endRound', game);
     var info = {cardCzar:game.cardCzar, round:game.round};
     Game.lastUpdate(game._id, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
+        // console.log('Game.endRound data passed back for cb', info);
         cb(err, info);
       }else{
         Game.endRound(gameId, cb);
