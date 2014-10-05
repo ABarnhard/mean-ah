@@ -79,7 +79,7 @@ exports.playCards = function(data){
     socket.broadcast.to(roomId).emit('play-made', obj.player);
     if(obj.roundOver){
       Game.endRound(data.gameId, function(err, roundInfo){
-        Io.to(roundInfo.cardCzar).emit('end-round', roundInfo.round);
+        Io.to(roundInfo.cardCzar).emit('answers-submitted', roundInfo.round);
       });
     }
   });

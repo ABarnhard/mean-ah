@@ -5,7 +5,7 @@
   .controller('GamesCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
 
     // Register game events to be forwarded from Socket.IO to Angulars event system
-    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'end-round']);
+    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'answers-submitted']);
 
     // Get player from Nav (could look up alias with $localForage)
     $localForage.getItem('alias').then(function(alias){
@@ -36,7 +36,7 @@
 
     $scope.leaveGame = function(id){
       // console.log('leaveGame Fired');
-      Socket.emit('leave-game', {gameId:id, player:$scope.player}, function(err, data){
+      Socket.emit('leave-game', {gameId:id, player:$scope.alias}, function(err, data){
         $location.path('/lobby');
       });
     };
@@ -61,12 +61,20 @@
         $scope.game.hand = $scope.game.hand.filter(function(card){return card.id !== ans.id;});
       });
       $localForage.setItem('hand', $scope.game.hand).then(function(){
-        var play = {player:$scope.player, answers:$scope.game.answers};
+        var play = {player:$scope.alias, answers:$scope.game.answers};
         $scope.game.play = play;
         $scope.game.answers = [];
         var data = {gameId:$scope.game._id, play:play};
         Socket.emit('play-cards', data);
       });
+    };
+
+    $scope.pickWinner = function(ans){
+      $scope.winner = ans;
+    };
+
+    $scope.submitWinner = function(){
+      Socket.emit('winner-selected', $scope.winner);
     };
 
     // register Angular event handlers
@@ -98,9 +106,10 @@
 
     $scope.$on('socket:round-start', function(event, data){
       $scope.game.round = data.round;
+      $scope.game.play = null;
     });
 
-    $scope.$on('socket:end-round', function(event, data){
+    $scope.$on('socket:answers-submitted', function(event, data){
       $scope.playedAnswers = data;
     });
 
