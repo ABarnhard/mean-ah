@@ -18,9 +18,9 @@
         Socket.emit('player-connect', {roomId:gameId, player:$scope.player}, function(err, data){
           $localForage.getItem('hand').then(function(hand){
             $scope.game = res.data.game;
+            $scope.game.answers = [];
             $scope.game.hand = hand || [];
             $scope.game.play = _.findWhere($scope.game.round.answers || [], {player:$scope.player});
-            $scope.game.answers = $scope.game.play ? $scope.game.play.answers : [];
             $scope.game.isOwner = ($scope.game.owner === $scope.player);
           });
         });
@@ -48,9 +48,22 @@
       if($scope.game.answers.length < $scope.game.round.qcard.numAnswers){
         $scope.game.answers.push(card);
       }else{
+        // TODO Add classes so user can see which card is selected & 1st/2nd for multi-card answers
         $scope.game.answers.shift();
         $scope.game.answers.push(card);
       }
+    };
+
+    $scope.playAnswers = function(){
+      $scope.game.answers.forEach(function(ans){
+        $scope.game.hand = $scope.game.hand.filter(function(card){return card.id !== ans.id;});
+      });
+      $localForage.setItem('hand', $scope.game.hand).then(function(){
+        var play = {player:$scope.player, answers:$scope.game.answers};
+        $scope.game.play = play;
+        $scope.game.answers = [];
+        Socket.emit('play-cards', play);
+      });
     };
 
     // register Angular event handlers

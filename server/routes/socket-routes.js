@@ -12,6 +12,7 @@ module.exports = function(socket){
   socket.on('leave-game',     sockets.leaveGame);
   socket.on('player-connect', sockets.playerConnect);
   socket.on('draw-hand',      sockets.drawHand);
+  socket.on('play-cards',     sockets.playCards);
   socket.on('start-round',    sockets.startRound);
   socket.on('disconnect',     sockets.disconnect);
 
