@@ -10,19 +10,34 @@
     .row
       .col-xs-12
         .players
-          .player(ng-repeat='player in game.players') {{player}}
+          .player(ng-repeat='p in game.players') {{p}}
     .row
       .col-xs-12
         .gameboard
-          .qcard(ng-show='game.round.qcard') {{game.round.qcard.text}}
-    .row
-      .col-xs-12
-        .hand
-          .card(ng-repeat='card in game.hand', ng-click='selectAnswer(card)') {{card.text}}
-    .row
-      .col-xs-12
-        .play-hand
-          button.btn.btn-danger(type='button', ng-show='!game.play && game.answers.length === game.round.qcard.numAnswers', ng-click='playAnswers()') Play Card(s)
+          .row
+            .col-xs-12
+              .qcard(ng-show='game.round.qcard') {{game.round.qcard.text}}
+          .row#czar-wrapper(ng-show='game.cardCzar === alias')
+            .col-xs-12
+              .row(ng-hide='playedAnswers')
+                .col-xs-12
+                  p WAITING ON PLAYERS TO ANSWER
+              .row(ng-show='playedAnswers')
+                .col-xs-12
+                  div
+                    button.btn.btn-danger(type='button', ng-show='winner', ng-click='submitWinner()') Pick Winner
+                  div(ng-repeat='ans in playedAnswers', ng-click='pickWinner(ans)')
+                    .card(ng-repeat='c in ans.answers')
+          .row#hand-wrapper(ng-hide='game.cardCzar === alias')
+            .col-xs-12
+              .row
+                .col-xs-12
+                  .hand
+                    .card(ng-repeat='card in game.hand', ng-click='selectAnswer(card)') {{card.text}}
+              .row
+                .col-xs-12
+                  .play-hand
+                    button.btn.btn-danger(type='button', ng-show='!game.play && game.answers.length === game.round.qcard.numAnswers', ng-click='playAnswers()') Play Card(s)
     .row
       .col-xs-12
         .gameinfo
@@ -34,5 +49,7 @@
 
 .row
   .col-xs-12
+    pre {{alias | json}}
+    pre {{playedAnswers | json}}
     pre {{game | json}}
 

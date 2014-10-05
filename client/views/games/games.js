@@ -8,20 +8,22 @@
     Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'end-round']);
 
     // Get player from Nav (could look up alias with $localForage)
-    $scope.player = $scope.$$prevSibling.alias;
+    $localForage.getItem('alias').then(function(alias){
+      $scope.alias = alias;
+    });
 
     // load game from database into memory
     $localForage.getItem('gameId').then(function(gameId){
       Game.load(gameId).then(function(res){
         // TODO Add error Handler for games that are over but still in local storage
         // TODO Add localForage.remove for hand & gameId if game is over, and add a $location.path change to lobby
-        Socket.emit('player-connect', {roomId:gameId, player:$scope.player}, function(err, data){
+        Socket.emit('player-connect', {roomId:gameId, player:$scope.alias}, function(err, data){
           $localForage.getItem('hand').then(function(hand){
             $scope.game = res.data.game;
             $scope.game.answers = [];
             $scope.game.hand = hand || [];
-            $scope.game.play = _.findWhere($scope.game.round.answers || [], {player:$scope.player});
-            $scope.game.isOwner = ($scope.game.owner === $scope.player);
+            $scope.game.play = _.findWhere($scope.game.round.answers || [], {player:$scope.alias});
+            $scope.game.isOwner = ($scope.game.owner === $scope.alias);
           });
         });
       });
@@ -99,7 +101,7 @@
     });
 
     $scope.$on('socket:end-round', function(event, data){
-      // TODO End the round
+      $scope.playedAnswers = data;
     });
 
     // FOR TESTING

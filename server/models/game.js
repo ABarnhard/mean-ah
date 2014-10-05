@@ -112,13 +112,13 @@ Game.startRound = function(id, cb){
 Game.makePlay = function(data, cb){
   Game.findForUpdate(data.gameId, function(err, game){
     game.round.answers.push(data.play);
+    var obj = {player:data.play.player};
+    if((game.players.length - 1) === game.round.answers.length){
+      obj.roundOver = true;
+    }
     Game.lastUpdate(game._id, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
         game.save(function(err, count){
-          var obj = {player:data.play.player};
-          if(game.players.length === game.round.answers.length){
-            obj.roundOver = true;
-          }
           cb(err, obj);
         });
       }else{
