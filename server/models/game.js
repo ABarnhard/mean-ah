@@ -101,14 +101,14 @@ Game.makePlay = function(data, cb){
   // console.log('game.makePlay', data);
   Game.findForUpdate(data.gameId, function(err, game){
     game.round.answers.push(data.play);
-    // console.log('Game.makePlay game after pushing play', game);
+    console.log('Game.makePlay game after pushing play', game);
     var obj = {player:data.play.player};
     if((game.players.length - 1) === game.round.answers.length){
       obj.roundOver = true;
     }
-    Game.lastUpdate(game._id, function(err, timeStamp){
+    Game.lastUpdate(data.gameId, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
-        game.save(function(err, count){
+        Game.collection.save(game, function(err, count){
           // console.log('err & count from save', err, count);
           // console.log('Game.makePlay game after save', game);
           // console.log('Game.makePlay cb info after save', obj);
@@ -123,7 +123,7 @@ Game.makePlay = function(data, cb){
 
 Game.endRound = function(gameId, cb){
   Game.findForUpdate(gameId, function(err, game){
-    // console.log('Game.endRound', game);
+    console.log('Game.endRound', game);
     var info = {cardCzar:game.cardCzar, round:game.round};
     Game.lastUpdate(game._id, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
@@ -137,10 +137,10 @@ Game.endRound = function(gameId, cb){
 };
 
 Game.findForUpdate = function(id, cb){
-  var timeStamp = new Date().valueOf();
-  id = mongofy(id);
+  var timeStamp = new Date().valueOf(),
+      _id = mongofy(id);
 
-  Game.collection.findAndModify({_id:id}, [['_id', 1]], {$set:{lastUpdate:timeStamp}}, {new:true}, function(err, obj){
+  Game.collection.findAndModify({_id:_id}, [['_id', 1]], {$set:{lastUpdate:timeStamp}}, {new:true}, function(err, obj){
     var game = reproto(Game.prototype, obj);
     cb(err, game);
   });
@@ -196,6 +196,13 @@ Game.dealHand = function(gameId, cb){
     Deck.deal(data, function(err, cards){
       cb(err, players, cards);
     });
+  });
+};
+
+Game.getPlayers = function(id, cb){
+  var _id = mongofy(id);
+  Game.collection.findOne({_id:_id}, {players:1}, function(err, obj){
+    cb(err, obj.players);
   });
 };
 

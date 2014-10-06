@@ -80,10 +80,9 @@
   "roomId" : "200000000000000000000005",
   "name" : "Game 5",
   "owner" : "john",
-  "cardCzar" : "bob",
+  "cardCzar" : "john",
   "players" : [
       "john",
-      "bob",
       "sue"
   ],
   "decks" : [
