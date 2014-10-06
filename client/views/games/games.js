@@ -48,7 +48,7 @@
       if(_.findWhere($scope.game.answers, {id:card.id})){return;}
 
       if($scope.game.answers.length < $scope.game.round.qcard.numAnswers){
-        console.log(card);
+        // console.log(card);
         $scope.game.answers.push(card);
       }else{
         // TODO Add classes so user can see which card is selected & 1st/2nd for multi-card answers
@@ -69,17 +69,18 @@
         $scope.game.answers = [];
         var data = {gameId:$scope.game._id, play:play};
         data = angular.toJson(data);
-        console.log('play-cards', data);
         Socket.emit('play-cards', data);
       });
     };
 
-    $scope.pickWinner = function(ans){
-      $scope.winner = ans;
+    $scope.pickWinner = function(play){
+      $scope.winner = play;
     };
 
     $scope.submitWinner = function(){
-      Socket.emit('winner-selected', $scope.winner);
+      var data = {gameId:$scope.game._id, winner:$scope.winner};
+      data = angular.toJson(data);
+      Socket.emit('winner-selected', data);
     };
 
     // register Angular event handlers

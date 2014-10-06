@@ -118,6 +118,23 @@ Game.makePlay = function(data, cb){
   });
 };
 
+Game.nextCzar = function(gameId, cb){
+  Game.findForUpdate(gameId, function(err, game){
+    var index = game.players.indexOf(game.cardCzar);
+    index = (index + 1) < game.players.length ? (index + 1) : 0;
+    game.cardCzar = game.players[index];
+    Game.lastUpdate(gameId, function(err, timeStamp){
+      if(game.lastUpdate === timeStamp){
+        game.save(function(err, count){
+          cb(err, game.cardCzar);
+        });
+      }else{
+        Game.nextCzar(gameId, cb);
+      }
+    });
+  });
+};
+
 Game.findForUpdate = function(id, cb){
   var timeStamp = new Date().valueOf(),
       _id = mongofy(id);
@@ -193,7 +210,6 @@ Game.prototype.save = function(cb){
 };
 
 Game.prototype.updateRound = function(play, cb){
-  console.log('in prototype this.round', this.round);
   var round = {};
   round['round.answers'] = play;
   Game.collection.update({_id:this._id}, {$push: round}, cb);

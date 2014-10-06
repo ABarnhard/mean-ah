@@ -74,7 +74,6 @@ exports.leaveGame = function(data, cb){
 
 // data = {gameId:'', play:{player:'', answers:[]}}
 exports.playCards = function(data){
-  console.log('sockets.playCards', data);
   var socket = this;
   data = JSON.parse(data);
   Game.makePlay(data, function(err, obj){
@@ -82,6 +81,15 @@ exports.playCards = function(data){
     if(obj.round){
       Io.to(obj.cardCzar).emit('answers-submitted', obj.round);
     }
+  });
+};
+
+// data = {gameId:'', winner:{player:'alias', answers:[{card obj(s)}]}}
+exports.winner = function(data){
+  data = JSON.parse(data);
+  Game.nextCzar(data.gameId, function(err, cardCzar){
+    data = {cardCzar:cardCzar, winner:data.winner};
+    Io.to(roomId).emit('winner', data);
   });
 };
 
