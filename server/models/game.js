@@ -101,36 +101,18 @@ Game.makePlay = function(data, cb){
   // console.log('game.makePlay', data);
   Game.findForUpdate(data.gameId, function(err, game){
     game.round.answers.push(data.play);
-    console.log('Game.makePlay game after pushing play', game);
-    var obj = {player:data.play.player};
-    if((game.players.length - 1) === game.round.answers.length){
-      obj.roundOver = true;
-    }
     Game.lastUpdate(data.gameId, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
-        Game.collection.save(game, function(err, count){
-          // console.log('err & count from save', err, count);
-          // console.log('Game.makePlay game after save', game);
-          // console.log('Game.makePlay cb info after save', obj);
+        game.updateRound(data.play, function(err, count){
+          var obj = {player:data.play.player};
+          if((game.players.length - 1) === game.round.answers.length){
+            obj.round = game.round;
+            obj.cardCzar = game.cardCzar;
+          }
           cb(err, obj);
         });
       }else{
         Game.makePlay(data, cb);
-      }
-    });
-  });
-};
-
-Game.endRound = function(gameId, cb){
-  Game.findForUpdate(gameId, function(err, game){
-    console.log('Game.endRound', game);
-    var info = {cardCzar:game.cardCzar, round:game.round};
-    Game.lastUpdate(game._id, function(err, timeStamp){
-      if(game.lastUpdate === timeStamp){
-        // console.log('Game.endRound data passed back for cb', info);
-        cb(err, info);
-      }else{
-        Game.endRound(gameId, cb);
       }
     });
   });
@@ -208,6 +190,13 @@ Game.getPlayers = function(id, cb){
 
 Game.prototype.save = function(cb){
   Game.collection.save(this, cb);
+};
+
+Game.prototype.updateRound = function(play, cb){
+  console.log('in prototype this.round', this.round);
+  var round = {};
+  round['round.answers'] = play;
+  Game.collection.update({_id:this._id}, {$push: round}, cb);
 };
 
 module.exports = Game;

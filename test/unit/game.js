@@ -128,21 +128,9 @@ describe('Game', function(){
         Game.findById(data.gameId, function(err, g){
           expect(g.round.answers).to.have.length(1);
           expect(obj.player).to.equal('sue');
-          expect(obj.roundOver).to.be.ok;
-          done();
-        });
-      });
-    });
-  });
-
-  describe('.endRound', function(){
-    it('should return the round object from the saved game in database', function(done){
-      var data = {gameId:'200000000000000000000005', play:{player:'sue', answers:[{_id: '100000000000000000000001', id:1, cardType:'A', text:'Flying sex snakes.', numAnswers:0, expansion:'base'}]}};
-      Game.makePlay(data, function(err, obj){
-        Game.endRound(data.gameId, function(err, info){
-          expect(info.cardCzar).to.equal('john');
-          expect(info.round.answers).to.have.length(1);
-          expect(info.round.answers[0].player).to.equal('sue');
+          expect(obj.round).to.be.ok;
+          expect(obj.round.answers[0].player).to.equal('sue');
+          expect(obj.cardCzar).to.equal('john');
           done();
         });
       });

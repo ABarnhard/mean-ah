@@ -24,10 +24,11 @@
                   p WAITING ON PLAYERS TO ANSWER
               .row(ng-show='playedAnswers')
                 .col-xs-12
-                  div
-                    button.btn.btn-danger(type='button', ng-show='winner', ng-click='submitWinner()') Pick Winner
-                  div(ng-repeat='ans in playedAnswers', ng-click='pickWinner(ans)')
-                    .card(ng-repeat='c in ans.answers')
+                  .row
+                    .col-xs-12
+                      button.btn.btn-danger(type='button', ng-show='winner', ng-click='submitWinner()') Pick Winner
+                  .row(ng-repeat='ans in playedAnswers.answers', ng-click='pickWinner(ans)')
+                    .card(ng-repeat='c in ans.answers') {{c.text}}
           .row#hand-wrapper(ng-hide='game.cardCzar === alias')
             .col-xs-12
               .row

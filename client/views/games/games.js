@@ -48,6 +48,7 @@
       if(_.findWhere($scope.game.answers, {id:card.id})){return;}
 
       if($scope.game.answers.length < $scope.game.round.qcard.numAnswers){
+        console.log(card);
         $scope.game.answers.push(card);
       }else{
         // TODO Add classes so user can see which card is selected & 1st/2nd for multi-card answers
@@ -57,16 +58,19 @@
     };
 
     $scope.playAnswers = function(){
+      var answers = [];
       $scope.game.answers.forEach(function(ans){
+        answers.push(_.findWhere($scope.game.hand, {id:ans.id}));
         $scope.game.hand = $scope.game.hand.filter(function(card){return card.id !== ans.id;});
       });
       $localForage.setItem('hand', $scope.game.hand).then(function(){
-        var play = {player:$scope.alias, answers:$scope.game.answers};
+        var play = {player:$scope.alias, answers:answers};
         $scope.game.play = play;
         $scope.game.answers = [];
         var data = {gameId:$scope.game._id, play:play};
-        Socket.emit('play-cards', data);
+        data = angular.toJson(data);
         console.log('play-cards', data);
+        Socket.emit('play-cards', data);
       });
     };
 
