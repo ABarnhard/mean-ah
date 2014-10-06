@@ -85,11 +85,25 @@ exports.playCards = function(data){
 };
 
 // data = {gameId:'', winner:{player:'alias', answers:[{card obj(s)}]}}
-exports.winner = function(data){
+exports.nextRound = function(data){
   data = JSON.parse(data);
-  Game.nextCzar(data.gameId, function(err, cardCzar){
-    data = {cardCzar:cardCzar, winner:data.winner};
-    Io.to(roomId).emit('winner', data);
+  // notify players of win
+  Io.to(roomId).emit('winner', data.winner);
+  // deal players back up to 10 cards
+  // doesn't include Card Czar in players array
+  Game.dealCards(data.gameId, function(err, players, cards, count){
+    players.forEach(function(player){
+      var newCards = cards.splice(0, count);
+      Io.to(player).emit('deal-cards', newCards);
+      // Assing a new Card Czar
+      Game.nextCzar(data.gameId, function(err, cardCzar){
+        Io.to(roomId).emit('new-czar', {cardCzar:cardCzar});
+        // Start next Round
+        Game.startRound(data.gameId, function(err, round){
+          Io.to(roomId).emit('round-start', {round:round});
+        });
+      });
+    });
   });
 };
 

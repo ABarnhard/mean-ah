@@ -97,6 +97,25 @@ Game.startRound = function(id, cb){
   });
 };
 
+Game.dealCards = function(gameId, cb){
+  Game.findForUpdate(gameId, function(err, game){
+    var numCards = game.round.qcard.numAnswers,
+        count    = (game.players.length - 1) * numCards,
+        players  = game.players.filter(function(player){return player !== game.cardCzar;}),
+        data     = {gameId:gameId, cardType:'answers', count:count};
+
+    Deck.deal(data, function(err, cards){
+      Game.lastUpdate(game._id, function(err, timeStamp){
+        if(game.lastUpdate === timeStamp){
+          cb(err, players, cards, numCards);
+        }else{
+          Game.dealCards(gameId, cb);
+        }
+      });
+    });
+  });
+};
+
 Game.makePlay = function(data, cb){
   // console.log('game.makePlay', data);
   Game.findForUpdate(data.gameId, function(err, game){
