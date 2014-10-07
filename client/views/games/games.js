@@ -81,6 +81,7 @@
       var data = {gameId:$scope.game._id, winner:$scope.winner};
       data = angular.toJson(data);
       Socket.emit('winner-selected', data);
+      $scope.winner = null;
     };
 
     // register Angular event handlers
@@ -143,15 +144,6 @@
       toastr.success(data.cardCzar + ' is now the Card Czar.');
       $scope.game.cardCzar = data.cardCzar;
     });
-
-    // FOR TESTING
-    $scope.drawHand = function(){
-      Socket.emit('draw-hand', {gameId:$scope.game._id});
-    };
-    $scope.startRound = function(){
-      Socket.emit('start-round', {gameId:$scope.game._id});
-    };
-    // END TESTING
 
   }]);
 })();

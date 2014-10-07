@@ -17,6 +17,7 @@ function Game(o){
   this.roundNum   = 0;
   this.round      = {};
   this.lastUpdate = null;
+  this.gameData   = initGameData(o.player);
 }
 
 Object.defineProperty(Game, 'collection', {
@@ -62,14 +63,28 @@ Game.join = function(data, cb){
 
 Game.leave = function(data, cb){
   Game.findForUpdate(data.gameId, function(err, game){
+    var retObj = {player: data.player};
+    // remove player from list of active players
     game.players = _.reject(game.players, function(player){return player === data.player;});
-    if(game.round.answers){
-      game.round.answers = _.reject(game.round.answers, function(ans){return ans.player === data.player;});
+    if(game.players.length === 1){
+      // if there's only 1 player left, game's over and we don't care about anything else
+      retObj.gameOver = true;
+      retObj.gameData = game.gameData;
+    }else{
+      if(game.round.answers){
+        // if there have been answers submitted, remove the leaving players answer if they played one
+        game.round.answers = _.reject(game.round.answers, function(ans){return ans.player === data.player;});
+      }
+      if(game.cardCzar === data.player){
+        // if the player is the card czar, switch and assign new czar
+        game.newCzar();
+        retObj.cardCzar = game.cardCzar;
+      }
     }
     Game.lastUpdate(game._id, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
         game.save(function(err, count){
-          cb(err, data.player);
+          cb(err, retObj);
         });
       }else{
         Game.leave(data, cb);
@@ -139,9 +154,7 @@ Game.makePlay = function(data, cb){
 
 Game.nextCzar = function(gameId, cb){
   Game.findForUpdate(gameId, function(err, game){
-    var index = game.players.indexOf(game.cardCzar);
-    index = (index + 1) < game.players.length ? (index + 1) : 0;
-    game.cardCzar = game.players[index];
+    game.newCzar();
     Game.lastUpdate(gameId, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
         game.save(function(err, count){
@@ -234,6 +247,12 @@ Game.prototype.updateRound = function(play, cb){
   Game.collection.update({_id:this._id}, {$push: round}, cb);
 };
 
+Game.prototype.newCzar = function(){
+  var index = this.players.indexOf(this.cardCzar);
+  index = (index + 1) < this.players.length ? (index + 1) : 0;
+  this.cardCzar = this.players[index];
+};
+
 module.exports = Game;
 
 // HELPER FUNCTIONS
@@ -247,3 +266,10 @@ function mongofy(id){
   id = (typeof id === 'string') ? Mongo.ObjectID(id) : id;
   return id;
 }
+
+function initGameData(player){
+  var obj = {};
+  obj[player] = {wins:0};
+  return obj;
+}
+

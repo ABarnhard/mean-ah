@@ -66,9 +66,15 @@ exports.startRound = function(data){
 // data = {gameId:, player:}
 exports.leaveGame = function(data, cb){
   var socket = this;
-  Game.leave(data, function(err, player){
-    socket.broadcast.to(roomId).emit('player-left', {player:player});
-    cb(err, player);
+  Game.leave(data, function(err, obj){
+    socket.leave(roomId);
+    socket.broadcast.to(roomId).emit('player-left', {player:obj.player});
+    if(obj.gameOver){
+      Io.to(roomId).emit('game-over', obj.gameData);
+    }else if(obj.cardCzar){
+      Io.to(roomId).emit('replace-czar', {cardCzar:obj.cardCzar});
+    }
+    cb(err);
   });
 };
 
