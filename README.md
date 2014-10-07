@@ -3,32 +3,55 @@
 Badges?!?! We don't need no stinking badges...
 
 ### Screenshots
-Forthcoming
+You wish I'd take pictures of this awesome app.
 
 ### Description
 An online version of the popular [Cards Against Humanity](http://cardsagainsthumanity.com/) game built on the MEAN stack.
 
 ### Models
 ```
-Cards
+Game
 ```
 
 ```
-Against
+Deck
+```
+
+```
+Card
+```
+
+```
+User
+```
+
+```
+Io
 ```
 
 ### Database
 ```
-Humanity
+Games
+```
+
+```
+Decks
+```
+
+```
+Cards
+```
+
+```
+Users
 ```
 
 ### Features
-- [x] Horrible People
+- [x] Cards
 - [ ] Humanity
 - [x] 100% Chance of going to hell
 
 ### Running Tests
-These don't work yet, still sorting out testing on the front end.
 ```bash
 $ npm install
 $ npm test
