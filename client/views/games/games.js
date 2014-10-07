@@ -5,7 +5,7 @@
   .controller('GamesCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
 
     // Register game events to be forwarded from Socket.IO to Angulars event system
-    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'play-made', 'answers-submitted', 'winner', 'deal-cards', 'new-czar']);
+    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'play-made', 'answers-submitted', 'winner', 'deal-cards', 'new-czar', 'game-over', 'replace-czar']);
 
     // Get player from Nav (could look up alias with $localForage)
     $localForage.getItem('alias').then(function(alias){
@@ -14,18 +14,21 @@
 
     // load game from database into memory
     $localForage.getItem('gameId').then(function(gameId){
+      if(!!!gameId){return Game.errorToLobby('Hey there jackwagon, try joining a game first');}
       Game.load(gameId).then(function(res){
-        // TODO Add error Handler for games that are over but still in local storage
-        // TODO Add localForage.remove for hand & gameId if game is over, and add a $location.path change to lobby
-        Socket.emit('player-connect', {roomId:gameId, player:$scope.alias}, function(err, data){
-          $localForage.getItem('hand').then(function(hand){
-            $scope.game = res.data.game;
-            $scope.game.answers = [];
-            $scope.game.hand = hand || [];
-            $scope.game.play = _.findWhere($scope.game.round.answers || [], {player:$scope.alias});
-            $scope.game.isOwner = ($scope.game.owner === $scope.alias);
+        if(!!!res.data.game){
+          Game.cleanLocalStorage('Game Has Ended, Choose Another Game').then(Game.errorToLobby);
+        }else{
+          Socket.emit('player-connect', {roomId:gameId, player:$scope.alias}, function(err, data){
+            $localForage.getItem('hand').then(function(hand){
+              $scope.game = res.data.game;
+              $scope.game.answers = [];
+              $scope.game.hand = hand || [];
+              $scope.game.play = _.findWhere($scope.game.round.answers || [], {player:$scope.alias});
+              $scope.game.isOwner = ($scope.game.owner === $scope.alias);
+            });
           });
-        });
+        }
       });
     });
 
@@ -37,7 +40,7 @@
     $scope.leaveGame = function(id){
       // console.log('leaveGame Fired');
       Socket.emit('leave-game', {gameId:id, player:$scope.alias}, function(err, data){
-        $location.path('/lobby');
+        Game.cleanLocalStorage('You have quit the game').then(Game.goToLobby);
       });
     };
 
@@ -145,5 +148,25 @@
       $scope.game.cardCzar = data.cardCzar;
     });
 
+    $scope.$on('socket:game-over', function(event, data){
+      // TODO Add somthing so that users can view the final results stored in data.gameData
+      Game.cleanLocalStorage('The Game Has Ended').then(Game.goToLobby);
+    });
+
+    $scope.$on('socket:replace-czar', function(event, data){
+      toastr.success(data.cardCzar + ' is now the Card Czar.');
+      $scope.game.cardCzar = data.cardCzar;
+      if($scope.alias === $scope.game.cardCzar){
+        // If player has become card czar, return any played cards to their hand
+        if($scope.game.play){
+          $scope.game.hand = $scope.game.hand.concat($scope.game.play.answers);
+          $localForage.setItem('hand', $scope.game.hand).then(function(){
+            toastr.success('Your Played Cards have been returned to your hand');
+          });
+        }
+      }
+    });
+
   }]);
+
 })();

@@ -47,7 +47,10 @@ Game.create = function(data, cb){
 Game.join = function(data, cb){
   Game.findForUpdate(data.gameId, function(err, g){
     if(!g){return cb('ERROR: Requested game is closed');}
+
     g.players.push(data.player);
+    g.gameData[data.player] = {wins:0};
+
     g.isOpen = g.players.length < 7;
     Game.lastUpdate(g._id, function(err, timeStamp){
       if(g.lastUpdate === timeStamp){
@@ -71,13 +74,11 @@ Game.leave = function(data, cb){
       retObj.gameOver = true;
       retObj.gameData = game.gameData;
     }else{
-      if(game.round.answers){
-        // if there have been answers submitted, remove the leaving players answer if they played one
-        game.round.answers = _.reject(game.round.answers, function(ans){return ans.player === data.player;});
-      }
+      game.purgeRound(data.player);
       if(game.cardCzar === data.player){
         // if the player is the card czar, switch and assign new czar
         game.newCzar();
+        game.purgeRound(game.CardCzar);
         retObj.cardCzar = game.cardCzar;
       }
     }
@@ -187,6 +188,8 @@ Game.lastUpdate = function(id, cb){
 
 Game.load = function(data, cb){
   Game.findById(data.id, function(err, g){
+    // if game doesn't exist, throw game over error
+    if(!!!g){return cb('ERROR: Requested Game has ended');}
 
     if(g.status === 'new'){
       // open a new game so other users can join
@@ -251,6 +254,13 @@ Game.prototype.newCzar = function(){
   var index = this.players.indexOf(this.cardCzar);
   index = (index + 1) < this.players.length ? (index + 1) : 0;
   this.cardCzar = this.players[index];
+};
+
+Game.prototype.purgeRound = function(player){
+  // if there have been answers submitted, remove the leaving players answer if they played one
+  if(this.round.answers){
+    this.round.answers = _.reject(this.round.answers, function(ans){return ans.player === player;});
+  }
 };
 
 module.exports = Game;
