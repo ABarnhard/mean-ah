@@ -70,7 +70,7 @@ exports.leaveGame = function(data, cb){
     socket.leave(roomId);
     socket.broadcast.to(roomId).emit('player-left', {player:obj.player});
     if(obj.gameOver){
-      Io.to(roomId).emit('game-over', obj.gameData);
+      Io.to(roomId).emit('game-over', {gameData:obj.gameData});
     }else if(obj.cardCzar){
       Io.to(roomId).emit('replace-czar', {cardCzar:obj.cardCzar});
     }
