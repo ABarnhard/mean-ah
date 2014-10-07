@@ -5,7 +5,7 @@
   .controller('GamesCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
 
     // Register game events to be forwarded from Socket.IO to Angulars event system
-    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'play-made', 'answers-submitted', 'winner']);
+    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'play-made', 'answers-submitted', 'winner', 'deal-cards', 'new-czar']);
 
     // Get player from Nav (could look up alias with $localForage)
     $localForage.getItem('alias').then(function(alias){
@@ -84,14 +84,14 @@
     };
 
     // register Angular event handlers
-    $scope.$on('socket:player-joined', function(event, player){
+    $scope.$on('socket:player-joined', function(event, data){
       // console.log('I Fired');
-      $scope.game.players.push(player);
+      $scope.game.players.push(data.player);
     });
 
-    $scope.$on('socket:player-left', function(event, player){
+    $scope.$on('socket:player-left', function(event, data){
       // console.log('socket:player-left fired');
-      $scope.game.players = $scope.game.players.filter(function(p){return p !== player;});
+      $scope.game.players = $scope.game.players.filter(function(p){return p !== data.player;});
     });
 
     $scope.$on('socket:game-start', function(event, data){
@@ -116,11 +116,11 @@
     });
 
     $scope.$on('socket:answers-submitted', function(event, data){
-      $scope.playedAnswers = data;
+      $scope.playedAnswers = data.round;
     });
 
     $scope.$on('socket:play-made', function(event, data){
-      console.log('socket:play-made', data);
+      console.log('socket:play-made', data.player);
     });
 
     $scope.$on('socket:winner', function(event, data){
@@ -128,7 +128,19 @@
       data.answers.forEach(function(card){
         s = s + card.text + '\n';
       });
-      toastr.success(data.player + ' is the winner with:\n' + $scope.game.round.qcard.text + '\n' + s);
+      toastr.success(data.player + ' is the winner with: \n' + $scope.game.round.qcard.text + '\n' + s);
+    });
+
+    $scope.$on('socket:deal-cards', function(event, data){
+      var newHand = $scope.game.hand.concat(data.cards);
+      $localForage.setItem('hand', newHand).then(function(){
+        $scope.game.hand = newHand;
+      });
+    });
+
+    $scope.$on('socket:new-czar', function(event, data){
+      toastr.success(data.cardCzar + ' is now the Card Czar.');
+      $scope.game.cardCzar = data.cardCzar;
     });
 
     // FOR TESTING

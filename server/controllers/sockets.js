@@ -25,7 +25,7 @@ exports.joinGame = function(data, cb){
       roomId = id;
       socket.join(roomId);
       socket.join(data.player);
-      socket.broadcast.to(roomId).emit('player-joined', data.player);
+      socket.broadcast.to(roomId).emit('player-joined', {player:data.player});
     }
     cb(err, id);
   });
@@ -67,7 +67,7 @@ exports.startRound = function(data){
 exports.leaveGame = function(data, cb){
   var socket = this;
   Game.leave(data, function(err, player){
-    socket.broadcast.to(roomId).emit('player-left', player);
+    socket.broadcast.to(roomId).emit('player-left', {player:player});
     cb(err, player);
   });
 };
@@ -77,9 +77,9 @@ exports.playCards = function(data){
   var socket = this;
   data = JSON.parse(data);
   Game.makePlay(data, function(err, obj){
-    socket.broadcast.to(roomId).emit('play-made', obj.player);
+    socket.broadcast.to(roomId).emit('play-made', {player:obj.player});
     if(obj.round){
-      Io.to(obj.cardCzar).emit('answers-submitted', obj.round);
+      Io.to(obj.cardCzar).emit('answers-submitted', {round:obj.round});
     }
   });
 };
@@ -94,7 +94,7 @@ exports.nextRound = function(data){
   Game.dealCards(data.gameId, function(err, players, cards, count){
     players.forEach(function(player){
       var newCards = cards.splice(0, count);
-      Io.to(player).emit('deal-cards', newCards);
+      Io.to(player).emit('deal-cards', {cards:newCards});
       // Assing a new Card Czar
       Game.nextCzar(data.gameId, function(err, cardCzar){
         Io.to(roomId).emit('new-czar', {cardCzar:cardCzar});
