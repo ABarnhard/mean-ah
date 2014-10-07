@@ -187,6 +187,8 @@ Game.lastUpdate = function(id, cb){
 
 Game.load = function(data, cb){
   Game.findById(data.id, function(err, g){
+    // if game doesn't exist, throw game over error
+    if(!!!g){return cb('ERROR: Requested Game has ended');}
 
     if(g.status === 'new'){
       // open a new game so other users can join
