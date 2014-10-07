@@ -18,6 +18,11 @@
         $scope.alias = alias;
       });
     });
+
+    $scope.$on('gameOver', function(event, gameId){
+      $scope.gameId = gameId;
+    });
+
   }]);
 })();
 
