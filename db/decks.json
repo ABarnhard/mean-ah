@@ -1,0 +1,42 @@
+{
+  "_id" : {"$oid":"300000000000000000000001"},
+  "gameId" : {"$oid":"200000000000000000000001"},
+  "questions" : [
+    {"_id" : {"$oid":"100000000000000000000012"},"id":12,"cardType":"Q","text":"What's a girl's best friend?","numAnswers":1,"expansion": "base"},
+    {"_id" : {"$oid":"100000000000000000000014"},"id":14,"cardType":"Q","text":"_. That's how I want to die.","numAnswers":1,"expansion": "e2"},
+    {"_id" : {"$oid":"100000000000000000000018"},"id":18,"cardType":"Q","text":"What does Dick Cheney prefer?","numAnswers":1,"expansion": "hipster"},
+    {"_id" : {"$oid":"100000000000000000000011"},"id":11,"cardType":"Q","text":"Make A Haiku","numAnswers":3,"expansion": "base"}
+  ],
+  "answers" : [
+    {"_id" : {"$oid":"100000000000000000000001"},"id":1,"cardType":"A","text":"Flying sex snakes.","numAnswers":0,"expansion": "base"},
+    {"_id" : {"$oid":"100000000000000000000002"},"id":2,"cardType":"A","text":"Michelle Obama's arms.","numAnswers":0,"expansion": "base"},
+    {"_id" : {"$oid":"100000000000000000000003"},"id":3,"cardType":"A","text":"German dungeon porn.","numAnswers":0,"expansion": "e2"},
+    {"_id" : {"$oid":"100000000000000000000008"},"id":8,"cardType":"A","text":"Two midgets shitting into a bucket.","numAnswers":0,"expansion": "hipster"}
+  ]
+}
+{
+  "_id" : {"$oid":"300000000000000000000002"},
+  "gameId" : {"$oid":"200000000000000000000002"},
+  "questions" : [
+    {"_id" : {"$oid":"100000000000000000000014"},"id":14,"cardType":"Q","text":"_. That's how I want to die.","numAnswers":1,"expansion": "e2"}
+  ],
+  "answers" : [
+    {"_id" : {"$oid":"100000000000000000000003"},"id":3,"cardType":"A","text":"German dungeon porn.","numAnswers":0,"expansion": "e2"}
+  ]
+}
+{
+  "_id" : {"$oid":"300000000000000000000003"},
+  "gameId" : {"$oid":"200000000000000000000005"},
+  "questions" : [
+    {"_id" : {"$oid":"100000000000000000000014"},"id":14,"cardType":"Q","text":"_. That's how I want to die.","numAnswers":1,"expansion": "e2"},
+    {"_id" : {"$oid":"100000000000000000000018"},"id":18,"cardType":"Q","text":"What does Dick Cheney prefer?","numAnswers":1,"expansion": "hipster"},
+    {"_id" : {"$oid":"100000000000000000000011"},"id":11,"cardType":"Q","text":"Make A Haiku","numAnswers":3,"expansion": "base"}
+  ],
+  "answers" : [
+    {"_id" : {"$oid":"100000000000000000000001"},"id":1,"cardType":"A","text":"Flying sex snakes.","numAnswers":0,"expansion": "base"},
+    {"_id" : {"$oid":"100000000000000000000002"},"id":2,"cardType":"A","text":"Michelle Obama's arms.","numAnswers":0,"expansion": "base"},
+    {"_id" : {"$oid":"100000000000000000000003"},"id":3,"cardType":"A","text":"German dungeon porn.","numAnswers":0,"expansion": "e2"},
+    {"_id" : {"$oid":"100000000000000000000008"},"id":8,"cardType":"A","text":"Two midgets shitting into a bucket.","numAnswers":0,"expansion": "hipster"}
+  ]
+}
+

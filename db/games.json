@@ -1,0 +1,100 @@
+{
+  "_id" : {"$oid":"200000000000000000000001"},
+  "roomId" : "200000000000000000000001",
+  "name" : "Game 1",
+  "owner" : "bob",
+  "cardCzar" : "bob",
+  "players" : [
+      "bob",
+      "sue"
+  ],
+  "decks" : [
+      "base",
+      "e2",
+      "hipster"
+  ],
+  "status" : "open",
+  "roundNum" : 0,
+  "round" : {},
+  "isOpen" : true
+}
+{
+  "_id" : {"$oid":"200000000000000000000002"},
+  "roomId" : "200000000000000000000002",
+  "name" : "Game 2",
+  "owner" : "john",
+  "cardCzar" : "bob",
+  "players" : [
+      "john",
+      "bob",
+      "sue"
+  ],
+  "decks" : [
+      "base",
+      "e3",
+      "nsfh"
+  ],
+  "status" : "in-progress",
+  "roundNum" : 4,
+  "round" : {},
+  "isOpen" : false
+}
+{
+  "_id" : {"$oid":"200000000000000000000003"},
+  "roomId" : "200000000000000000000003",
+  "name" : "Game 3",
+  "owner" : "bob",
+  "cardCzar" : "bob",
+  "players" : [
+      "bob"
+  ],
+  "decks" : [
+      "base",
+      "nsfh"
+  ],
+  "status" : "new",
+  "roundNum" : 0,
+  "isOpen" : false
+}
+{
+  "_id" : {"$oid":"200000000000000000000004"},
+  "roomId" : "200000000000000000000004",
+  "name" : "Game 4",
+  "owner" : "john",
+  "cardCzar" : "bob",
+  "players" : [
+      "john",
+      "bob",
+      "sue"
+  ],
+  "decks" : [
+      "base"
+  ],
+  "status" : "done",
+  "roundNum" : 37,
+  "round" : {},
+  "isOpen" : false
+}
+{
+  "_id" : {"$oid":"200000000000000000000005"},
+  "roomId" : "200000000000000000000005",
+  "name" : "Game 5",
+  "owner" : "john",
+  "cardCzar" : "john",
+  "players" : [
+      "john",
+      "sue"
+  ],
+  "decks" : [
+      "base",
+      "e3",
+      "nsfh"
+  ],
+  "status" : "in-progress",
+  "roundNum" : 1,
+  "round" : {
+    "qcard" : {"_id" : {"$oid":"100000000000000000000012"},"id":12,"cardType":"Q","text":"What's a girl's best friend?","numAnswers":1,"expansion": "base"},
+    "answers" : []
+  },
+  "isOpen" : false
+}
