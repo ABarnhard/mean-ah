@@ -129,6 +129,7 @@
         s = s + card.text + '\n';
       });
       toastr.success(data.player + ' is the winner with: \n' + $scope.game.round.qcard.text + '\n' + s);
+      $scope.playedAnswers = null;
     });
 
     $scope.$on('socket:deal-cards', function(event, data){
