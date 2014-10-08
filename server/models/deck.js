@@ -56,8 +56,12 @@ Deck.deal = function(data, cb){
   });
 };
 
+Deck.dealFinalQCard = function(cb){
+  Card.getFinalQCard(cb);
+};
+
 Deck.prototype.draw = function(data){
-  return this[data.cardType].splice(0, data.count * 1);
+  return hexEncodeSpecialChars(this[data.cardType].splice(0, data.count * 1));
 };
 
 Deck.prototype.update = function(data, cb){
@@ -73,3 +77,15 @@ function filterAndShuffle(type, cards){
   cards = _.filter(cards, function(c){return c.cardType === type;});
   return _.shuffle(cards);
 }
+
+function hexEncodeSpecialChars(cards){
+  var htmlCodes = ['&Uuml;', '&trade;', '&reg;', '&copy;'],
+      hexCodes  = ['\xDC', '\u2122', '\xAE', '\xA9'];
+  cards.forEach(function(card){
+    htmlCodes.forEach(function(code, index){
+      card.text = card.text.replace(code, hexCodes[index]);
+    });
+  });
+  return cards;
+}
+

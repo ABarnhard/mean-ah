@@ -5,19 +5,20 @@ var Mongo  = require('mongodb'),
     _      = require('underscore');
 
 function Game(o){
-  this._id        = Mongo.ObjectID();
-  this.roomId     = this._id.toString();
-  this.name       = o.name;
-  this.owner      = o.player;
-  this.cardCzar   = o.player;
-  this.players    = [o.player];
-  this.decks      = o.decks;
-  this.status     = 'new';
-  this.isOpen     = false;
-  this.roundNum   = 0;
-  this.round      = {};
-  this.lastUpdate = null;
-  this.gameData   = initGameData(o.player);
+  this._id            = Mongo.ObjectID();
+  this.roomId         = this._id.toString();
+  this.name           = o.name;
+  this.owner          = o.player;
+  this.cardCzar       = o.player;
+  this.players        = [o.player];
+  this.decks          = o.decks;
+  this.status         = 'new';
+  this.isOpen         = false;
+  this.roundNum       = 0;
+  this.round          = {};
+  this.lastUpdate     = null;
+  this.gameData       = initGameData(o.player);
+  this.endGameVotes   = [];
 }
 
 Object.defineProperty(Game, 'collection', {
@@ -69,6 +70,8 @@ Game.leave = function(data, cb){
     var retObj = {player: data.player};
     // remove player from list of active players
     game.players = _.reject(game.players, function(player){return player === data.player;});
+    // remove player from list of end game votes
+    game.endGameVotes = _.reject(game.endGameVotes, function(player){return player === data.player;});
     if(game.players.length === 1){
       // if there's only 1 player left, game's over and we don't care about anything else
       retObj.gameOver = true;
@@ -113,6 +116,24 @@ Game.startRound = function(id, cb){
   });
 };
 
+Game.finalRound = function(id, cb){
+  Game.findForUpdate(id, function(err, game){
+    Deck.dealFinalQCard(function(err, card){
+      game.round = {qcard:card, answers:[]};
+      game.roundNum += 1;
+      Game.lastUpdate(game._id, function(err, timeStamp){
+        if(game.lastUpdate === timeStamp){
+          game.save(function(err, count){
+            cb(err, game.round);
+          });
+        }else{
+          Game.startRound(id, cb);
+        }
+      });
+    });
+  });
+};
+
 Game.dealCards = function(gameId, cb){
   Game.findForUpdate(gameId, function(err, game){
     var numCards = game.round.qcard.numAnswers,
@@ -135,13 +156,14 @@ Game.dealCards = function(gameId, cb){
 Game.makePlay = function(data, cb){
   // console.log('game.makePlay', data);
   Game.findForUpdate(data.gameId, function(err, game){
+    data.play.answers = htmlEncodeSpecialChars(data.play.answers);
     game.round.answers.push(data.play);
     Game.lastUpdate(data.gameId, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
         game.updateRound(data.play, function(err, count){
           var obj = {player:data.play.player};
           if((game.players.length - 1) === game.round.answers.length){
-            obj.round = game.round;
+            obj.round = formatCardsForDisplay(game.round);
             obj.cardCzar = game.cardCzar;
           }
           cb(err, obj);
@@ -240,6 +262,36 @@ Game.getPlayers = function(id, cb){
   });
 };
 
+Game.logWin = function(gameId, winner, cb){
+  Game.findForUpdate(gameId, function(err, game){
+    game.gameData[winner].wins++;
+    Game.lastUpdate(gameId, function(err, timeStamp){
+      if(game.lastUpdate === timeStamp){
+        game.save(cb);
+      }else{
+        Game.logWin(gameId, winner, cb);
+      }
+    });
+  });
+};
+
+Game.logVote = function(gameId, player, cb){
+  Game.findForUpdate(gameId, function(err, game){
+    game.endGameVotes.push(player);
+    game.endGameVotes = _.uniq(game.endGameVotes);
+    var gameOver = game.players.length === game.endGameVotes.length;
+    Game.lastUpdate(gameId, function(err, timeStamp){
+      if(game.lastUpdate === timeStamp){
+        game.save(function(err, count){
+          cb(err, gameOver);
+        });
+      }else{
+        Game.logVote(gameId, player, cb);
+      }
+    });
+  });
+};
+
 Game.prototype.save = function(cb){
   Game.collection.save(this, cb);
 };
@@ -283,3 +335,31 @@ function initGameData(player){
   return obj;
 }
 
+function formatCardsForDisplay(round){
+  round.answers.forEach(function(play){
+    play.answers = hexEncodeSpecialChars(play.answers);
+  });
+  return round;
+}
+
+function hexEncodeSpecialChars(cards){
+  var htmlCodes = ['&Uuml;', '&trade;', '&reg;', '&copy;'],
+      hexCodes  = ['\xDC', '\u2122', '\xAE', '\xA9'];
+  cards.forEach(function(card){
+    htmlCodes.forEach(function(code, index){
+      card.text = card.text.replace(code, hexCodes[index]);
+    });
+  });
+  return cards;
+}
+
+function htmlEncodeSpecialChars(cards){
+  var htmlCodes = ['&Uuml;', '&trade;', '&reg;', '&copy;'],
+      hexCodes  = ['\xDC', '\u2122', '\xAE', '\xA9'];
+  cards.forEach(function(card){
+    hexCodes.forEach(function(code, index){
+      card.text = card.text.replace(code, htmlCodes[index]);
+    });
+  });
+  return cards;
+}

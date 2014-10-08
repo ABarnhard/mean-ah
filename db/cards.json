@@ -530,7 +530,7 @@
 {"id":530,"cardType":"Q","text":"What's Teach for America using to inspire inner city students to succeed?","numAnswers":1,"expansion": "base"}
 {"id":531,"cardType":"Q","text":"Studies show that lab rats navigate mazes 50% faster after being exposed to _.","numAnswers":1,"expansion": "base"}
 {"id":532,"cardType":"Q","text":"Life for American Indians was forever changed when the White Man introduced them to _.","numAnswers":1,"expansion": "base"}
-{"id":533,"cardType":"Q","text":"Make a haiku.","numAnswers":3,"expansion": "base"}
+{"id":533,"cardType":"Q","text":"Make a haiku.","numAnswers":3,"expansion": "gameOver"}
 {"id":534,"cardType":"Q","text":"I do not know with what weapons World War III will be fought, but World War IV will be fought with _.","numAnswers":1,"expansion": "base"}
 {"id":535,"cardType":"Q","text":"Why do I hurt all over?","numAnswers":1,"expansion": "base"}
 {"id":536,"cardType":"Q","text":"What am I giving up for Lent?","numAnswers":1,"expansion": "base"}
@@ -682,12 +682,12 @@
 {"id":682,"cardType":"A","text":"Getting hilariously gang-banged by the Blue Man Group.","numAnswers":0,"expansion": "e2"}
 {"id":683,"cardType":"A","text":"Jeff Goldblum.","numAnswers":0,"expansion": "e2"}
 {"id":684,"cardType":"A","text":"Making a friend.","numAnswers":0,"expansion": "e2"}
-{"id":685,"cardType":"A","text":"A soulful rendition of &#34;Ol' Man River.&#34;","numAnswers":0,"expansion": "e2"}
+{"id":685,"cardType":"A","text":"A soulful rendition of \"Ol' Man River.\"","numAnswers":0,"expansion": "e2"}
 {"id":686,"cardType":"A","text":"Intimacy problems.","numAnswers":0,"expansion": "e2"}
 {"id":687,"cardType":"A","text":"A sweaty, panting leather daddy.","numAnswers":0,"expansion": "e2"}
 {"id":688,"cardType":"A","text":"Spring break!","numAnswers":0,"expansion": "e2"}
 {"id":689,"cardType":"A","text":"Being awesome at sex.","numAnswers":0,"expansion": "e2"}
-{"id":690,"cardType":"A","text":"Dining with cardboard cutouts of the cast of &#34;Friends.&#34;","numAnswers":0,"expansion": "e2"}
+{"id":690,"cardType":"A","text":"Dining with cardboard cutouts of the cast of \"Friends.\"","numAnswers":0,"expansion": "e2"}
 {"id":691,"cardType":"A","text":"Another shot of morphine.","numAnswers":0,"expansion": "e2"}
 {"id":692,"cardType":"A","text":"Beefin' over turf.","numAnswers":0,"expansion": "e2"}
 {"id":693,"cardType":"A","text":"A squadron of moles wearing aviator goggles.","numAnswers":0,"expansion": "e2"}
@@ -723,7 +723,7 @@
 {"id":723,"cardType":"A","text":"Death by Steven Seagal","numAnswers":0,"expansion": "e2"}
 {"id":724,"cardType":"Q","text":"During his midlife crisis, my dad got really into _.","numAnswers":1,"expansion": "e2"}
 {"id":725,"cardType":"Q","text":"_ would be woefully incomplete without _.","numAnswers":2,"expansion": "e2"}
-{"id":726,"cardType":"Q","text":"My new favorite porn star is Joey &#34;_&#34; McGee.","numAnswers":1,"expansion": "e2"}
+{"id":726,"cardType":"Q","text":"My new favorite porn star is Joey \"_\" McGee.","numAnswers":1,"expansion": "e2"}
 {"id":727,"cardType":"Q","text":"Before I run for president, I must destroy all evidence of my involvement with _.","numAnswers":1,"expansion": "e2"}
 {"id":728,"cardType":"Q","text":"This is your captain speaking. Fasten your seatbelts and prepare for _.","numAnswers":1,"expansion": "e2"}
 {"id":729,"cardType":"Q","text":"In his newest and most difficult stunt, David Blaine must escape from _.","numAnswers":1,"expansion": "e2"}
@@ -731,11 +731,11 @@
 {"id":731,"cardType":"Q","text":"My mom freaked out when she looked at my browser history and found _.com/_.","numAnswers":2,"expansion": "e2"}
 {"id":732,"cardType":"Q","text":"I went from _ to _, all thanks to _.","numAnswers":3,"expansion": "e2"}
 {"id":733,"cardType":"Q","text":"Members of New York's social elite are paying thousands of dollars just to experience _.","numAnswers":1,"expansion": "e2"}
-{"id":734,"cardType":"Q","text":"This month's Cosmo: &#34;Spice up your sex life by bringing _ into the bedroom.&#34;","numAnswers":1,"expansion": "e2"}
+{"id":734,"cardType":"Q","text":"This month's Cosmo: \"Spice up your sex life by bringing _ into the bedroom.\"","numAnswers":1,"expansion": "e2"}
 {"id":735,"cardType":"Q","text":"Little Miss Muffet Sat on a tuffet, Eating her curds and _.","numAnswers":1,"expansion": "e2"}
 {"id":736,"cardType":"Q","text":"If God didn't want us to enjoy _, he wouldn't have given us _.","numAnswers":2,"expansion": "e2"}
 {"id":737,"cardType":"Q","text":"My country, 'tis of thee, sweet land of _.","numAnswers":1,"expansion": "e2"}
-{"id":738,"cardType":"Q","text":"After months of debate, the Occupy Wall Street General Assembly could only agree on &#34;More _!&#34;","numAnswers":1,"expansion": "e2"}
+{"id":738,"cardType":"Q","text":"After months of debate, the Occupy Wall Street General Assembly could only agree on \"More _!\"","numAnswers":1,"expansion": "e2"}
 {"id":739,"cardType":"Q","text":"I spent my whole life working toward _, only to have it ruined by _.","numAnswers":2,"expansion": "e2"}
 {"id":740,"cardType":"Q","text":"Next time on Dr. Phil: How to talk to your child about _.","numAnswers":1,"expansion": "e2"}
 {"id":741,"cardType":"Q","text":"Only two things in life are certain: death and _.","numAnswers":1,"expansion": "e2"}
