@@ -5,6 +5,7 @@
         h3 Game: {{game.name}}
         button.btn.btn-primary(type='button', ng-show='game.isOwner && game.status === \'open\'', ng-click='startGame(game._id)') Start Game
         button.btn.btn-primary(type='button', ng-click='leaveGame(game._id)') Leave Game
+        button.btn.btn-primary(type='button', ng-click='voteGameEnd(game._id)') Vote To End Game
     .row
       .col-xs-12
         .players
@@ -42,8 +43,9 @@
         .gameinfo
           .deck Q Deck Here
           .deck A Deck Here
-          .cardCzar isCardCzar
-          .awesome-points # Awesome Points (wins)
+          .awesome-points # Wins
+
+include card-display
 
 .row
   .col-xs-12
