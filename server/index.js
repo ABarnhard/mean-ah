@@ -16,5 +16,3 @@ require('./lib/mongodb')(db, function(){
   });
 });
 
-module.exports = server;
-

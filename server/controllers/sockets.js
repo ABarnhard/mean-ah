@@ -92,6 +92,7 @@ exports.playCards = function(data){
 
 // data = {gameId:'', winner:{player:'alias', answers:[{card obj(s)}]}}
 exports.nextRound = function(data){
+  console.log('Next Round Fired');
   data = JSON.parse(data);
   // notify players of win
   Io.to(roomId).emit('winner', data.winner);
@@ -101,13 +102,13 @@ exports.nextRound = function(data){
     players.forEach(function(player){
       var newCards = cards.splice(0, count);
       Io.to(player).emit('deal-cards', {cards:newCards});
-      // Assing a new Card Czar
-      Game.nextCzar(data.gameId, function(err, cardCzar){
-        Io.to(roomId).emit('new-czar', {cardCzar:cardCzar});
-        // Start next Round
-        Game.startRound(data.gameId, function(err, round){
-          Io.to(roomId).emit('round-start', {round:round});
-        });
+    });
+    // Assing a new Card Czar
+    Game.nextCzar(data.gameId, function(err, cardCzar){
+      Io.to(roomId).emit('new-czar', {cardCzar:cardCzar});
+      // Start next Round
+      Game.startRound(data.gameId, function(err, round){
+        Io.to(roomId).emit('round-start', {round:round});
       });
     });
   });
