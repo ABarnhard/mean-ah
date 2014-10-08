@@ -34,7 +34,11 @@
 
     $scope.startGame = function(id){
       // console.log('startGame Fired');
-      Socket.emit('start-game', {gameId:id});
+      Socket.emit('start-game', {gameId:id}, function(){
+        Socket.emit('draw-hand', {gameId:$scope.game._id}, function(){
+          Socket.emit('start-round', {gameId:$scope.game._id});
+        });
+      });
     };
 
     $scope.leaveGame = function(id){
@@ -103,9 +107,6 @@
       $scope.game.status = 'in-progress';
       $scope.game.isOpen = 'false';
       $scope.isWaiting = $scope.game.status === 'open';
-      Socket.emit('draw-hand', {gameId:$scope.game._id}, function(){
-        Socket.emit('start-round', {gameId:$scope.game._id});
-      });
     });
 
     $scope.$on('socket:deal-hand', function(event, data){

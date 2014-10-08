@@ -31,10 +31,11 @@ exports.joinGame = function(data, cb){
   });
 };
 
-exports.startGame = function(data){
+exports.startGame = function(data, cb){
   // console.log('socked recieved start-game');
   Game.start(data.gameId, function(err, count){
     Io.to(roomId).emit('game-start');
+    cb();
   });
 };
 

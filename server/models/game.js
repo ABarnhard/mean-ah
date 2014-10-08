@@ -135,13 +135,14 @@ Game.dealCards = function(gameId, cb){
 Game.makePlay = function(data, cb){
   // console.log('game.makePlay', data);
   Game.findForUpdate(data.gameId, function(err, game){
+    data.play.answers = htmlEncodeSpecialChars(data.play.answers);
     game.round.answers.push(data.play);
     Game.lastUpdate(data.gameId, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
         game.updateRound(data.play, function(err, count){
           var obj = {player:data.play.player};
           if((game.players.length - 1) === game.round.answers.length){
-            obj.round = game.round;
+            obj.round = formatCardsForDisplay(game.round);
             obj.cardCzar = game.cardCzar;
           }
           cb(err, obj);
@@ -283,3 +284,31 @@ function initGameData(player){
   return obj;
 }
 
+function formatCardsForDisplay(round){
+  round.answers.forEach(function(play){
+    play.answers = hexEncodeSpecialChars(play.answers);
+  });
+  return round;
+}
+
+function hexEncodeSpecialChars(cards){
+  var htmlCodes = ['&Uuml;', '&trade;', '&reg;', '&copy;'],
+      hexCodes  = ['\xDC', '\u2122', '\xAE', '\xA9'];
+  cards.forEach(function(card){
+    htmlCodes.forEach(function(code, index){
+      card.text = card.text.replace(code, hexCodes[index]);
+    });
+  });
+  return cards;
+}
+
+function htmlEncodeSpecialChars(cards){
+  var htmlCodes = ['&Uuml;', '&trade;', '&reg;', '&copy;'],
+      hexCodes  = ['\xDC', '\u2122', '\xAE', '\xA9'];
+  cards.forEach(function(card){
+    hexCodes.forEach(function(code, index){
+      card.text = card.text.replace(code, htmlCodes[index]);
+    });
+  });
+  return cards;
+}
