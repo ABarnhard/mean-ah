@@ -70,6 +70,8 @@ Game.leave = function(data, cb){
     var retObj = {player: data.player};
     // remove player from list of active players
     game.players = _.reject(game.players, function(player){return player === data.player;});
+    // remove player from list of end game votes
+    game.endGameVotes = _.reject(game.endGameVotes, function(player){return player === data.player;});
     if(game.players.length === 1){
       // if there's only 1 player left, game's over and we don't care about anything else
       retObj.gameOver = true;
