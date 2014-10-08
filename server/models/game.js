@@ -5,19 +5,20 @@ var Mongo  = require('mongodb'),
     _      = require('underscore');
 
 function Game(o){
-  this._id        = Mongo.ObjectID();
-  this.roomId     = this._id.toString();
-  this.name       = o.name;
-  this.owner      = o.player;
-  this.cardCzar   = o.player;
-  this.players    = [o.player];
-  this.decks      = o.decks;
-  this.status     = 'new';
-  this.isOpen     = false;
-  this.roundNum   = 0;
-  this.round      = {};
-  this.lastUpdate = null;
-  this.gameData   = initGameData(o.player);
+  this._id            = Mongo.ObjectID();
+  this.roomId         = this._id.toString();
+  this.name           = o.name;
+  this.owner          = o.player;
+  this.cardCzar       = o.player;
+  this.players        = [o.player];
+  this.decks          = o.decks;
+  this.status         = 'new';
+  this.isOpen         = false;
+  this.roundNum       = 0;
+  this.round          = {};
+  this.lastUpdate     = null;
+  this.gameData       = initGameData(o.player);
+  this.endGameVotes   = [];
 }
 
 Object.defineProperty(Game, 'collection', {
@@ -99,6 +100,24 @@ Game.startRound = function(id, cb){
     var data = {gameId:id, cardType:'questions', count:1};
     Deck.deal(data, function(err, cards){
       game.round = {qcard:cards[0], answers:[]};
+      game.roundNum += 1;
+      Game.lastUpdate(game._id, function(err, timeStamp){
+        if(game.lastUpdate === timeStamp){
+          game.save(function(err, count){
+            cb(err, game.round);
+          });
+        }else{
+          Game.startRound(id, cb);
+        }
+      });
+    });
+  });
+};
+
+Game.finalRound = function(id, cb){
+  Game.findForUpdate(id, function(err, game){
+    Deck.dealFinalQCard(function(err, card){
+      game.round = {qcard:card, answers:[]};
       game.roundNum += 1;
       Game.lastUpdate(game._id, function(err, timeStamp){
         if(game.lastUpdate === timeStamp){
@@ -249,6 +268,23 @@ Game.logWin = function(gameId, winner, cb){
         game.save(cb);
       }else{
         Game.logWin(gameId, winner, cb);
+      }
+    });
+  });
+};
+
+Game.logVote = function(gameId, player, cb){
+  Game.findForUpdate(gameId, function(err, game){
+    game.endGameVotes.push(player);
+    game.endGameVotes = _.uniq(game.endGameVotes);
+    var gameOver = game.players.length === game.endGameVotes.length;
+    Game.lastUpdate(gameId, function(err, timeStamp){
+      if(game.lastUpdate === timeStamp){
+        game.save(function(err, count){
+          cb(err, gameOver);
+        });
+      }else{
+        Game.logVote(gameId, player, cb);
       }
     });
   });

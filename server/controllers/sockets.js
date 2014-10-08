@@ -49,11 +49,7 @@ exports.playerConnect = function(data, cb){
 // data = {gameId:'roomId of game'}
 exports.drawHand = function(data, cb){
   Game.dealHand(data.gameId, function(err, players, cards){
-    players.forEach(function(player){
-      var hand = cards.splice(0, 10);
-      Io.to(player).emit('deal-hand', {hand:hand});
-    });
-    if(cb){cb();}
+    dealCards(players, cards, cb);
   });
 };
 
@@ -91,13 +87,17 @@ exports.playCards = function(data){
   });
 };
 
-// data = {gameId:'', winner:{player:'alias', answers:[{card obj(s)}]}}
+// data = {gameId:'', winner:{player:'alias', answers:[{card obj(s)}]}, gameOver:}
 exports.nextRound = function(data){
-  console.log('Next Round Fired');
+  // console.log('Next Round Fired');
   data = JSON.parse(data);
   Game.logWin(data.gameId, data.winner.player, function(err, count){
-    // notify players of win
+    // notify players of win, and end game if final round
+    data.winner.gameOver = data.gameOver;
     Io.to(roomId).emit('winner', data.winner);
+    // if game over, break;
+    // TODO Add cleanup logic for deck
+    if(data.gameOver){return;}
     Game.dealCards(data.gameId, function(err, players, cards, count){
       // deal players back up to 10 cards
       // doesn't include Card Czar in players array
@@ -117,7 +117,33 @@ exports.nextRound = function(data){
   });
 };
 
+// data = {gameId:id, player:$scope.alias};
+exports.tallyVote = function(data){
+  var socket = this;
+  data = JSON.parse(data);
+  Game.logVote(data.gameId, data.player, function(err, gameOver){
+    socket.broadcast.to(roomId).emit('player-voted', {player:data.player});
+    if(gameOver){
+      Game.dealHand(data.gameId, function(err, players, cards){
+        dealCards(players, cards, function(){
+          Game.finalRound(data.gameId, function(err, round){
+            Io.to(roomId).emit('final-round-start', {round:round});
+          });
+        });
+      });
+    }
+  });
+};
+
 exports.disconnect = function(){
   console.log('user disconnected');
 };
 
+// HELPER FUNCTIONS
+function dealCards(players, cards, cb){
+  players.forEach(function(player){
+    var hand = cards.splice(0, 10);
+    Io.to(player).emit('deal-hand', {hand:hand});
+  });
+  if(cb){cb();}
+}

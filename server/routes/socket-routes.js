@@ -15,6 +15,7 @@ module.exports = function(socket){
   socket.on('play-cards',      sockets.playCards);
   socket.on('start-round',     sockets.startRound);
   socket.on('winner-selected', sockets.nextRound);
+  socket.on('vote-to-end',     sockets.tallyVote);
   socket.on('disconnect',      sockets.disconnect);
 
 };

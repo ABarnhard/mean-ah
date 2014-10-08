@@ -56,6 +56,10 @@ Deck.deal = function(data, cb){
   });
 };
 
+Deck.dealFinalQCard = function(cb){
+  Card.getFinalQCard(cb);
+};
+
 Deck.prototype.draw = function(data){
   return hexEncodeSpecialChars(this[data.cardType].splice(0, data.count * 1));
 };

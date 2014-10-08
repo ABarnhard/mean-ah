@@ -5,7 +5,7 @@
   .controller('GamesCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
 
     // Register game events to be forwarded from Socket.IO to Angulars event system
-    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'play-made', 'answers-submitted', 'winner', 'deal-cards', 'new-czar', 'game-over', 'replace-czar']);
+    Socket.forward(['player-joined', 'game-start', 'deal-hand', 'round-start', 'player-left', 'play-made', 'answers-submitted', 'winner', 'deal-cards', 'new-czar', 'game-over', 'replace-czar', 'player-voted', 'final-round-start']);
 
     // Get player from Nav (could look up alias with $localForage)
     $localForage.getItem('alias').then(function(alias){
@@ -85,10 +85,17 @@
     };
 
     $scope.submitWinner = function(){
-      var data = {gameId:$scope.game._id, winner:$scope.winner};
+      var data = {gameId:$scope.game._id, winner:$scope.winner, gameOver:$scope.game.finalRound};
       data = angular.toJson(data);
       Socket.emit('winner-selected', data);
       $scope.winner = null;
+    };
+
+    $scope.voteGameEnd = function(id){
+      var data = {gameId:id, player:$scope.alias};
+      data = angular.toJson(data);
+      Socket.emit('vote-to-end', data);
+      $scope.voted = true;
     };
 
     // register Angular event handlers
@@ -120,6 +127,12 @@
       $scope.game.play = null;
     });
 
+    $scope.$on('socket:final-round-start', function(event, data){
+      $scope.game.round = data.round;
+      $scope.game.play = null;
+      $scope.game.finalRound = true;
+    });
+
     $scope.$on('socket:answers-submitted', function(event, data){
       $scope.playedAnswers = data.round;
     });
@@ -135,6 +148,9 @@
       });
       toastr.success(data.player + ' is the winner with: \n' + $scope.game.round.qcard.text + '\n' + s);
       $scope.playedAnswers = null;
+      if(data.gameOver){
+        Game.cleanLocalStorage('The Game Has Ended').then(Game.goToLobby);
+      }
     });
 
     $scope.$on('socket:deal-cards', function(event, data){
@@ -166,6 +182,10 @@
           });
         }
       }
+    });
+
+    $scope.$on('socket:player-voted', function(event, data){
+      toastr.success(data.player + ' voted to end the game');
     });
 
   }]);
