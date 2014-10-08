@@ -95,21 +95,23 @@ exports.playCards = function(data){
 exports.nextRound = function(data){
   console.log('Next Round Fired');
   data = JSON.parse(data);
-  // notify players of win
-  Io.to(roomId).emit('winner', data.winner);
-  // deal players back up to 10 cards
-  // doesn't include Card Czar in players array
-  Game.dealCards(data.gameId, function(err, players, cards, count){
-    players.forEach(function(player){
-      var newCards = cards.splice(0, count);
-      Io.to(player).emit('deal-cards', {cards:newCards});
-    });
-    // Assing a new Card Czar
-    Game.nextCzar(data.gameId, function(err, cardCzar){
-      Io.to(roomId).emit('new-czar', {cardCzar:cardCzar});
-      // Start next Round
-      Game.startRound(data.gameId, function(err, round){
-        Io.to(roomId).emit('round-start', {round:round});
+  Game.logWin(data.gameId, data.winner.player, function(err, count){
+    // notify players of win
+    Io.to(roomId).emit('winner', data.winner);
+    Game.dealCards(data.gameId, function(err, players, cards, count){
+      // deal players back up to 10 cards
+      // doesn't include Card Czar in players array
+      players.forEach(function(player){
+        var newCards = cards.splice(0, count);
+        Io.to(player).emit('deal-cards', {cards:newCards});
+      });
+      // Assing a new Card Czar
+      Game.nextCzar(data.gameId, function(err, cardCzar){
+        Io.to(roomId).emit('new-czar', {cardCzar:cardCzar});
+        // Start next Round
+        Game.startRound(data.gameId, function(err, round){
+          Io.to(roomId).emit('round-start', {round:round});
+        });
       });
     });
   });

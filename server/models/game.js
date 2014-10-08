@@ -241,6 +241,19 @@ Game.getPlayers = function(id, cb){
   });
 };
 
+Game.logWin = function(gameId, winner, cb){
+  Game.findForUpdate(gameId, function(err, game){
+    game.gameData[winner].wins++;
+    Game.lastUpdate(gameId, function(err, timeStamp){
+      if(game.lastUpdate === timeStamp){
+        game.save(cb);
+      }else{
+        Game.logWin(gameId, winner, cb);
+      }
+    });
+  });
+};
+
 Game.prototype.save = function(cb){
   Game.collection.save(this, cb);
 };
