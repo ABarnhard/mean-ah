@@ -16,14 +16,14 @@
       data.player = $scope.$$prevSibling.alias;
       // console.log(data);
       data = angular.toJson(data);
-      Socket.emit('join-game', data, function(err, gameId){
+      Socket.emit('join-game', data, function(err, gameData){
         // console.log(gameId);
         if(err){
           toastr.error('Error Joining Game, try again.');
           return findGames();
         }
-
-        $localForage.setItem('gameId', gameId).then(function(){
+        gameData = angular.fromJson(gameData);
+        $localForage.setItem('gameId', gameData.gameId).then(function(){
           $location.path('/game');
         });
 

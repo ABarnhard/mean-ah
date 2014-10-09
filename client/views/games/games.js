@@ -34,16 +34,16 @@
 
     $scope.startGame = function(id){
       // console.log('startGame Fired');
-      Socket.emit('start-game', {gameId:id}, function(){
-        Socket.emit('draw-hand', {gameId:$scope.game._id}, function(){
-          Socket.emit('start-round', {gameId:$scope.game._id});
+      Socket.emit('start-game', angular.toJson({gameId:id}), function(){
+        Socket.emit('draw-hand', angular.toJson({gameId:id}), function(){
+          Socket.emit('start-round', angular.toJson({gameId:id}));
         });
       });
     };
 
     $scope.leaveGame = function(id){
       // console.log('leaveGame Fired');
-      Socket.emit('leave-game', {gameId:id, player:$scope.alias}, function(err, data){
+      Socket.emit('leave-game', angular.toJson({gameId:id, player:$scope.alias}), function(err, data){
         Game.cleanLocalStorage('You have quit the game').then(Game.goToLobby);
       });
     };
@@ -101,11 +101,13 @@
     // register Angular event handlers
     $scope.$on('socket:player-joined', function(event, data){
       // console.log('I Fired');
+      data = angular.fromJson(data);
       $scope.game.players.push(data.player);
     });
 
     $scope.$on('socket:player-left', function(event, data){
       // console.log('socket:player-left fired');
+      data = angular.fromJson(data);
       $scope.game.players = $scope.game.players.filter(function(p){return p !== data.player;});
     });
 
@@ -117,31 +119,37 @@
     });
 
     $scope.$on('socket:deal-hand', function(event, data){
+      data = angular.fromJson(data);
       $localForage.setItem('hand', data.hand).then(function(){
         $scope.game.hand = data.hand;
       });
     });
 
     $scope.$on('socket:round-start', function(event, data){
+      data = angular.fromJson(data);
       $scope.game.round = data.round;
       $scope.game.play = null;
     });
 
     $scope.$on('socket:final-round-start', function(event, data){
+      data = angular.fromJson(data);
       $scope.game.round = data.round;
       $scope.game.play = null;
       $scope.game.finalRound = true;
     });
 
     $scope.$on('socket:answers-submitted', function(event, data){
+      data = angular.fromJson(data);
       $scope.playedAnswers = data.round;
     });
 
     $scope.$on('socket:play-made', function(event, data){
+      data = angular.fromJson(data);
       console.log('socket:play-made', data.player);
     });
 
     $scope.$on('socket:winner', function(event, data){
+      data = angular.fromJson(data);
       var s = '';
       data.answers.forEach(function(card){
         s = s + card.text + '\n';
@@ -154,6 +162,7 @@
     });
 
     $scope.$on('socket:deal-cards', function(event, data){
+      data = angular.fromJson(data);
       var newHand = $scope.game.hand.concat(data.cards);
       $localForage.setItem('hand', newHand).then(function(){
         $scope.game.hand = newHand;
@@ -161,6 +170,7 @@
     });
 
     $scope.$on('socket:new-czar', function(event, data){
+      data = angular.fromJson(data);
       toastr.success(data.cardCzar + ' is now the Card Czar.');
       $scope.game.cardCzar = data.cardCzar;
     });
@@ -171,12 +181,14 @@
     });
 
     $scope.$on('socket:replace-czar', function(event, data){
+      data = angular.fromJson(data);
       toastr.success(data.cardCzar + ' is now the Card Czar.');
       $scope.game.cardCzar = data.cardCzar;
       if($scope.alias === $scope.game.cardCzar){
         // If player has become card czar, return any played cards to their hand
         if($scope.game.play){
           $scope.game.hand = $scope.game.hand.concat($scope.game.play.answers);
+          $scope.game.play.answers = null;
           $localForage.setItem('hand', $scope.game.hand).then(function(){
             toastr.success('Your Played Cards have been returned to your hand');
           });
@@ -185,6 +197,7 @@
     });
 
     $scope.$on('socket:player-voted', function(event, data){
+      data = angular.fromJson(data);
       toastr.success(data.player + ' voted to end the game');
     });
 
