@@ -9,5 +9,11 @@
       $('#card-display').modal();
     };
 
+    $scope.$on('display-round', function(event, roundInfo){
+      roundInfo = angular.fromJson(roundInfo);
+      $scope.round = roundInfo.round;
+      $('#card-display').modal();
+    });
+
   }]);
 })();

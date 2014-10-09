@@ -23,7 +23,7 @@
     ];
     Socket.forward(events, $scope);
 
-    // Get player from Nav (could look up alias with $localForage)
+    // Get logged in player
     $localForage.getItem('alias').then(function(alias){
       $scope.alias = alias;
     });
@@ -155,8 +155,12 @@
     });
 
     $scope.$on('socket:answers-submitted', function(event, data){
+      // Send it to the card-display modal while it's still a JSON string to avoid cloneing the object later
+      Game.displayRound(data);
       data = angular.fromJson(data);
-      $scope.playedAnswers = data.round;
+      if($scope.alias === data.cardCzar){
+        $scope.playedAnswers = data.round;
+      }
     });
 
     $scope.$on('socket:play-made', function(event, data){

@@ -13,5 +13,6 @@
           h4#cardDispLabel.modal-title Answers
         .modal-body
           | {{title}}
+          pre {{round | json}}
         .modal-footer
           button.btn.btn-default(type='button', data-dismiss='modal') Close

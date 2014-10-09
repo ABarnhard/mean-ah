@@ -89,7 +89,7 @@ exports.playCards = function(data){
   Game.makePlay(data, function(err, obj){
     socket.broadcast.to(roomId).emit('play-made', JSON.stringify({player:obj.player}));
     if(obj.round){
-      Io.to(obj.cardCzar).emit('answers-submitted', JSON.stringify({round:obj.round}));
+      Io.to(roomId).emit('answers-submitted', JSON.stringify({round:obj.round, cardCzar:obj.cardCzar}));
     }
   });
 };

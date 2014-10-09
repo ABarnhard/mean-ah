@@ -34,7 +34,11 @@
       $location.path('/lobby');
     }
 
-    return {findAllOpen:findAllOpen, load:load, cleanLocalStorage:cleanLocalStorage, errorToLobby:errorToLobby, goToLobby:goToLobby};
+    function displayRound(jsonString){
+      $rootScope.$broadcast('display-round', jsonString);
+    }
+
+    return {displayRound:displayRound, findAllOpen:findAllOpen, load:load, cleanLocalStorage:cleanLocalStorage, errorToLobby:errorToLobby, goToLobby:goToLobby};
   }]);
 })();
 
