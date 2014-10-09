@@ -13,7 +13,7 @@ exports.createGame = function(data, cb){
     roomId = gameInfo.roomId;
     socket.join(roomId);
     socket.join(data.player);
-    cb(err, JSON.stringify({roomId:roomId}));
+    cb(err, JSON.stringify({gameId:roomId}));
   });
 };
 
@@ -29,7 +29,7 @@ exports.joinGame = function(data, cb){
       socket.join(data.player);
       socket.broadcast.to(roomId).emit('player-joined', JSON.stringify({player:data.player}));
     }
-    cb(err, id);
+    cb(err, JSON.stringify({gameId:id}));
   });
 };
 
