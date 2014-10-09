@@ -82,7 +82,7 @@ exports.leaveGame = function(data, cb){
   });
 };
 
-// data = {gameId:'', play:{player:'', answers:[]}}
+// data = {gameId:'', play:{player:'', answers:[{}]}}
 exports.playCards = function(data){
   var socket = this;
   data = JSON.parse(data);

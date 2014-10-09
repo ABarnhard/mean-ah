@@ -137,6 +137,35 @@ describe('Game', function(){
     });
   });
 
+  describe('.leave', function(){
+    it('should remove a player from the game (who is not the card Czar)', function(done){
+      var data = {gameId:'200000000000000000000002', player:'sue'};
+      Game.leave(data, function(err, info){
+        Game.findById(data.gameId, function(err, g){
+          expect(info.player).to.equal('sue');
+          expect(g.players).to.have.length(2);
+          expect(g.round.answers).to.have.length(0);
+          expect(g.endGameVotes).to.have.length(0);
+          done();
+        });
+      });
+    });
+    it('should remove a player from the game (who is the card Czar)', function(done){
+      var data = {gameId:'200000000000000000000002', player:'bob'};
+      Game.leave(data, function(err, info){
+        Game.findById(data.gameId, function(err, g){
+          expect(info.player).to.equal('bob');
+          expect(info.cardCzar).to.equal('sue');
+          expect(g.players).to.have.length(2);
+          expect(g.cardCzar).to.equal('sue');
+          expect(g.round.answers).to.have.length(0);
+          expect(g.endGameVotes).to.have.length(1);
+          done();
+        });
+      });
+    });
+  });
+
 });
 
 /*

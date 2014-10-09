@@ -44,7 +44,12 @@
   "roundNum" : 4,
   "round" : {
     "qcard" : {"_id" : {"$oid":"100000000000000000000012"},"id":12,"cardType":"Q","text":"What's a girl's best friend?","numAnswers":1,"expansion": "base"},
-    "answers" : []
+    "answers" : [
+      {
+        "player" : "sue",
+        "answers" : [{"_id" : {"$oid":"100000000000000000000003"},"id":3,"cardType":"A","text":"German dungeon porn.","numAnswers":0,"expansion": "e2"}]
+      }
+    ]
   },
   "lastUpdate" : 12345,
   "gameData" : {
