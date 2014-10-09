@@ -16,6 +16,12 @@
   "status" : "open",
   "roundNum" : 0,
   "round" : {},
+  "lastUpdate" : null,
+  "gameData" : {
+    "bob" : {"wins":0},
+    "sue" : {"wins":0}
+  },
+  "endGameVotes" : [],
   "isOpen" : true
 }
 {
@@ -37,6 +43,13 @@
   "status" : "in-progress",
   "roundNum" : 4,
   "round" : {},
+  "lastUpdate" : 12345,
+  "gameData" : {
+    "bob" : {"wins":1},
+    "john" : {"wins":2},
+    "sue" : {"wins":0}
+  },
+  "endGameVotes" : ["sue"],
   "isOpen" : false
 }
 {
@@ -54,6 +67,11 @@
   ],
   "status" : "new",
   "roundNum" : 0,
+  "lastUpdate" : null,
+  "gameData" : {
+    "bob" : {"wins":0}
+  },
+  "endGameVotes" : [],
   "isOpen" : false
 }
 {
@@ -73,6 +91,14 @@
   "status" : "done",
   "roundNum" : 37,
   "round" : {},
+  "lastUpdate" : 678910,
+  "gameData" : {
+    "bob" : {"wins":0},
+    "john" : {"wins":0},
+    "greg" : {"wins":36},
+    "sue" : {"wins":0}
+  },
+  "endGameVotes" : [],
   "isOpen" : false
 }
 {
@@ -96,5 +122,11 @@
     "qcard" : {"_id" : {"$oid":"100000000000000000000012"},"id":12,"cardType":"Q","text":"What's a girl's best friend?","numAnswers":1,"expansion": "base"},
     "answers" : []
   },
+  "lastUpdate" : null,
+  "gameData" : {
+    "john" : {"wins":0},
+    "sue" : {"wins":0}
+  },
+  "endGameVotes" : [],
   "isOpen" : false
 }
