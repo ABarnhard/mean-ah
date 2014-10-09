@@ -121,6 +121,21 @@ describe('Game', function(){
     });
   });
 
+  describe('.finalRound', function(){
+    it('should deal the final Make a Haiku card & initialize round object in game', function(done){
+      var data = {gameId:'200000000000000000000002'};
+      Game.finalRound(data.gameId, function(err, round){
+        Game.findById(data.gameId, function(err, g){
+          expect(round).to.be.ok;
+          expect(round.qcard.id).to.equal(533);
+          expect(g.round.answers).to.have.length(0);
+          expect(g.roundNum).to.equal(5);
+          done();
+        });
+      });
+    });
+  });
+
   describe('.makePlay', function(){
     it('Should add a play object to the rounds answers array', function(done){
       var data = {gameId:'200000000000000000000005', play:{player:'sue', answers:[{_id: '100000000000000000000001', id:1, cardType:'A', text:'Flying sex snakes.', numAnswers:0, expansion:'base'}]}};
