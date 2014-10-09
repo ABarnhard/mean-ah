@@ -116,7 +116,6 @@
 
     // register Angular event handlers
     $scope.$on('socket:player-joined', function(event, data){
-      // console.log('I Fired');
       data = angular.fromJson(data);
       $scope.game.players.push(data.player);
     });

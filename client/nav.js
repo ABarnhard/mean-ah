@@ -20,6 +20,7 @@
     });
 
     $scope.$on('gameOver', function(event, gameId){
+      // gameId is null from gameover event
       $scope.gameId = gameId;
     });
 
