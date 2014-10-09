@@ -117,10 +117,8 @@ Game.startRound = function(id, cb){
 };
 
 Game.finalRound = function(id, cb){
-  console.log('****id', id);
   Game.findForUpdate(id, function(err, game){
     Deck.dealFinalQCard(function(err, card){
-      console.log('*****card', card);
       game.round = {qcard:card, answers:[]};
       game.roundNum += 1;
       Game.lastUpdate(game._id, function(err, timeStamp){
