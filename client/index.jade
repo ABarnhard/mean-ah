@@ -12,17 +12,19 @@ html(ng-app='mean-ah', lang='en')
     link(href='/views/lobby/lobby.css', rel='stylesheet')
     link(href='/views/new-game/new-game.css', rel='stylesheet')
     link(href='/views/games/games.css', rel='stylesheet')
-    link(href='/views/games/card-display.css', rel='stylesheet')
+    link(href='/views/card-display/card-display.css', rel='stylesheet')
+    //- Load angular in head to support ng-cloak directive on nav bar
+    script(src='/vendor/jquery/dist/jquery.js')
+    script(src='/vendor/angular/angular.js')
+    script(src='/vendor/angular-route/angular-route.js')
   body
     include nav
     .container
       .row
         .col-xs-12
           #container(ng-view)
+    include ./views/card-display/card-display.jade
 
-    script(src='/vendor/jquery/dist/jquery.js')
-    script(src='/vendor/angular/angular.js')
-    script(src='/vendor/angular-route/angular-route.js')
     script(src='/socket.io/socket.io.js')
     script(src='/vendor/bootstrap/dist/js/bootstrap.js')
     script(src='/vendor/underscore/underscore.js')
@@ -39,7 +41,7 @@ html(ng-app='mean-ah', lang='en')
     script(src='/views/lobby/lobby.js')
     script(src='/views/new-game/new-game.js')
     script(src='/views/games/games.js')
-    script(src='/views/games/card-display.js')
+    script(src='/views/card-display/card-display.js')
     script(src='/components/factories/home.js')
     script(src='/components/factories/user.js')
     script(src='/components/factories/socket.js')
