@@ -164,6 +164,24 @@ describe('Game', function(){
         });
       });
     });
+    it('should remove players and signal game over if only one player left', function(done){
+      var data = {gameId:'200000000000000000000002', player:'sue'};
+      Game.leave(data, function(err, info){
+        data = {gameId:'200000000000000000000002', player:'john'};
+        Game.leave(data, function(err, info){
+          Game.findById(data.gameId, function(err, g){
+            expect(info.player).to.equal('john');
+            expect(info.cardCzar).to.not.be.ok;
+            expect(info.gameOver).to.be.ok;
+            expect(g.players).to.have.length(1);
+            expect(g.cardCzar).to.equal('bob');
+            expect(g.round.answers).to.have.length(0);
+            expect(g.endGameVotes).to.have.length(0);
+            done();
+          });
+        });
+      });
+    });
   });
 
 });
