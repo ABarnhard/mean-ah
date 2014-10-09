@@ -5,6 +5,7 @@
 
 var expect    = require('chai').expect,
     Game      = require('../../server/models/game'),
+    Deck      = require('../../server/models/deck'),
     dbConnect = require('../../server/lib/mongodb'),
     cp        = require('child_process'),
     db        = 'mean-ah-test';
@@ -194,6 +195,21 @@ describe('Game', function(){
             expect(g.endGameVotes).to.have.length(0);
             done();
           });
+        });
+      });
+    });
+  });
+
+  describe('.dealCards', function(){
+    it('should return cards from the deck ((num players - 1) * num answers of current qcard)', function(done){
+      var data = {gameId:'200000000000000000000005'};
+      Game.dealCards(data.gameId, function(err, players, cards, numCards){
+        Deck.findById('300000000000000000000003', function(err, deck){
+          expect(numCards).to.equal(1);
+          expect(players).to.have.length(1);
+          expect(cards).to.have.length(1);
+          expect(deck.answers).to.have.length(3);
+          done();
         });
       });
     });
