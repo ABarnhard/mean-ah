@@ -17,9 +17,11 @@
       $scope.game.decks = expansions;
       $scope.game.player = $scope.$$prevSibling.alias;
       // console.log($scope.game);
-      Socket.emit('create-game', $scope.game, function(err, gameId){
+      var data = angular.toJson($scope.game);
+      Socket.emit('create-game', data, function(err, gameInfo){
         // console.log(gameInfo);
-        $localForage.setItem('gameId', gameId).then(function(){
+        gameInfo = angular.fromJson(gameInfo);
+        $localForage.setItem('gameId', gameInfo.gameId).then(function(){
           $location.path('/game');
         });
       });

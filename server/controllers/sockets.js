@@ -6,18 +6,20 @@ var Game = require('../models/game'),
 
 exports.createGame = function(data, cb){
   var socket = this;
+  data = JSON.parse(data);
   // console.log('raw in', data);
   Game.create(data, function(err, gameInfo){
     // console.log('gameInfo', gameInfo);
     roomId = gameInfo.roomId;
     socket.join(roomId);
     socket.join(data.player);
-    cb(err, roomId);
+    cb(err, JSON.stringify({gameId:roomId}));
   });
 };
 
 exports.joinGame = function(data, cb){
   var socket = this;
+  data = JSON.parse(data);
   // console.log('I Fired', 'socket.on join-game');
   Game.join(data, function(err, id){
     // console.log('I Fired', 'Game.join CB');
@@ -25,14 +27,15 @@ exports.joinGame = function(data, cb){
       roomId = id;
       socket.join(roomId);
       socket.join(data.player);
-      socket.broadcast.to(roomId).emit('player-joined', {player:data.player});
+      socket.broadcast.to(roomId).emit('player-joined', JSON.stringify({player:data.player}));
     }
-    cb(err, id);
+    cb(err, JSON.stringify({gameId:id}));
   });
 };
 
 exports.startGame = function(data, cb){
   // console.log('socked recieved start-game');
+  data = JSON.parse(data);
   Game.start(data.gameId, function(err, count){
     Io.to(roomId).emit('game-start');
     cb();
@@ -40,6 +43,7 @@ exports.startGame = function(data, cb){
 };
 
 exports.playerConnect = function(data, cb){
+  data = JSON.parse(data);
   roomId = data.roomId;
   this.join(roomId);
   this.join(data.player);
@@ -48,6 +52,7 @@ exports.playerConnect = function(data, cb){
 
 // data = {gameId:'roomId of game'}
 exports.drawHand = function(data, cb){
+  data = JSON.parse(data);
   Game.dealHand(data.gameId, function(err, players, cards){
     dealCards(players, cards, cb);
   });
@@ -55,34 +60,36 @@ exports.drawHand = function(data, cb){
 
 // data = {gameId:'roomId of game'}
 exports.startRound = function(data){
+  data = JSON.parse(data);
   Game.startRound(data.gameId, function(err, round){
-    Io.to(roomId).emit('round-start', {round:round});
+    Io.to(roomId).emit('round-start', JSON.stringify({round:round}));
   });
 };
 
 // data = {gameId:, player:}
 exports.leaveGame = function(data, cb){
   var socket = this;
+  data = JSON.parse(data);
   Game.leave(data, function(err, obj){
     socket.leave(roomId);
-    socket.broadcast.to(roomId).emit('player-left', {player:obj.player});
+    socket.broadcast.to(roomId).emit('player-left', JSON.stringify({player:obj.player}));
     if(obj.gameOver){
-      Io.to(roomId).emit('game-over', {gameData:obj.gameData});
+      Io.to(roomId).emit('game-over', JSON.stringify({gameData:obj.gameData}));
     }else if(obj.cardCzar){
-      Io.to(roomId).emit('replace-czar', {cardCzar:obj.cardCzar});
+      Io.to(roomId).emit('replace-czar', JSON.stringify({cardCzar:obj.cardCzar}));
     }
     cb(err);
   });
 };
 
-// data = {gameId:'', play:{player:'', answers:[]}}
+// data = {gameId:'', play:{player:'', answers:[{}]}}
 exports.playCards = function(data){
   var socket = this;
   data = JSON.parse(data);
   Game.makePlay(data, function(err, obj){
-    socket.broadcast.to(roomId).emit('play-made', {player:obj.player});
+    socket.broadcast.to(roomId).emit('play-made', JSON.stringify({player:obj.player}));
     if(obj.round){
-      Io.to(obj.cardCzar).emit('answers-submitted', {round:obj.round});
+      Io.to(obj.cardCzar).emit('answers-submitted', JSON.stringify({round:obj.round}));
     }
   });
 };
@@ -94,7 +101,7 @@ exports.nextRound = function(data){
   Game.logWin(data.gameId, data.winner.player, function(err, count){
     // notify players of win, and end game if final round
     data.winner.gameOver = data.gameOver;
-    Io.to(roomId).emit('winner', data.winner);
+    Io.to(roomId).emit('winner', JSON.stringify(data.winner));
     // if game over, break;
     // TODO Add cleanup logic for deck
     if(data.gameOver){return;}
@@ -103,14 +110,14 @@ exports.nextRound = function(data){
       // doesn't include Card Czar in players array
       players.forEach(function(player){
         var newCards = cards.splice(0, count);
-        Io.to(player).emit('deal-cards', {cards:newCards});
+        Io.to(player).emit('deal-cards', JSON.stringify({cards:newCards}));
       });
       // Assing a new Card Czar
       Game.nextCzar(data.gameId, function(err, cardCzar){
-        Io.to(roomId).emit('new-czar', {cardCzar:cardCzar});
+        Io.to(roomId).emit('new-czar', JSON.stringify({cardCzar:cardCzar}));
         // Start next Round
         Game.startRound(data.gameId, function(err, round){
-          Io.to(roomId).emit('round-start', {round:round});
+          Io.to(roomId).emit('round-start', JSON.stringify({round:round}));
         });
       });
     });
@@ -122,12 +129,12 @@ exports.tallyVote = function(data){
   var socket = this;
   data = JSON.parse(data);
   Game.logVote(data.gameId, data.player, function(err, gameOver){
-    socket.broadcast.to(roomId).emit('player-voted', {player:data.player});
+    socket.broadcast.to(roomId).emit('player-voted', JSON.stringify({player:data.player}));
     if(gameOver){
       Game.dealHand(data.gameId, function(err, players, cards){
         dealCards(players, cards, function(){
           Game.finalRound(data.gameId, function(err, round){
-            Io.to(roomId).emit('final-round-start', {round:round});
+            Io.to(roomId).emit('final-round-start', JSON.stringify({round:round}));
           });
         });
       });
@@ -143,7 +150,7 @@ exports.disconnect = function(){
 function dealCards(players, cards, cb){
   players.forEach(function(player){
     var hand = cards.splice(0, 10);
-    Io.to(player).emit('deal-hand', {hand:hand});
+    Io.to(player).emit('deal-hand', JSON.stringify({hand:hand}));
   });
   if(cb){cb();}
 }
