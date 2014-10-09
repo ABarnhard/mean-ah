@@ -227,6 +227,19 @@ describe('Game', function(){
     });
   });
 
+  describe('.nextCzar', function(){
+    it('should assign the next player to be the card czar', function(done){
+      var data = {gameId:'200000000000000000000005'};
+      Game.nextCzar(data.gameId, function(err, cardCzar){
+        Game.findById(data.gameId, function(err, g){
+          expect(cardCzar).to.equal('sue');
+          expect(g.cardCzar).to.equal('sue');
+          done();
+        });
+      });
+    });
+  });
+
 });
 
 /*
