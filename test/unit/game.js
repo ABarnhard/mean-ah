@@ -240,6 +240,29 @@ describe('Game', function(){
     });
   });
 
+  describe('.findForUpdate', function(){
+    it('should return the game object with an updated timestamp', function(done){
+      var data = {gameId:'200000000000000000000002'};
+      Game.findForUpdate(data.gameId, function(err, g1){
+        Game.lastUpdate(data.gameId, function(err, timeStamp){
+          expect(timeStamp).to.not.equal(12345);
+          expect(g1.lastUpdate).to.equal(timeStamp);
+          done();
+        });
+      });
+    });
+  });
+
+  describe('.lastUpdate', function(){
+    it('should return the timestamp of the last time the record was accessed by findForUpdate', function(done){
+      var data = {gameId:'200000000000000000000002'};
+      Game.lastUpdate(data.gameId, function(err, timeStamp){
+        expect(timeStamp).to.equal(12345);
+        done();
+      });
+    });
+  });
+
 });
 
 /*
