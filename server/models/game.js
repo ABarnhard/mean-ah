@@ -68,11 +68,7 @@ Game.join = function(data, cb){
 Game.leave = function(data, cb){
   Game.findForUpdate(data.gameId, function(err, game){
     var retObj = {player: data.player};
-    // remove player from list of active players
-    game.players = _.reject(game.players, function(player){return player === data.player;});
-    // remove player from list of end game votes
-    game.endGameVotes = _.reject(game.endGameVotes, function(player){return player === data.player;});
-    if(game.players.length === 1){
+    if(game.players.length - 1 === 1){
       // if there's only 1 player left, game's over and we don't care about anything else
       retObj.gameOver = true;
       retObj.gameData = game.gameData;
@@ -81,10 +77,14 @@ Game.leave = function(data, cb){
       if(game.cardCzar === data.player){
         // if the player is the card czar, switch and assign new czar
         game.newCzar();
-        game.purgeRound(game.CardCzar);
+        game.purgeRound(game.cardCzar);
         retObj.cardCzar = game.cardCzar;
       }
     }
+    // remove player from list of active players
+    game.players = _.reject(game.players, function(player){return player === data.player;});
+    // remove player from list of end game votes
+    game.endGameVotes = _.reject(game.endGameVotes, function(player){return player === data.player;});
     Game.lastUpdate(game._id, function(err, timeStamp){
       if(game.lastUpdate === timeStamp){
         game.save(function(err, count){
