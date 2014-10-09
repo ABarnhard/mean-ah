@@ -19,7 +19,7 @@
         if(!!!res.data.game){
           Game.cleanLocalStorage('Game Has Ended, Choose Another Game').then(Game.errorToLobby);
         }else{
-          Socket.emit('player-connect', {roomId:gameId, player:$scope.alias}, function(err, data){
+          Socket.emit('player-connect', angular.toJson({roomId:gameId, player:$scope.alias}), function(err, data){
             $localForage.getItem('hand').then(function(hand){
               $scope.game = res.data.game;
               $scope.game.answers = [];

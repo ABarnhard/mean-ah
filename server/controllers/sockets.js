@@ -18,6 +18,7 @@ exports.createGame = function(data, cb){
 
 exports.joinGame = function(data, cb){
   var socket = this;
+  data = JSON.parse(data);
   // console.log('I Fired', 'socket.on join-game');
   Game.join(data, function(err, id){
     // console.log('I Fired', 'Game.join CB');
@@ -40,6 +41,7 @@ exports.startGame = function(data, cb){
 };
 
 exports.playerConnect = function(data, cb){
+  data = JSON.parse(data);
   roomId = data.roomId;
   this.join(roomId);
   this.join(data.player);

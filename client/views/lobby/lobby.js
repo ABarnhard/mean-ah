@@ -15,6 +15,7 @@
       var data = {gameId:gameId};
       data.player = $scope.$$prevSibling.alias;
       // console.log(data);
+      data = angular.toJson(data);
       Socket.emit('join-game', data, function(err, gameId){
         // console.log(gameId);
         if(err){
