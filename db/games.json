@@ -138,3 +138,36 @@
   "endGameVotes" : [],
   "isOpen" : false
 }
+{
+  "_id" : {"$oid":"200000000000000000000006"},
+  "roomId" : "200000000000000000000006",
+  "name" : "Game 6",
+  "owner" : "john",
+  "cardCzar" : "john",
+  "players" : [
+      "john",
+      "sue",
+      "bob",
+      "jim"
+  ],
+  "decks" : [
+      "base",
+      "e3",
+      "nsfh"
+  ],
+  "status" : "in-progress",
+  "roundNum" : 1,
+  "round" : {
+    "qcard" : {"_id" : {"$oid":"100000000000000000000012"},"id":12,"cardType":"Q","text":"What's a girl's best friend?","numAnswers":1,"expansion": "base"},
+    "answers" : []
+  },
+  "lastUpdate" : null,
+  "gameData" : {
+    "john" : {"wins":0},
+    "sue" : {"wins":0},
+    "bob" : {"wins":0},
+    "jim" : {"wins":0}
+  },
+  "endGameVotes" : [],
+  "isOpen" : false
+}
