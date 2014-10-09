@@ -1,0 +1,17 @@
+.wrapper(ng-controller='CardsDispCtrl')
+  // Button trigger modal
+  button.btn.btn-primary.btn-lg(ng-click='showModal()')
+    | Launch Card Display Modal
+  //  Modal
+  #card-display.modal.fade(tabindex='-1', role='dialog', aria-labelledby='cardDispLabel', aria-hidden='true')
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal')
+            span(aria-hidden='true') ×
+            span.sr-only Close
+          h4#cardDispLabel.modal-title Answers
+        .modal-body
+          | {{title}}
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close

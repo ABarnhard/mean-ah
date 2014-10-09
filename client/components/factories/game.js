@@ -16,6 +16,7 @@
       // deferred.resolve, deferred.reject
       $localForage.setItem('gameId', null).then(function(){
         $localForage.setItem('hand', null).then(function(){
+          // event updates navbar to remove Rejoin Game Link
           $rootScope.$broadcast('gameOver', null);
           deferred.resolve(msg);
         });

@@ -13,6 +13,7 @@ html(ng-app='mean-ah', lang='en')
     link(href='/views/new-game/new-game.css', rel='stylesheet')
     link(href='/views/games/games.css', rel='stylesheet')
     link(href='/views/card-display/card-display.css', rel='stylesheet')
+    link(href='/views/results/results.css', rel='stylesheet')
     //- Load angular in head to support ng-cloak directive on nav bar
     script(src='/vendor/jquery/dist/jquery.js')
     script(src='/vendor/angular/angular.js')
@@ -23,7 +24,9 @@ html(ng-app='mean-ah', lang='en')
       .row
         .col-xs-12
           #container(ng-view)
+
     include ./views/card-display/card-display.jade
+    include ./views/results/results.jade
 
     script(src='/socket.io/socket.io.js')
     script(src='/vendor/bootstrap/dist/js/bootstrap.js')
@@ -42,6 +45,7 @@ html(ng-app='mean-ah', lang='en')
     script(src='/views/new-game/new-game.js')
     script(src='/views/games/games.js')
     script(src='/views/card-display/card-display.js')
+    script(src='/views/results/results.js')
     script(src='/components/factories/home.js')
     script(src='/components/factories/user.js')
     script(src='/components/factories/socket.js')
