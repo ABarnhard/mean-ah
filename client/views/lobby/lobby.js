@@ -24,6 +24,8 @@
           }
           gameData = angular.fromJson(gameData);
           $localForage.setItem('gameId', gameData.gameId).then(function(){
+            // Emit event to add gameId to nav bar & init rejoin game link
+            Game.register(gameData.gameId);
             $location.path('/game');
           });
         });

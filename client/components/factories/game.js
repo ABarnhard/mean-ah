@@ -16,8 +16,8 @@
       // deferred.resolve, deferred.reject
       $localForage.setItem('gameId', null).then(function(){
         $localForage.setItem('hand', null).then(function(){
-          // event updates navbar to remove Rejoin Game Link
-          $rootScope.$broadcast('gameOver', null);
+          // event updates navbar to remove Game Room Link
+          $rootScope.$broadcast('game-over', null);
           deferred.resolve(msg);
         });
       });
@@ -38,7 +38,11 @@
       $rootScope.$broadcast('display-round', jsonString);
     }
 
-    return {displayRound:displayRound, findAllOpen:findAllOpen, load:load, cleanLocalStorage:cleanLocalStorage, errorToLobby:errorToLobby, goToLobby:goToLobby};
+    function register(gameId){
+      $rootScope.$broadcast('game-joined', gameId);
+    }
+
+    return {register:register, displayRound:displayRound, findAllOpen:findAllOpen, load:load, cleanLocalStorage:cleanLocalStorage, errorToLobby:errorToLobby, goToLobby:goToLobby};
   }]);
 })();
 

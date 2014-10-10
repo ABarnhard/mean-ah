@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('mean-ah')
-  .controller('NewGameCtrl', ['$scope', '$location', '$localForage', 'Socket', function($scope, $location, $localForage, Socket){
+  .controller('NewGameCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
     $scope.game = {};
     $scope.expansions = {base:true};
 
@@ -23,6 +23,7 @@
           // console.log(gameInfo);
           gameInfo = angular.fromJson(gameInfo);
           $localForage.setItem('gameId', gameInfo.gameId).then(function(){
+            Game.register(gameInfo.gameId);
             $location.path('/game');
           });
         });
