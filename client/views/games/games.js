@@ -167,15 +167,11 @@
       console.log('socket:play-made', data.player);
     });
 
-    $scope.$on('socket:winner', function(event, data){
-      data = angular.fromJson(data);
-      var s = '';
-      data.answers.forEach(function(card){
-        s = s + card.text + '\n';
-      });
-      toastr.success(data.player + ' is the winner with: \n' + $scope.game.round.qcard.text + '\n' + s);
+    $scope.$on('socket:winner', function(event, play){
+      play = angular.fromJson(play);
+      Game.displayWinner(angular.toJson({question:$scope.game.round.qcard.text, play:play}));
       $scope.playedAnswers = null;
-      if(data.gameOver){
+      if(play.gameOver){
         Game.cleanLocalStorage('The Game Has Ended').then(Game.goToLobby);
       }
     });

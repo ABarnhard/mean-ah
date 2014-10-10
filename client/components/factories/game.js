@@ -42,7 +42,11 @@
       $rootScope.$broadcast('game-joined', gameId);
     }
 
-    return {register:register, displayRound:displayRound, findAllOpen:findAllOpen, load:load, cleanLocalStorage:cleanLocalStorage, errorToLobby:errorToLobby, goToLobby:goToLobby};
+    function displayWinner(jsonString){
+      $rootScope.$broadcast('display-winner', jsonString);
+    }
+
+    return {displayWinner:displayWinner, register:register, displayRound:displayRound, findAllOpen:findAllOpen, load:load, cleanLocalStorage:cleanLocalStorage, errorToLobby:errorToLobby, goToLobby:goToLobby};
   }]);
 })();
 
