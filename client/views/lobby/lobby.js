@@ -12,21 +12,23 @@
     findGames();
 
     $scope.joinGame = function(gameId){
-      var data = {gameId:gameId};
-      data.player = $scope.$$prevSibling.alias;
-      // console.log(data);
-      data = angular.toJson(data);
-      Socket.emit('join-game', data, function(err, gameData){
-        // console.log(gameId);
-        if(err){
-          toastr.error('Error Joining Game, try again.');
-          return findGames();
-        }
-        gameData = angular.fromJson(gameData);
-        $localForage.setItem('gameId', gameData.gameId).then(function(){
-          $location.path('/game');
+      $localForage.getItem('alias').then(function(alias){
+        var data = {gameId:gameId, player:alias};
+        // console.log(data);
+        data = angular.toJson(data);
+        Socket.emit('join-game', data, function(err, gameData){
+          // console.log(gameId);
+          if(err){
+            toastr.error('Error Joining Game, try again.');
+            return findGames();
+          }
+          gameData = angular.fromJson(gameData);
+          $localForage.setItem('gameId', gameData.gameId).then(function(){
+            // Emit event to add gameId to nav bar & init rejoin game link
+            Game.register(gameData.gameId);
+            $location.path('/game');
+          });
         });
-
       });
     };
 

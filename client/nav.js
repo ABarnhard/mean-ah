@@ -13,13 +13,18 @@
 
     $scope.$on('authenticated', function(event, alias){
       if(alias === 'anonymous'){alias = null;}
-
       $localForage.setItem('alias', alias).then(function(){
         $scope.alias = alias;
       });
     });
 
-    $scope.$on('gameOver', function(event, gameId){
+    $scope.$on('game-over', function(event, gameId){
+      // gameId is null from gameover event emitted from Game.cleanLocalStorage
+      $scope.gameId = gameId;
+    });
+
+    $scope.$on('game-joined', function(event, gameId){
+      // Game id from new-game & lobby controllers emitted by Game.register
       $scope.gameId = gameId;
     });
 

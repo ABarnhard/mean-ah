@@ -1,4 +1,4 @@
-.navbar.navbar-default(role='navigation', ng-controller='NavCtrl')
+.navbar.navbar-default.ng-cloak(role='navigation', ng-controller='NavCtrl', ng-cloak)
   .container
     .navbar-header
       button.navbar-toggle(data-toggle='collapse', data-target='#mean-navbar-collapse')
@@ -15,7 +15,7 @@
         li: a(href='/#/login') Login
       ul.nav.navbar-nav.navbar-right(ng-show='alias')
         li: a(href='/#/') Home
-        li: a(href='/#/lobby') Game Lobby
-        li: a(href='/#/game' ng-show='gameId') Rejoin Game
+        li: a(href='/#/lobby') Lobby
+        li: a(href='/#/game' ng-show='gameId') Game Room
         li: a(href='/#/logout') {{alias}}
 
