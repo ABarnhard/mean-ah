@@ -1,6 +1,7 @@
 ## MEAN Against Humanity
 ### Code Badges
-Badges?!?! We don't need no stinking badges...
+[![Build Status](https://travis-ci.org/ABarnhard/mean-ah.svg)](https://travis-ci.org/ABarnhard/mean-ah)
+[![Coverage Status](https://coveralls.io/repos/ABarnhard/mean-ah/badge.png)](https://coveralls.io/r/ABarnhard/mean-ah)
 
 ### Screenshots
 You wish I'd take pictures of this awesome app.
