@@ -186,7 +186,7 @@
 
     $scope.$on('socket:new-czar', function(event, data){
       data = angular.fromJson(data);
-      toastr.success(data.cardCzar + ' is now the Card Czar.');
+      // toastr.success(data.cardCzar + ' is now the Card Czar.');
       $scope.game.cardCzar = data.cardCzar;
     });
 

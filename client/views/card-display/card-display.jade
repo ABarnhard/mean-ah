@@ -6,11 +6,12 @@
         button.close(type='button', data-dismiss='modal')
           span(aria-hidden='true') ×
           span.sr-only Close
-        h4#cardDispLabel.modal-title {{title}}
+        h4#cardDispLabel.modal-title(ng-show='winner') {{winner}} is the winner with:
+        h4#cardDispLabel.modal-title(ng-hide='winner') The answers are in:
       .modal-body
-        | {{typeAnswer}}
-        span(ng-repeat='res in responses') {{res}}
-        pre {{responses | json}}
-        pre {{winner | json}}
+        span {{response}}
+        //- span(ng-repeat='res in responses') {{res}}
+        //- pre {{responses | json}}
+        //- pre {{winner | json}}
       .modal-footer
         //- button.btn.btn-default(type='button', data-dismiss='modal') Close
