@@ -6,10 +6,19 @@
   "directories": {
     "test": "test"
   },
+  "bin": {
+    "coveralls": "./node_modules/coveralls/bin/coveralls.js"
+  },
   "scripts": {
     "test": "mocha test --recursive -R spec --timeout 5000",
     "watch": "mocha test --recursive -R spec --watch --timeout 5000",
+    "syntax": "./node_modules/grunt-cli/bin/grunt build",
     "coveralls": "mocha test --recursive -r blanket -R mocha-lcov-reporter | coveralls"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "/serverclient/"
+    }
   },
   "repository": {
     "type": "git",
@@ -50,6 +59,10 @@
     "grunt-jscs": "^0.7.1",
     "grunt-shell": "^1.1.1",
     "jshint-stylish": "^1.0.0",
-    "mocha": "~1.21.4"
+    "mocha": "~1.21.4",
+    "blanket": "~1.1.6",
+    "coveralls": "~2.11.2",
+    "mocha-lcov-reporter": "0.0.1",
+    "supertest": "~0.14.0"
   }
 }
