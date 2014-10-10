@@ -8,8 +8,9 @@
           span.sr-only Close
         h4#cardDispLabel.modal-title {{title}}
       .modal-body
-        | {{fullSentence}}
-        pre {{round | json}}
+        | {{typeAnswer}}
+        span(ng-repeat='res in responses') {{res}}
+        pre {{responses | json}}
         pre {{winner | json}}
       .modal-footer
         //- button.btn.btn-default(type='button', data-dismiss='modal') Close
