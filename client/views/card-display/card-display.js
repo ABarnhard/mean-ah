@@ -58,7 +58,7 @@
               return qParts[index] + ' ' + ans;
             }).join('');
           }
-          return fullText.trim().replace('..', '.');
+          return fullText.trim().replace('..', '.').replace('  ', ' ');
       });
       $('#card-display').modal({backdrop:'static'});
     });
@@ -81,7 +81,7 @@
           return qParts[index] + ' ' + ans;
         }).join('');
       }
-      $scope.responses = [fullText.trim().replace('..', '.')];
+      $scope.responses = [fullText.trim().replace('..', '.').replace('  ', ' ')];
       $('#card-display').modal();
     });
 
