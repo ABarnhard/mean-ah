@@ -1,4 +1,4 @@
-.panel
+.panel.ng-cloak(ng-cloak)
   .panel-body
     .row
       .col-xs-12
@@ -9,7 +9,7 @@
     .row
       .col-xs-12
         .players
-          .player(ng-repeat='p in game.players') {{p}}
+          .player(ng-repeat='player in game.players') {{player}}
     .row
       .col-xs-12
         .gameboard
@@ -45,12 +45,10 @@
           .deck A Deck Here
           .awesome-points # Wins
 
-include card-display
-
-.row
-  .col-xs-12
-    pre alias {{alias | json}}
-    pre playedAnswers {{playedAnswers | json}}
-    pre winner {{winner | json}}
-    pre game {{game | json}}
+//-.row
+//-  .col-xs-12
+//-    pre alias {{alias | json}}
+//-    pre playedAnswers {{playedAnswers | json}}
+//-    pre winner {{winner | json}}
+//-    pre game {{game | json}}
 

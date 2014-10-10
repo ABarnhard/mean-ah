@@ -71,14 +71,15 @@ exports.leaveGame = function(data, cb){
   var socket = this;
   data = JSON.parse(data);
   Game.leave(data, function(err, obj){
-    socket.leave(roomId);
+    console.log(obj);
     socket.broadcast.to(roomId).emit('player-left', JSON.stringify({player:obj.player}));
     if(obj.gameOver){
       Io.to(roomId).emit('game-over', JSON.stringify({gameData:obj.gameData}));
     }else if(obj.cardCzar){
       Io.to(roomId).emit('replace-czar', JSON.stringify({cardCzar:obj.cardCzar}));
     }
-    cb(err);
+    socket.leave(roomId);
+    if(cb){cb(err);}
   });
 };
 
@@ -89,7 +90,7 @@ exports.playCards = function(data){
   Game.makePlay(data, function(err, obj){
     socket.broadcast.to(roomId).emit('play-made', JSON.stringify({player:obj.player}));
     if(obj.round){
-      Io.to(obj.cardCzar).emit('answers-submitted', JSON.stringify({round:obj.round}));
+      Io.to(roomId).emit('answers-submitted', JSON.stringify({round:obj.round, cardCzar:obj.cardCzar}));
     }
   });
 };
@@ -128,16 +129,20 @@ exports.nextRound = function(data){
 exports.tallyVote = function(data){
   var socket = this;
   data = JSON.parse(data);
-  Game.logVote(data.gameId, data.player, function(err, gameOver){
-    socket.broadcast.to(roomId).emit('player-voted', JSON.stringify({player:data.player}));
-    if(gameOver){
-      Game.dealHand(data.gameId, function(err, players, cards){
-        dealCards(players, cards, function(){
-          Game.finalRound(data.gameId, function(err, round){
-            Io.to(roomId).emit('final-round-start', JSON.stringify({round:round}));
+  Game.logVote(data.gameId, data.player, function(err, gameState){
+    if(gameState.forceQuit){
+      exports.leaveGame.call(socket, JSON.stringify(data));
+    }else{
+      socket.broadcast.to(roomId).emit('player-voted', JSON.stringify({player:data.player}));
+      if(gameState.gameOver){
+        Game.dealHand(data.gameId, function(err, players, cards){
+          dealCards(players, cards, function(){
+            Game.finalRound(data.gameId, function(err, round){
+              Io.to(roomId).emit('final-round-start', JSON.stringify({round:round}));
+            });
           });
         });
-      });
+      }
     }
   });
 };

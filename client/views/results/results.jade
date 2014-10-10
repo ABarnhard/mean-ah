@@ -1,0 +1,14 @@
+//  Modal
+#results.modal.fade(tabindex='-1', ng-controller='ResultsCtrl', role='dialog', aria-labelledby='resultsLabel', aria-hidden='true')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal')
+          span(aria-hidden='true') ×
+          span.sr-only Close
+        h4#resultsLabel.modal-title {{title}}
+      .modal-body
+        | ...
+      .modal-footer
+        //- button.btn.btn-default(type='button', data-dismiss='modal') Close
+

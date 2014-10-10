@@ -6,7 +6,6 @@
     $scope.user = {};
 
     function success(response){
-      toastr.success('Successful login.');
       $location.path('/lobby');
     }
 
