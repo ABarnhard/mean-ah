@@ -129,8 +129,9 @@
     $scope.$on('socket:game-start', function(event, data){
       // console.log('game started');
       $scope.game.status = 'in-progress';
-      $scope.game.isOpen = 'false';
+      $scope.game.isOpen = false;
       $scope.isWaiting = $scope.game.status === 'open';
+      $scope.$apply();
     });
 
     $scope.$on('socket:deal-hand', function(event, data){
