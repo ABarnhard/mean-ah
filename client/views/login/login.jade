@@ -4,16 +4,17 @@
       .col-xs-3
         h3 Login
         form(role='form', novalidate, name='userForm')
-          .form-group
-            label(for='email') Email
+          input(type='hidden', )
+          .form-group(ng-class="{'has-warning': !userForm.email.$valid}")
+            label.control-label(for='email') Email
             input.form-control#email(type='email', name='email', ng-model='user.email', autofocus, required)
-          .form-group
-            label(for='password') Password
+          .form-group(ng-class="{'has-warning': !userForm.password.$valid}")
+            label.control-label(for='password') Password
             input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
-          button.btn.btn-primary(ng-show='userForm.$valid', ng-click='login()') Login
+          button.btn.btn-primary(ng-click='login()') Login
       .col-xs-1
-      .col-xs-2
+      .col-xs-4
         h3 No Account?
         h4: a(href='/#/register') Click To Register
-      .col-xs-6
+      .col-xs-4
 

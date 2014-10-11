@@ -4,9 +4,13 @@
   angular.module('mean-ah')
   .controller('RegisterCtrl', ['$scope', '$location', 'User', function($scope, $location, User){
     $scope.user = {};
+    $scope.formIsValid = false;
+
+    $scope.$watch('userForm.$valid', function(){
+      $scope.formIsValid = !$scope.formIsValid;
+    });
 
     function success(response){
-      toastr.success('User successfully registered.');
       $location.path('/lobby');
     }
 
@@ -16,8 +20,13 @@
     }
 
     $scope.register = function(){
-      User.register($scope.user).then(success, failure);
+      if(!$scope.formIsValid){
+        toastr.error('All fields are required');
+      }else{
+        User.register($scope.user).then(success, failure);
+      }
     };
+
   }]);
 })();
 

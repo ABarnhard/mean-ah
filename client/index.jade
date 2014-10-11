@@ -20,8 +20,10 @@ html(ng-app='mean-ah', lang='en')
     script(src='/vendor/angular/angular.js')
     script(src='/vendor/angular-route/angular-route.js')
   body
-    include nav
-    .container
+    .container-fluid
+      .row
+        .col-xs-12
+          include nav
       .row
         .col-xs-12
           #container(ng-view)

@@ -6,7 +6,7 @@
 
     function responseError(res){
       if(res.status === 401){
-        toastr.error('Hey there jackwagon, try logging in first');
+        toastr.error('Hey there jackwagon, logging in isn\'t that hard..');
         $location.path('/login');
       }
 

@@ -16,18 +16,63 @@
 @BLACK:   #111111;
 @GRAY:    #AAAAAA;
 @SILVER:  #DDDDDD;
+@WHITE:   #FFFFFF;
 
 body{
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+  background-color: @WHITE;
+}
+
+#container {
+  position: relative;
+  margin-left: 20px;
+}
+
+.container-fluid {
+  position: relative;
+  padding: 0;
+  height: 100%;
+}
+
+.navbar {
+  margin: 0;
+}
+
+.container-fluid > .navbar-header {
+  margin-left: 15px;
   font-weight: bold;
-  background-color: @BLACK;
 }
 
-input.ng-invalid, select.ng-invalid{
-  background-color: @RED;
+.navbar-brand {
+  font-size: 35px;
 }
 
-.navbar-brand, #mean-navbar-collapse {
+ul.navbar-right > li {
+  font-size: 20px;
+}
+
+.panel {
   color: @BLACK;
+  background-color: @WHITE;
+}
+
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
+  color: @BLACK;
+}
+
+.white-wrapper h1, .white-wrapper h2, .white-wrapper h3, .white-wrapper h4, .white-wrapper h5, .white-wrapper h6 {
+  color: @BLACK;
+}
+
+.white-wrapper {
+  position: relative;
+  color: @BLACK;
+  background-color: @WHITE;
+  height: 100%;
+  width: 100%;
+}
+
+#home-wrapper {
+  font-size: 16px;
+  width: 700px;
 }
 
