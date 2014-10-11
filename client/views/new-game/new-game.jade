@@ -7,9 +7,10 @@
     form(role='form', novalidate, name='gameForm')
       .row
         .col-xs-4
-          .form-group
-            label Give It A Name (So your "friends" can find it):
-            input.form-control#alias(type='text', name='gameName', ng-model='game.name', autofocus, required, ng-minlength='3')
+          .form-group(ng-class="{'has-error': !gameForm.gameName.$valid}")
+            label.control-label Give It A Name (So your "friends" can find it):
+            input.form-control(type='text', name='gameName', ng-model='game.name', autofocus, required, ng-minlength='3')
+            p Names have a minimum of 3 characters
         .col-xs-8
       .row
         .col-xs-12
@@ -85,4 +86,4 @@
                 label.checkbox-inline.dont-click
                   input(type='checkbox', ng-model='expansions.cck', name='cck')
                   | Canadian Conversion Kit
-       button.btn.btn-primary(ng-show='gameForm.$valid', ng-click='createGame()') Create
+       button.btn.btn-danger.btn-lg(ng-click='createGame()') Let's kick this pig!

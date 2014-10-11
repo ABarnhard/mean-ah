@@ -1,18 +1,20 @@
-.panel
-  .panel-body
-    .row
-      .col-xs-1
-      .col-xs-3
-        h3 Register
-        form(role='form', novalidate, name='userForm')
-          .form-group(ng-class="{'has-warning': !userForm.alias.$valid}")
-            label.control-label Alias
-            input.form-control#alias(type='text', name='alias', ng-model='user.alias', autofocus, required, ng-minlength='3')
-          .form-group(ng-class="{'has-warning': !userForm.email.$valid}")
-            label.control-label Email
-            input.form-control#email(type='email', name='email', ng-model='user.email', required)
-          .form-group(ng-class="{'has-warning': !userForm.password.$valid}")
-            label.control-label Password
-            input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
-          button.btn.btn-primary(ng-click='register()') Register
-      .col-xs-8
+.white-wrapper
+  .row
+    .col-xs-1
+    .col-xs-3
+      h3 Register
+      form(role='form', novalidate, name='userForm')
+        .form-group(ng-class="{'has-error': !userForm.alias.$valid}")
+          label.control-label Alias
+          input.form-control#alias(type='text', name='alias', ng-model='user.alias', autofocus, required, ng-minlength='3')
+          p.help-block Minimum of 3 characters
+        .form-group(ng-class="{'has-error': !userForm.email.$valid}")
+          label.control-label Email
+          input.form-control#email(type='email', name='email', ng-model='user.email', required)
+          p.help-block Enter a valid email
+        .form-group(ng-class="{'has-error': !userForm.password.$valid}")
+          label.control-label Password
+          input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
+          p.help-block Minimum of 3 characters
+        button.btn.btn-default.btn-lg.btn-overide(ng-click='register()') Register
+    .col-xs-8

@@ -2,32 +2,26 @@
   'use strict';
 
   angular.module('mean-ah')
-  .controller('NewGameCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
+  .controller('NewGameCtrl', ['$scope', 'Socket', 'Game', function($scope, Socket, Game){
     $scope.game = {};
     $scope.expansions = {base:true};
+    $scope.formIsValid = false;
+
+    $scope.$watch('gameForm.$valid', function(oldVal, newVal){
+      $scope.formIsValid = !$scope.formIsValid;
+    });
+
 
     $scope.createGame = function(){
-      var expansions = [];
-      Object.keys($scope.expansions).forEach(function(key){
-        // console.log(key);
-        if($scope.expansions[key]){
-          expansions.push(key);
-        }
-      });
-      $scope.game.decks = expansions;
-      $localForage.getItem('alias').then(function(alias){
-        $scope.game.player = alias;
-        // console.log($scope.game);
-        var data = angular.toJson($scope.game);
-        Socket.emit('create-game', data, function(err, gameInfo){
-          // console.log(gameInfo);
-          gameInfo = angular.fromJson(gameInfo);
-          $localForage.setItem('gameId', gameInfo.gameId).then(function(){
-            Game.register(gameInfo.gameId);
-            $location.path('/game');
+      if(!$scope.formIsValid){
+        toastr.error('Games have names, get your shit together...');
+      }else{
+        Game.create($scope).then(function(jsonGame){
+          Socket.emit('create-game', jsonGame, function(err, gameInfo){
+            Game.registerAndJoin(gameInfo);
           });
         });
-      });
+      }
     };
 
   }]);
