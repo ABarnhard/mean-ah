@@ -17,8 +17,8 @@
         toastr.error('Games have names, get your shit together...');
       }else{
         Game.create($scope).then(function(jsonGame){
-          Socket.emit('create-game', jsonGame, function(err, gameInfo){
-            Game.registerAndJoin(gameInfo);
+          Socket.emit('create-game', jsonGame, function(err, jsonGameInfo){
+            Game.registerAndJoin(jsonGameInfo);
           });
         });
       }
