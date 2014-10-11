@@ -5,10 +5,10 @@
         h3 Login
         form(role='form', novalidate, name='userForm')
           input(type='hidden', )
-          .form-group(ng-class="{'has-warning': !userForm.email.$valid}")
+          .form-group(ng-class="{'has-error': !userForm.email.$valid}")
             label.control-label(for='email') Email
             input.form-control#email(type='email', name='email', ng-model='user.email', autofocus, required)
-          .form-group(ng-class="{'has-warning': !userForm.password.$valid}")
+          .form-group(ng-class="{'has-error': !userForm.password.$valid}")
             label.control-label(for='password') Password
             input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
           button.btn.btn-primary(ng-click='login()') Login

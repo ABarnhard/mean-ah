@@ -1,30 +1,55 @@
 // http://clrs.cc/
 
-@NAVY:    #001F3F;
-@BLUE:    #0074D9;
-@AQUA:    #7FDBFF;
-@TEAL:    #39CCCC;
-@OLIVE:   #3D9970;
-@GREEN:   #2ECC40;
-@LIME:    #01FF70;
-@YELLOW:  #FFDC00;
-@ORANGE:  #FF851B;
-@RED:     #FF4136;
-@MAROON:  #85144B;
-@FUCHSIA: #F012BE;
-@PURPLE:  #B10DC9;
-@BLACK:   #111111;
-@GRAY:    #AAAAAA;
-@SILVER:  #DDDDDD;
-@WHITE:   #FFFFFF;
+@NAVY:       #001F3F;
+@BLUE:       #0074D9;
+@AQUA:       #7FDBFF;
+@TEAL:       #39CCCC;
+@OLIVE:      #3D9970;
+@GREEN:      #2ECC40;
+@LIME:       #01FF70;
+@YELLOW:     #FFDC00;
+@ORANGE:     #FF851B;
+@RED:        #FF4136;
+@MAROON:     #85144B;
+@FUCHSIA:    #F012BE;
+@PURPLE:     #B10DC9;
+@BLACK:      #111111;
+@GRAY:       #AAAAAA;
+@LIGHT_GRAY: #F5F5F5;
+@SILVER:     #DDDDDD;
+@WHITE:      #FFFFFF;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
 
 body{
   background-color: @WHITE;
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.footer-container {
+  width: auto;
+  padding: 0 15px;
+}
+
+.footer-container .text-muted {
+  margin: 20px 0;
 }
 
 #container {
   position: relative;
-  margin-left: 20px;
+  margin: 15px 15px 0 15px;
 }
 
 .container-fluid {
@@ -52,7 +77,7 @@ ul.navbar-right > li {
 
 .panel {
   color: @BLACK;
-  background-color: @WHITE;
+  background-color: @LIGHT_GRAY;
 }
 
 .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
