@@ -1,27 +1,4 @@
-// http://clrs.cc/
-
-@NAVY:    #001F3F;
-@BLUE:    #0074D9;
-@AQUA:    #7FDBFF;
-@TEAL:    #39CCCC;
-@OLIVE:   #3D9970;
-@GREEN:   #2ECC40;
-@LIME:    #01FF70;
-@YELLOW:  #FFDC00;
-@ORANGE:  #FF851B;
-@RED:     #FF4136;
-@MAROON:  #85144B;
-@FUCHSIA: #F012BE;
-@PURPLE:  #B10DC9;
-@BLACK:   #111111;
-@GRAY:    #AAAAAA;
-@SILVER:  #DDDDDD;
-
-.card {
-  display: inline-block;
-  margin: 5px;
-  border: 1px solid black;
-}
+@import '../../variables.less';
 
 .deck {
   display: inline-block;
@@ -61,3 +38,58 @@
   height: 250px;
   text-align: center;
 }
+
+.card {
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.card {
+  word-wrap: break-word;
+
+  width: 144px;
+  height: 211px;
+  float: left;
+
+  padding: 10px;
+  margin: 5px;
+
+  font-size: 11pt;
+  font-weight: 800;
+
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #777;
+  -webkit-box-shadow: 0 0 8px #D0D0D0;
+}
+
+.card:hover {
+  position: relative;
+  top: -5px;
+}
+
+.black_card {
+  background-color: black;
+  background: #282828;
+  background: -moz-linear-gradient(top, #282828 0%, black 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#282828), color-stop(100%,black));
+  background: -webkit-linear-gradient(top, #282828 0%,black 100%);
+  background: -o-linear-gradient(top, #282828 0%,black 100%);
+  background: -ms-linear-gradient(top, #282828 0%,black 100%);
+  color: white;
+}
+
+.white_card {
+  background-color:white;
+  background: white;
+  background: -moz-linear-gradient(top, white 0%, #A0A0A0 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,white), color-stop(100%,#A0A0A0));
+  background: -webkit-linear-gradient(top, white 0%,#A0A0A0 100%);
+  background: -o-linear-gradient(top, white 0%,#A0A0A0 100%);
+  background: -ms-linear-gradient(top, white 0%,#A0A0A0 100%);
+  color: black;
+}
+

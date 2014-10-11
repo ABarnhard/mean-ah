@@ -38,15 +38,38 @@
       $rootScope.$broadcast('display-round', jsonString);
     }
 
-    function register(gameId){
-      $rootScope.$broadcast('game-joined', gameId);
-    }
-
     function displayWinner(jsonString){
       $rootScope.$broadcast('display-winner', jsonString);
     }
 
-    return {displayWinner:displayWinner, register:register, displayRound:displayRound, findAllOpen:findAllOpen, load:load, cleanLocalStorage:cleanLocalStorage, errorToLobby:errorToLobby, goToLobby:goToLobby};
+    function create(scope){
+      var expansions = [],
+          deferred = $q.defer();
+      $localForage.getItem('alias').then(function(alias){
+        scope.game.player = alias;
+        Object.keys(scope.expansions).forEach(function(key){
+          // console.log(key);
+          if(scope.expansions[key]){
+            expansions.push(key);
+          }
+        });
+        scope.game.decks = expansions;
+        // console.log($scope.game);
+        deferred.resolve(angular.toJson(scope.game));
+      });
+      return deferred.promise;
+    }
+
+    function registerAndJoin(gameInfo){
+      // console.log(gameInfo);
+      gameInfo = angular.fromJson(gameInfo);
+      $localForage.setItem('gameId', gameInfo.gameId).then(function(){
+        $rootScope.$broadcast('game-joined', gameInfo.gameId);
+        $location.path('/game');
+      });
+    }
+
+    return {registerAndJoin:registerAndJoin, create:create, displayWinner:displayWinner, displayRound:displayRound, findAllOpen:findAllOpen, load:load, cleanLocalStorage:cleanLocalStorage, errorToLobby:errorToLobby, goToLobby:goToLobby};
   }]);
 })();
 

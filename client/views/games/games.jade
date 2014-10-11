@@ -1,49 +1,48 @@
-.panel.ng-cloak(ng-cloak)
-  .panel-body
-    .row
-      .col-xs-12
-        h3 Game: {{game.name}}
-        button.btn.btn-primary(type='button', ng-show='game.isOwner && game.status === \'open\'', ng-click='startGame(game._id)') Start Game
-        button.btn.btn-primary(type='button', ng-click='leaveGame(game._id)') Leave Game
-        button.btn.btn-primary(type='button', ng-click='voteGameEnd(game._id)') Vote To End Game
-    .row
-      .col-xs-12
-        .players
-          .player(ng-repeat='player in game.players') {{player}}
-    .row
-      .col-xs-12
-        .gameboard
-          .row
-            .col-xs-12
-              .qcard(ng-show='game.round.qcard') {{game.round.qcard.text}}
-          .row#czar-wrapper(ng-show='game.cardCzar === alias && game.hand.length')
-            .col-xs-12
-              .row(ng-hide='playedAnswers')
-                .col-xs-12
-                  p WAITING ON PLAYERS TO ANSWER
-              .row(ng-show='playedAnswers')
-                .col-xs-12
-                  .row(ng-repeat='play in playedAnswers.answers', ng-click='pickWinner(play)')
-                    .card(ng-repeat='card in play.answers') {{card.text}}
-                  .row
-                    .col-xs-12
-                      button.btn.btn-danger(type='button', ng-show='winner', ng-click='submitWinner()') Pick Winner
-          .row#hand-wrapper(ng-hide='game.cardCzar === alias')
-            .col-xs-12
-              .row
-                .col-xs-12
-                  .hand
-                    .card(ng-repeat='card in game.hand', ng-click='selectAnswer(card)') {{card.text}}
-              .row
-                .col-xs-12
-                  .play-hand
-                    button.btn.btn-danger(type='button', ng-show='!game.play && game.answers.length === game.round.qcard.numAnswers', ng-click='playAnswers()') Play Card(s)
-    .row
-      .col-xs-12
-        .gameinfo
-          .deck Q Deck Here
-          .deck A Deck Here
-          .awesome-points # Wins
+.white-wrapper(ng-cloak)
+  .row
+    .col-xs-12
+      h3 Game: {{game.name}}
+      button.btn.btn-default.btn-overide(type='button', ng-show='game.isOwner && game.isOpen', ng-click='startGame(game._id)') Start Game
+      button.btn.btn-default.btn-overide(type='button', ng-click='leaveGame(game._id)') Leave Game
+      button.btn.btn-default.btn-overide(type='button', ng-click='voteGameEnd(game._id)') Vote To End Game
+  .row
+    .col-xs-12
+      .players
+        .player(ng-repeat='player in game.players') {{player}}
+  .row(ng-cloak)
+    .col-xs-12
+      .gameboard(ng-cloak, ng-show='!game.isOpen')
+        .row
+          .col-xs-12
+            .qcard(ng-show='game.round.qcard') {{game.round.qcard.text}}
+        .row#czar-wrapper(ng-cloak, ng-show='game.cardCzar === alias')
+          .col-xs-12
+            .row(ng-hide='playedAnswers')
+              .col-xs-12
+                p WAITING ON PLAYERS TO ANSWER
+            .row(ng-show='playedAnswers')
+              .col-xs-12
+                .row(ng-repeat='play in playedAnswers.answers', ng-click='pickWinner(play)')
+                  .card(ng-repeat='card in play.answers') {{card.text}}
+                .row
+                  .col-xs-12
+                    button.btn.btn-danger(type='button', ng-show='winner', ng-click='submitWinner()') Pick Winner
+        .row#hand-wrapper(ng-cloak, ng-hide='game.cardCzar === alias')
+          .col-xs-12
+            .row
+              .col-xs-12
+                .hand
+                  .card(ng-repeat='card in game.hand', ng-click='selectAnswer(card)') {{card.text}}
+            .row(ng-cloak)
+              .col-xs-12
+                .play-hand
+                  button.btn.btn-danger(type='button', ng-show='game.answers.length === game.round.qcard.numAnswers && !game.play', ng-click='playAnswers()') Play Card(s)
+  .row
+    .col-xs-12
+      .gameinfo
+        .deck Q Deck Here
+        .deck A Deck Here
+        .awesome-points # Wins
 
 //-.row
 //-  .col-xs-12

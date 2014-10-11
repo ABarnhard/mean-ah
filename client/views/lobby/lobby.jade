@@ -1,33 +1,28 @@
-.panel(ng-hide='inGame')
-  .panel-body
-    .row
-      .col-xs-12
-        h3 Welcome To The Lobby
-        span Click Join or &nbsp;
-        a.btn.btn-danger(href='/#/newgame') Start New Game
-    .row
-      .col-xs-12
-        table.table
-          thead
-            tr
-              th Game Name
-              th Owner
-              th Decks
-              th Number of Players
-              th
-          tbody
-            tr(ng-repeat='game in games')
-              td {{game.name}}
-              td {{game.owner}}
-              td {{game.decks.join(', ')}}
-              td {{game.players.length}}
-              td: button.btn.btn-success(type='button', ng-click='joinGame(game._id)') Join
+.white-wrapper(ng-hide='inGame')
+  .row
+    .col-xs-12
+      p.big-text: a.btn.btn-default.btn-lg.btn-overide(href='/#/newgame') New Game
+  .row
+    .col-xs-12
+      table.table.games-table.table-bordered.games-table-striped
+        thead
+          tr
+            th Game Name
+            th Owner
+            th Decks
+            th Number of Players
+            th
+        tbody
+          tr(ng-repeat='game in games')
+            td {{game.name}}
+            td {{game.owner}}
+            td {{game.decks.join(', ')}}
+            td {{game.players.length}}
+            td: button.btn.btn-default.btn-overide(type='button', ng-click='joinGame(game._id)') Join
 
-.panel(ng-show='inGame')
-  .panel-body
-    .row
-      .col-xs-12
-        h3 Welcom To The Lobby
-        span You Can Only Play 1 Game At a Time: &nbsp;
-        a.btn.btn-danger(href='/#/game') Return To Game
+.white-wrapper(ng-show='inGame')
+  .row
+    .col-xs-12
+      h3 You Can Only Play 1 Game At a Time: &nbsp;
+        a.btn.btn-default.btn-overide(href='/#/game') Return To Game
 

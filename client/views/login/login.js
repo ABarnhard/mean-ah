@@ -4,19 +4,28 @@
   angular.module('mean-ah')
   .controller('LoginCtrl', ['$scope', '$location', 'User', function($scope, $location, User){
     $scope.user = {};
+    $scope.formIsValid = false;
+
+    $scope.$watch('userForm.$valid', function(){
+      $scope.formIsValid = !$scope.formIsValid;
+    });
 
     function success(response){
       $location.path('/lobby');
     }
 
     function failure(response){
-      toastr.error('Error during login, try again.');
       $scope.user = {};
     }
 
     $scope.login = function(){
-      User.login($scope.user).then(success, failure);
+      if(!$scope.formIsValid){
+        toastr.error('Enter your username & password to login');
+      }else{
+        User.login($scope.user).then(success, failure);
+      }
     };
+
   }]);
 })();
 

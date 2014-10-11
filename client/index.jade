@@ -5,11 +5,13 @@ html(ng-app='mean-ah', lang='en')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     title MEAN Against Humanity
-    link(href='/assets/custom-bs-css/bootstrap.min.css', rel='stylesheet')
-    //-link(href='/vendor/bootstrap/dist/css/bootstrap.css', rel='stylesheet')
+    //- Custom bs css files is saved in the following dir, must copy it into dir bower creates
+    //- link(href='/assets/custom-bs-css/bootstrap.min.css', rel='stylesheet')
+    link(href='/vendor/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
     link(href='/vendor/fontawesome/css/font-awesome.css', rel='stylesheet')
     link(href='/vendor/toastr/toastr.css', rel='stylesheet')
     link(href='/index.css', rel='stylesheet')
+    link(href='/views/home/home.css', rel='stylesheet')
     link(href='/views/lobby/lobby.css', rel='stylesheet')
     link(href='/views/new-game/new-game.css', rel='stylesheet')
     link(href='/views/games/games.css', rel='stylesheet')
@@ -20,11 +22,16 @@ html(ng-app='mean-ah', lang='en')
     script(src='/vendor/angular/angular.js')
     script(src='/vendor/angular-route/angular-route.js')
   body
-    include nav
-    .container
+    .container-fluid
+      .row
+        .col-xs-12
+          include ./views/nav/nav.jade
       .row
         .col-xs-12
           #container(ng-view)
+    .footer
+      .footer-container
+        p.text-muted Cards Against Humanity is distributed under a Creative Commons BY-NC-SA 2.0 license. “Cards Against Humanity” and the CAH logos are trademarks of Cards Against Humanity LLC.
 
     include ./views/card-display/card-display.jade
     include ./views/results/results.jade
@@ -37,7 +44,7 @@ html(ng-app='mean-ah', lang='en')
     script(src='/vendor/angular-localforage/dist/angular-localForage.js')
     script(src='/config/toastr.js')
     script(src='/index.js')
-    script(src='/nav.js')
+    script(src='/views/nav/nav.js')
     script(src='/views/home/home.js')
     script(src='/views/register/register.js')
     script(src='/views/login/login.js')
@@ -47,7 +54,6 @@ html(ng-app='mean-ah', lang='en')
     script(src='/views/games/games.js')
     script(src='/views/card-display/card-display.js')
     script(src='/views/results/results.js')
-    script(src='/components/factories/home.js')
     script(src='/components/factories/user.js')
     script(src='/components/factories/socket.js')
     script(src='/components/factories/http-interceptor.js')
