@@ -21,24 +21,25 @@
           .col-xs-12
             .row(ng-hide='playedAnswers')
               .col-xs-12
-                p WAITING ON PLAYERS TO ANSWER
+                p.big-text WAITING ON PLAYERS TO ANSWER
             .row(ng-show='playedAnswers')
               .col-xs-12
-                .row(ng-repeat='play in playedAnswers.answers', ng-click='pickWinner(play)')
-                  div(ab-acard, atext='{{card.text}}', ng-repeat='card in play.answers') {{card.text}}
                 .row
                   .col-xs-12
-                    button.btn.btn-danger(type='button', ng-show='winner', ng-click='submitWinner()') Pick Winner
+                    button.btn.btn-default.btn-overide(type='button', ng-show='winner', ng-click='submitWinner()') Pick Winner
+                .row(ng-repeat='play in playedAnswers.answers', ng-click='pickWinner(play)')
+                  .col-xs-12
+                    div(ab-acard, atext='{{card.text}}', ng-repeat='card in play.answers') {{card.text}}
         .row#hand-wrapper(ng-hide='game.cardCzar === alias')
           .col-xs-12
             .row
               .col-xs-12
-                .hand
-                  div(ab-acard, data-id='{{card._id}}', atext='{{card.text}}', ng-repeat='card in game.hand', ng-click='selectAnswer(card)')
+                .play-hand
+                  button.btn.btn-default.btn-overide(type='button', ng-show='game.answers.length === game.round.qcard.numAnswers && !game.play', ng-click='playAnswers()') Play Card(s)
             .row
               .col-xs-12
-                .play-hand
-                  button.btn.btn-danger(type='button', ng-show='game.answers.length === game.round.qcard.numAnswers && !game.play', ng-click='playAnswers()') Play Card(s)
+                .hand
+                  div(ab-acard, data-id='{{card._id}}', atext='{{card.text}}', ng-repeat='card in game.hand', ng-click='selectAnswer(card)')
 
 //-.row
 //-  .col-xs-12
