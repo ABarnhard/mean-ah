@@ -7,6 +7,12 @@
       h3 Game: {{game.name}}
   .row
     .col-xs-12
+      .gameinfo
+        .deck Q Deck Here
+        .deck A Deck Here
+        .awesome-points # Wins
+  .row
+    .col-xs-12
       .players
         div(ab-player, ng-repeat='player in game.players', player='{{player}}', playedRound='')
   .row
@@ -37,12 +43,6 @@
               .col-xs-12
                 .play-hand
                   button.btn.btn-danger(type='button', ng-show='game.answers.length === game.round.qcard.numAnswers && !game.play', ng-click='playAnswers()') Play Card(s)
-  .row
-    .col-xs-12
-      .gameinfo
-        .deck Q Deck Here
-        .deck A Deck Here
-        .awesome-points # Wins
 
 //-.row
 //-  .col-xs-12
