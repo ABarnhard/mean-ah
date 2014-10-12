@@ -5,7 +5,6 @@
 
 ### Screenshots
 ![Image1](https://raw.githubusercontent.com/abarnhard/mean-ah/master/docs/screenshots/sc1.png)
-![Image1](https://raw.githubusercontent.com/abarnhard/mean-ah/master/docs/screenshots/sc2.png)
 
 ### Description
 An online version of the popular [Cards Against Humanity](http://cardsagainsthumanity.com/) game built on the MEAN stack.
