@@ -81,36 +81,29 @@
     $scope.selectAnswer = function(card){
       // If you've already played this round, do nothing
       if($scope.game.play){return;}
-      // If this card is already in answers, do nothing
-      if(_.findWhere($scope.game.answers, {id:card.id})){return;}
+      // If this card is already in answers, remove it and clear the badge;
+      if(_.findWhere($scope.game.answers, {id:card.id})){
+        $scope.game.answers = $scope.game.answers.filter(function(c){return c.id !== card.id;});
+        angular.element('div[data-id='+card._id+']').children('.card-badge').remove();
+        angular.element('div[data-id='+card._id+']').css(css.base);
+      }
 
-      // TODO Add classes so user can see which card is selected & 1st/2nd for multi-card answers
-      // TODO All this logic should be moved into directive once I figure out the data binding
       if($scope.game.answers.length < $scope.game.round.qcard.numAnswers){
-        // console.log(card);
-        var $card = angular.element('div[data-id='+card._id+']'),
-            num   = $scope.game.answers.length + 1,
+        $scope.game.answers.push(card);
+      }else{
+        var oldCard = $scope.game.answers.shift();
+        angular.element('div[data-id='+oldCard._id+']').css(css.base);
+        $scope.game.answers.push(card);
+      }
+      // set css and badges based on cards position in answer array
+      angular.element('.card-badge').remove();
+      $scope.game.answers.forEach(function(c, i){
+        var $card = angular.element('div[data-id='+c._id+']'),
+            num   = i + 1,
             $badge = angular.element('<span></span>').addClass('badge card-badge').text(num);
         $card.css(css.sel);
         $card.append($badge);
-        $scope.game.answers.push(card);
-      }else{
-        // clear all badges
-        angular.element('.card-badge').remove();
-        // reset old selections css
-        var oldCard = $scope.game.answers.shift();
-        angular.element('div[data-id='+oldCard._id+']').css(css.base);
-        // add new card to array
-        $scope.game.answers.push(card);
-        // set css and badges based on cards position in answer array
-        $scope.game.answers.forEach(function(c, i){
-          var $card = angular.element('div[data-id='+c._id+']'),
-              num   = i + 1,
-              $badge = angular.element('<span></span>').addClass('badge card-badge').text(num);
-          $card.css(css.sel);
-          $card.append($badge);
-        });
-      }
+      });
     };
 
     $scope.playAnswers = function(){
