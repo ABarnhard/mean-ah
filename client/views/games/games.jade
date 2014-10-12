@@ -2,10 +2,6 @@
   .row
     .col-xs-12
       button.btn.btn-default.btn-overide(type='button', ng-show='game.isOwner && game.isOpen', ng-click='startGame(game._id)') Start Game
-      | &nbsp;
-      button.btn.btn-default.btn-overide(type='button', ng-click='leaveGame(game._id)') Leave Game
-      | &nbsp;
-      button.btn.btn-default.btn-overide(type='button', ng-click='voteGameEnd(game._id)') Vote To End Game
       h3 Game: {{game.name}}
   .row
     .col-xs-12

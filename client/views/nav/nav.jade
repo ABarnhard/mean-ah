@@ -14,7 +14,14 @@
         li: a(href='/#/register') Register
       ul.nav.navbar-nav.navbar-right(ng-show='alias')
         li: a(href='/#/lobby') Find Games
-        li: a(href='/#/game' ng-show='gameId') Current Game
+        li.dropdown(ng-show='gameId')
+          a.dropdown-toggle(href='', data-toggle='dropdown')
+            | Current Game
+            span.caret
+          ul.dropdown-menu(role='menu')
+            li: a(href='/#/game') Game Room
+            li: a(href='', ng-click='voteGameEnd()') Vote To End Game
+            li: a(href='', ng-click='leaveGame()') Quit Game
         li.dropdown
           a.dropdown-toggle(href='', data-toggle='dropdown')
             | {{alias}}

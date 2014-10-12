@@ -61,13 +61,6 @@
       });
     };
 
-    $scope.leaveGame = function(id){
-      // console.log('leaveGame Fired');
-      Socket.emit('leave-game', angular.toJson({gameId:id, player:$scope.alias}), function(err, data){
-        Game.cleanLocalStorage('You have quit the game').then(Game.goToLobby);
-      });
-    };
-
     // define the 3 css options for cards selection
     var css  = {};
     css.base = {};
@@ -131,13 +124,6 @@
       data = angular.toJson(data);
       Socket.emit('winner-selected', data);
       $scope.winner = null;
-    };
-
-    $scope.voteGameEnd = function(id){
-      var data = {gameId:id, player:$scope.alias};
-      data = angular.toJson(data);
-      Socket.emit('vote-to-end', data);
-      $scope.voted = true;
     };
 
     // register Angular event handlers
