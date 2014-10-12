@@ -171,6 +171,11 @@
       data = angular.fromJson(data);
       $scope.game.round = data.round;
       $scope.game.play = null;
+      $scope.game.players.forEach(function(player){
+        var $p = angular.element('div[player='+player+']').children('.face');
+        $p.removeClass('fa-smile-o');
+        $p.addClass('fa-meh-o');
+      });
     });
 
     $scope.$on('socket:final-round-start', function(event, data){
@@ -192,6 +197,9 @@
     $scope.$on('socket:play-made', function(event, data){
       data = angular.fromJson(data);
       console.log('socket:play-made', data.player);
+      var $p = angular.element('div[player='+data.player+']').children('.face');
+      $p.removeClass('fa-meh-o');
+      $p.addClass('fa-smile-o');
     });
 
     $scope.$on('socket:winner', function(event, play){
