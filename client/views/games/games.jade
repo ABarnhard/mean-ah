@@ -2,7 +2,9 @@
   .row
     .col-xs-12
       button.btn.btn-default.btn-overide(type='button', ng-show='game.isOwner && game.isOpen', ng-click='startGame(game._id)') Start Game
+      | &nbsp;
       button.btn.btn-default.btn-overide(type='button', ng-click='leaveGame(game._id)') Leave Game
+      | &nbsp;
       button.btn.btn-default.btn-overide(type='button', ng-click='voteGameEnd(game._id)') Vote To End Game
       h3 Game: {{game.name}}
   .row
@@ -38,7 +40,7 @@
             .row
               .col-xs-12
                 .hand
-                  .card(ng-repeat='card in game.hand', ng-click='selectAnswer(card)') {{card.text}}
+                  div(ab-acard, atext='{{card.text}}', playNum='0', ng-repeat='card in game.hand', ng-click='selectAnswer(card)') {{card.text}}
             .row
               .col-xs-12
                 .play-hand
