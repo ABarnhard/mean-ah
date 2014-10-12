@@ -5,7 +5,7 @@
   .controller('GamesCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
 
     // Register game events to be forwarded from Socket.IO to Angulars event system
-    var events = [
+    var socketEvents = [
       'player-joined',
       'game-start',
       'deal-hand',
@@ -21,7 +21,7 @@
       'player-voted',
       'final-round-start'
     ];
-    Socket.forward(events, $scope);
+    Socket.forward(socketEvents, $scope);
 
     $localForage.getItem('alias').then(function(alias){
       // Get logged in player
@@ -68,6 +68,29 @@
       });
     };
 
+    // define the 3 css options for cards selection
+    var css  = {};
+    css.base = {};
+    css.sel1 = {};
+    css.sel2 = {};
+    css.sel3 = {};
+    css.sel4 = {};
+
+    css.base['border-color'] = '#777';
+    css.base['border-width'] = '1px';
+
+    css.sel1['border-color'] = '#2a9fd6';
+    css.sel1['border-width'] = '4px';
+
+    css.sel2['border-color'] = '#809a00';
+    css.sel2['border-width'] = '4px';
+
+    css.sel3['border-color'] = '#f05800';
+    css.sel3['border-width'] = '4px';
+
+    css.sel4['border-color'] = '#6e2caf';
+    css.sel4['border-width'] = '4px';
+
     $scope.selectAnswer = function(card){
       // If you've already played this round, do nothing
       if($scope.game.play){return;}
@@ -78,11 +101,15 @@
       // TODO All this logic should be moved into directive once I figure out the data binding
       if($scope.game.answers.length < $scope.game.round.qcard.numAnswers){
         // console.log(card);
-        // angular.element('div[data-id='+card._id+']').attr('play', ($scope.game.answers.length + 1));
+        angular.element('div[data-id='+card._id+']').css(css['sel' + ($scope.game.answers.length + 1)]);
         $scope.game.answers.push(card);
       }else{
-        $scope.game.answers.shift();
+        var oldCard = $scope.game.answers.shift();
+        angular.element('div[data-id='+oldCard._id+']').css(css.base);
         $scope.game.answers.push(card);
+        $scope.game.answers.forEach(function(c, i){
+          angular.element('div[data-id='+c._id+']').css(css['sel' + (i + 1)]);
+        });
       }
     };
 
