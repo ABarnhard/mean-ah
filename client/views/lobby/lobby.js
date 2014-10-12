@@ -7,27 +7,18 @@
     $localForage.getItem('gameId').then(function(gameId){
       // Need better method. Should look up game and kick out if already in one
       $scope.inGame = !!gameId;
+      if(!$scope.inGame){findGames();}
     });
-
-    findGames();
 
     $scope.joinGame = function(gameId){
       $localForage.getItem('alias').then(function(alias){
         var data = {gameId:gameId, player:alias};
-        // console.log(data);
-        data = angular.toJson(data);
-        Socket.emit('join-game', data, function(err, gameData){
-          // console.log(gameId);
+        Socket.emit('join-game', angular.toJson(data), function(err, jsonGameData){
           if(err){
             toastr.error('Error Joining Game, try again.');
             return findGames();
           }
-          gameData = angular.fromJson(gameData);
-          $localForage.setItem('gameId', gameData.gameId).then(function(){
-            // Emit event to add gameId to nav bar & init rejoin game link
-            Game.register(gameData.gameId);
-            $location.path('/game');
-          });
+          Game.registerAndJoin(jsonGameData);
         });
       });
     };
