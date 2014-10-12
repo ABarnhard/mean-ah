@@ -39,7 +39,9 @@
             .row
               .col-xs-12
                 .hand
-                  div(ab-acard, data-id='{{card._id}}', atext='{{card.text}}', ng-repeat='card in game.hand', ng-click='selectAnswer(card)')
+                  div(ab-acard, data-id='{{card._id}}', atext='{{card.text}}', ng-repeat='card in game.hand | limitTo : 5', ng-click='selectAnswer(card)')
+                .hand
+                  div(ab-acard, data-id='{{card._id}}', atext='{{card.text}}', ng-repeat='card in game.hand | limitTo : -5', ng-click='selectAnswer(card)')
 
 //-.row
 //-  .col-xs-12
