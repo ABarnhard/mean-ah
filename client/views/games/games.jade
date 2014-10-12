@@ -14,7 +14,7 @@
       .gameboard(ng-show='!game.isOpen')
         .row
           .col-xs-12
-            .qcard(ng-show='game.round.qcard') {{game.round.qcard.text}}
+            div(ab-qcard, qtext='{{game.round.qcard.text}}', ng-show='game.round.qcard')
         .row#czar-wrapper(ng-cloak, ng-show='game.cardCzar === alias')
           .col-xs-12
             .row(ng-hide='playedAnswers')
