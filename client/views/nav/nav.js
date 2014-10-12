@@ -3,12 +3,12 @@
 
   angular.module('mean-ah')
   .controller('NavCtrl', ['$scope', '$localForage', 'Socket', 'Game', function($scope, $localForage, Socket, Game){
+
     $localForage.getItem('alias').then(function(alias){
       $scope.alias = alias;
-    });
-
-    $localForage.getItem('gameId').then(function(gameId){
-      $scope.gameId = gameId;
+      $localForage.getItem('gameId').then(function(gameId){
+        $scope.gameId = gameId;
+      });
     });
 
     $scope.leaveGame = function(){

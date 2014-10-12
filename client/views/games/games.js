@@ -157,11 +157,7 @@
       data = angular.fromJson(data);
       $scope.game.round = data.round;
       $scope.game.play = null;
-      $scope.game.players.forEach(function(player){
-        var $p = angular.element('div[player='+player+']').children('.face');
-        $p.removeClass('fa-smile-o');
-        $p.addClass('fa-meh-o');
-      });
+      resetPlayers();
     });
 
     $scope.$on('socket:final-round-start', function(event, data){
@@ -169,6 +165,7 @@
       $scope.game.round = data.round;
       $scope.game.play = null;
       $scope.game.finalRound = true;
+      resetPlayers();
     });
 
     $scope.$on('socket:answers-submitted', function(event, data){
@@ -236,6 +233,21 @@
       data = angular.fromJson(data);
       toastr.success(data.player + ' voted to end the game');
     });
+
+    // HELPER FUNCTIONS //
+
+    function resetPlayers(){
+      $scope.game.players.forEach(function(player){
+        var $p = angular.element('div[player='+player+']').children('.face');
+        $p.removeClass('fa-smile-o fa-empire');
+        if(player === $scope.game.cardCzar){
+          // change image to cardCzar
+          $p.addClass('fa-empire');
+        }else{
+          $p.addClass('fa-meh-o');
+        }
+      });
+    }
 
   }]);
 
