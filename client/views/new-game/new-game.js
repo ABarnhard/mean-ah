@@ -11,7 +11,6 @@
       $scope.formIsValid = !$scope.formIsValid;
     });
 
-
     $scope.createGame = function(){
       if(!$scope.formIsValid){
         toastr.error('Games have names, get your shit together...');
