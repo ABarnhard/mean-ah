@@ -71,25 +71,12 @@
     // define the 3 css options for cards selection
     var css  = {};
     css.base = {};
-    css.sel1 = {};
-    css.sel2 = {};
-    css.sel3 = {};
-    css.sel4 = {};
+    css.sel  = {};
 
-    css.base['border-color'] = '#777';
     css.base['border-width'] = '1px';
-
-    css.sel1['border-color'] = '#2a9fd6';
-    css.sel1['border-width'] = '4px';
-
-    css.sel2['border-color'] = '#809a00';
-    css.sel2['border-width'] = '4px';
-
-    css.sel3['border-color'] = '#f05800';
-    css.sel3['border-width'] = '4px';
-
-    css.sel4['border-color'] = '#6e2caf';
-    css.sel4['border-width'] = '4px';
+    css.base['border-color'] = '#777';
+    css.sel['border-width'] = '4px';
+    css.sel['border-color'] = '#111111';
 
     $scope.selectAnswer = function(card){
       // If you've already played this round, do nothing
@@ -101,14 +88,27 @@
       // TODO All this logic should be moved into directive once I figure out the data binding
       if($scope.game.answers.length < $scope.game.round.qcard.numAnswers){
         // console.log(card);
-        angular.element('div[data-id='+card._id+']').css(css['sel' + ($scope.game.answers.length + 1)]);
+        var $card = angular.element('div[data-id='+card._id+']'),
+            num   = $scope.game.answers.length + 1,
+            $badge = angular.element('<span></span>').addClass('badge card-badge').text(num);
+        $card.css(css.sel);
+        $card.append($badge);
         $scope.game.answers.push(card);
       }else{
+        // clear all badges
+        angular.element('.card-badge').remove();
+        // reset old selections css
         var oldCard = $scope.game.answers.shift();
         angular.element('div[data-id='+oldCard._id+']').css(css.base);
+        // add new card to array
         $scope.game.answers.push(card);
+        // set css and badges based on cards position in answer array
         $scope.game.answers.forEach(function(c, i){
-          angular.element('div[data-id='+c._id+']').css(css['sel' + (i + 1)]);
+          var $card = angular.element('div[data-id='+c._id+']'),
+              num   = i + 1,
+              $badge = angular.element('<span></span>').addClass('badge card-badge').text(num);
+          $card.css(css.sel);
+          $card.append($badge);
         });
       }
     };
