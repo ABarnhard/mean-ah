@@ -23,28 +23,32 @@
     ];
     Socket.forward(events, $scope);
 
-    // Get logged in player
     $localForage.getItem('alias').then(function(alias){
+      // Get logged in player
       $scope.alias = alias;
-    });
-
-    // load game from database into memory
-    $localForage.getItem('gameId').then(function(gameId){
-      if(!!!gameId){return Game.errorToLobby('Hey there jackwagon, try joining a game first');}
-      Game.load(gameId).then(function(res){
-        if(!!!res.data.game){
-          Game.cleanLocalStorage('Game Has Ended, Choose Another Game').then(Game.errorToLobby);
-        }else{
-          Socket.emit('player-connect', angular.toJson({roomId:gameId, player:$scope.alias}), function(err, data){
-            $localForage.getItem('hand').then(function(hand){
-              $scope.game = res.data.game;
-              $scope.game.answers = [];
-              $scope.game.hand = hand || [];
-              $scope.game.play = _.findWhere($scope.game.round.answers || [], {player:$scope.alias});
-              $scope.game.isOwner = ($scope.game.owner === $scope.alias);
+      $localForage.getItem('gameId').then(function(gameId){
+        if(!!!gameId){return Game.errorToLobby('Hey there jackwagon, try joining a game first');}
+        // check if gameId exists and return to lobby if it doesn't
+        Game.load(gameId).then(function(res){
+        // load game from database into memory
+          if(!!!res.data.game){
+            // if no game was returned, kick out to lobby
+            Game.cleanLocalStorage('Game Has Ended, Choose Another Game').then(Game.errorToLobby);
+          }else{
+            // emit the connect event to make sure player's socket connection is in the game room
+            Socket.emit('player-connect', angular.toJson({roomId:gameId, player:$scope.alias}), function(err, data){
+              $localForage.getItem('hand').then(function(hand){
+                // look up hand saved in local storage
+                $scope.game = res.data.game;
+                $scope.game.answers = [];
+                $scope.game.hand = hand || [];
+                $scope.game.play = _.findWhere($scope.game.round.answers || [], {player:$scope.alias});
+                $scope.game.isOwner = ($scope.game.owner === $scope.alias);
+                $scope.isLoaded = true;
+              });
             });
-          });
-        }
+          }
+        });
       });
     });
 
