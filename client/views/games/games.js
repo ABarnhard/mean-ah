@@ -5,7 +5,7 @@
   .controller('GamesCtrl', ['$scope', '$location', '$localForage', 'Socket', 'Game', function($scope, $location, $localForage, Socket, Game){
 
     // Register game events to be forwarded from Socket.IO to Angulars event system
-    var events = [
+    var socketEvents = [
       'player-joined',
       'game-start',
       'deal-hand',
@@ -21,7 +21,7 @@
       'player-voted',
       'final-round-start'
     ];
-    Socket.forward(events, $scope);
+    Socket.forward(socketEvents, $scope);
 
     $localForage.getItem('alias').then(function(alias){
       // Get logged in player
@@ -68,22 +68,42 @@
       });
     };
 
+    // define the 3 css options for cards selection
+    var css  = {};
+    css.base = {};
+    css.sel  = {};
+
+    css.base['border-width'] = '1px';
+    css.base['border-color'] = '#777';
+    css.sel['border-width'] = '4px';
+    css.sel['border-color'] = '#111111';
+
     $scope.selectAnswer = function(card){
       // If you've already played this round, do nothing
       if($scope.game.play){return;}
-      // If this card is already in answers, do nothing
-      if(_.findWhere($scope.game.answers, {id:card.id})){return;}
+      // If this card is already in answers, remove it and clear the badge;
+      if(_.findWhere($scope.game.answers, {id:card.id})){
+        $scope.game.answers = $scope.game.answers.filter(function(c){return c.id !== card.id;});
+        angular.element('div[data-id='+card._id+']').children('.card-badge').remove();
+        angular.element('div[data-id='+card._id+']').css(css.base);
+      }
 
-      // TODO Add classes so user can see which card is selected & 1st/2nd for multi-card answers
-      // TODO All this logic should be moved into directive once I figure out the data binding
       if($scope.game.answers.length < $scope.game.round.qcard.numAnswers){
-        // console.log(card);
-        // angular.element('div[data-id='+card._id+']').attr('play', ($scope.game.answers.length + 1));
         $scope.game.answers.push(card);
       }else{
-        $scope.game.answers.shift();
+        var oldCard = $scope.game.answers.shift();
+        angular.element('div[data-id='+oldCard._id+']').css(css.base);
         $scope.game.answers.push(card);
       }
+      // set css and badges based on cards position in answer array
+      angular.element('.card-badge').remove();
+      $scope.game.answers.forEach(function(c, i){
+        var $card = angular.element('div[data-id='+c._id+']'),
+            num   = i + 1,
+            $badge = angular.element('<span></span>').addClass('badge card-badge').text(num);
+        $card.css(css.sel);
+        $card.append($badge);
+      });
     };
 
     $scope.playAnswers = function(){
@@ -151,6 +171,11 @@
       data = angular.fromJson(data);
       $scope.game.round = data.round;
       $scope.game.play = null;
+      $scope.game.players.forEach(function(player){
+        var $p = angular.element('div[player='+player+']').children('.face');
+        $p.removeClass('fa-smile-o');
+        $p.addClass('fa-meh-o');
+      });
     });
 
     $scope.$on('socket:final-round-start', function(event, data){
@@ -172,6 +197,9 @@
     $scope.$on('socket:play-made', function(event, data){
       data = angular.fromJson(data);
       console.log('socket:play-made', data.player);
+      var $p = angular.element('div[player='+data.player+']').children('.face');
+      $p.removeClass('fa-meh-o');
+      $p.addClass('fa-smile-o');
     });
 
     $scope.$on('socket:winner', function(event, play){

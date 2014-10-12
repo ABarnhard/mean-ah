@@ -11,8 +11,9 @@
     o.scope = {qtext:'@'};
 
     o.controller = ['$scope', function($scope){
+      var re = /_/g;
       $scope.$watch('qtext', function(newVal, oldVal){
-        $scope.text = $scope.qtext.replace('_', '___________');
+        $scope.text = $scope.qtext.replace(re, '___________');
       });
 
     }];
