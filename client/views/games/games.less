@@ -1,26 +1,21 @@
 @import '../../variables.less';
 
-.deck {
-  display: inline-block;
-  margin: 5px;
-  border: 1px solid black;
-}
-
-.cardCzar {
-  display: inline-block;
-  margin: 5px;
-  border: 1px solid black;
-}
-
-.awesome-points {
-  display: inline-block;
-  margin: 5px;
-  border: 1px solid black;
-}
-
-.players, .hand, .gameinfo, .play-hand {
+.players, .hand {
   text-align: center;
   position: relative;
+}
+
+.button-holder {
+  margin-bottom: 10px;
+}
+
+.played:hover {
+  position: relative;
+  top: -5px;
+}
+
+.played div[ab-acard]:hover {
+  top: 0;
 }
 
 .gameboard {
