@@ -74,11 +74,13 @@
       // If this card is already in answers, do nothing
       if(_.findWhere($scope.game.answers, {id:card.id})){return;}
 
+      // TODO Add classes so user can see which card is selected & 1st/2nd for multi-card answers
+      // TODO All this logic should be moved into directive once I figure out the data binding
       if($scope.game.answers.length < $scope.game.round.qcard.numAnswers){
         // console.log(card);
+        // angular.element('div[data-id='+card._id+']').attr('play', ($scope.game.answers.length + 1));
         $scope.game.answers.push(card);
       }else{
-        // TODO Add classes so user can see which card is selected & 1st/2nd for multi-card answers
         $scope.game.answers.shift();
         $scope.game.answers.push(card);
       }

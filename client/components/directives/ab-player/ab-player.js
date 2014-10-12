@@ -8,7 +8,7 @@
     o.restrict = 'A';
     o.templateUrl = '/components/directives/ab-player/ab-player.html';
 
-    o.scope = {player:'@', playedRound:'@'};
+    o.scope = {player:'@', wins:'@', playedRound:'@', cardczar:'@'};
 
     o.controller = ['$scope', function($scope){
       $scope.hasPlayed = false;

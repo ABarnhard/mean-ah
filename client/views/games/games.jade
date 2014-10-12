@@ -9,14 +9,8 @@
       h3 Game: {{game.name}}
   .row
     .col-xs-12
-      .gameinfo
-        .deck Q Deck Here
-        .deck A Deck Here
-        .awesome-points # Wins
-  .row
-    .col-xs-12
       .players
-        div(ab-player, ng-repeat='player in game.players', player='{{player}}', playedRound='')
+        div(ab-player, ng-repeat='player in game.players', player='{{player}}', playedRound='', wins='0', cardczar='{{game.cardCzar === alias}}')
   .row
     .col-xs-12
       .gameboard(ng-show='!game.isOpen')
@@ -31,7 +25,7 @@
             .row(ng-show='playedAnswers')
               .col-xs-12
                 .row(ng-repeat='play in playedAnswers.answers', ng-click='pickWinner(play)')
-                  .card(ng-repeat='card in play.answers') {{card.text}}
+                  div(ab-acard, atext='{{card.text}}', ng-repeat='card in play.answers') {{card.text}}
                 .row
                   .col-xs-12
                     button.btn.btn-danger(type='button', ng-show='winner', ng-click='submitWinner()') Pick Winner
@@ -40,7 +34,7 @@
             .row
               .col-xs-12
                 .hand
-                  div(ab-acard, atext='{{card.text}}', playNum='0', ng-repeat='card in game.hand', ng-click='selectAnswer(card)') {{card.text}}
+                  div(ab-acard, data-id='{{card._id}}', atext='{{card.text}}', ng-repeat='card in game.hand', ng-click='selectAnswer(card)')
             .row
               .col-xs-12
                 .play-hand
