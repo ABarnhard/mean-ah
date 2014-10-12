@@ -8,7 +8,7 @@
   .row
     .col-xs-12
       .players
-        .player(ng-repeat='player in game.players') {{player}}
+        div(ab-player, ng-repeat='player in game.players', player='{{player}}', playedRound='')
   .row
     .col-xs-12
       .gameboard(ng-show='!game.isOpen')
