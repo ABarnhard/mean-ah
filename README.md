@@ -1,7 +1,7 @@
 ## MEAN Against Humanity
 ### Code Badges
 [![Build Status](https://travis-ci.org/ABarnhard/mean-ah.svg)](https://travis-ci.org/ABarnhard/mean-ah)
-[![Coverage Status](https://img.shields.io/coveralls/ABarnhard/mean-ah.svg)](https://coveralls.io/r/ABarnhard/mean-ah?branch=feature_style)
+[![Coverage Status](https://img.shields.io/coveralls/ABarnhard/mean-ah.svg)](https://coveralls.io/r/ABarnhard/mean-ah?branch=master)
 
 ### Screenshots
 ![Image1](https://raw.githubusercontent.com/abarnhard/mean-ah/master/docs/screenshots/sc1.png)
