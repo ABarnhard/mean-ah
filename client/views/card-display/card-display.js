@@ -25,7 +25,6 @@
           timer = $interval(function(){
             if(i < $scope.responses.length){
               $scope.response = $scope.responses[i];
-              // $scope.$apply();
             }else{
               $interval.cancel(timer);
               $('#card-display').modal('hide');

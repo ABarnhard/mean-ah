@@ -77,7 +77,7 @@
                 qParts = roundInfo.round.qcard.text.split('_'),
                 fullText;
             if(answers.length > qParts.length){
-              fullText = qParts[0] + ' ' + answers.join(' ');
+              fullText = qParts[0] + ' ' + answers.join('\r\n\f');
             }else{
               fullText = qParts.map(function(q, index){
                 var ans = answers.length > index ? answers[index] : '';
