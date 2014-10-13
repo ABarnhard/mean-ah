@@ -68,7 +68,7 @@ Game.join = function(data, cb){
 Game.leave = function(data, cb){
   Game.findForUpdate(data.gameId, function(err, game){
     var retObj = {player: data.player};
-    if(game.players.length - 1 <= 1){
+    if((game.players || []).length - 1 <= 1){
       // if there's only 1 player left, game's over and we don't care about anything else
       retObj.gameOver = true;
       retObj.gameData = game.gameData;

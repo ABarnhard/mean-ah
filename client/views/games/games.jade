@@ -23,9 +23,10 @@
                 .row.button-holder
                   .col-xs-12
                     button.btn.btn-default.btn-overide(type='button', ng-show='winner', ng-click='submitWinner()') Pick Winner
-                .row.played(ng-repeat='play in playedAnswers.answers', ng-click='pickWinner(play)')
+                .row(ng-repeat='play in playedAnswers.answers', ng-click='pickWinner(play)')
                   .col-xs-12
-                    div(ab-acard, atext='{{card.text}}', ng-repeat='card in play.answers') {{card.text}}
+                    .played
+                      div(ab-acard, atext='{{card.text}}', ng-repeat='card in play.answers') {{card.text}}
         .row#hand-wrapper(ng-hide='game.cardCzar === alias')
           .col-xs-12
             .row.button-holder
