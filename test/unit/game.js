@@ -220,7 +220,7 @@ describe('Game', function(){
           expect(numCards).to.equal(1);
           expect(players).to.have.length(1);
           expect(cards).to.have.length(1);
-          expect(deck.answers).to.have.length(3);
+          expect(deck.answers).to.have.length(36);
           done();
         });
       });
@@ -259,6 +259,38 @@ describe('Game', function(){
       Game.lastUpdate(data.gameId, function(err, timeStamp){
         expect(timeStamp).to.equal(12345);
         done();
+      });
+    });
+  });
+
+  describe('.dealHand', function(){
+    it('should return 10 cards for each player and all players in the game', function(done){
+      Game.dealHand('200000000000000000000005', function(err, players, cards){
+        expect(players).to.have.length(2);
+        expect(cards).to.have.length(20);
+        done();
+      });
+    });
+  });
+
+  describe('.logWin', function(){
+    it('should increase a players wins in the gamedata object', function(done){
+      Game.logWin('200000000000000000000005', 'john', function(err, count){
+        Game.findById('200000000000000000000005', function(err, g){
+          expect(g.gameData.john.wins).to.equal(1);
+          done();
+        });
+      });
+    });
+  });
+
+  describe('.logVote', function(){
+    it('should add the players name to the end game votes array', function(done){
+      Game.logVote('200000000000000000000005', 'john', function(err, count){
+        Game.findById('200000000000000000000005', function(err, g){
+          expect(g.endGameVotes).to.have.length(1);
+          done();
+        });
       });
     });
   });
