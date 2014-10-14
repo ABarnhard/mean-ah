@@ -24,16 +24,6 @@ describe('sockets', function(){
         socketUrl += app.address().port;
         done();
       });
-      /*
-      request(app)
-      .post('/login')
-      .send('email=bob@aol.com')
-      .send('password=1234')
-      .end(function(err, res){
-        cookie = res.headers['set-cookie'][0];
-        done();
-      });
-      */
     });
   });
 
