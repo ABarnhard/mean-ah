@@ -64,6 +64,7 @@
     "coveralls": "~2.11.2",
     "mocha-lcov-reporter": "0.0.1",
     "supertest": "~0.14.0",
-    "grunt-cli": "~0.1.13"
+    "grunt-cli": "~0.1.13",
+    "socket.io-client": "~1.1.0"
   }
 }

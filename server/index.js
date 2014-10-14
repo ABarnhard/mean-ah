@@ -2,8 +2,8 @@
 
 var db      = process.env.DB,
     express = require('express'),
-    app     = module.exports = express(),
-    server  = require('http').createServer(app),
+    app     = express(),
+    server  = module.exports = require('http').createServer(app),
     io      = require('socket.io').listen(server);
 
 require('./lib/config')(app);
@@ -12,7 +12,7 @@ io.sockets.on('connection', require('./routes/socket-routes'));
 
 require('./lib/mongodb')(db, function(){
   server.listen(app.get('port'), function(){
-    console.log('Express server listening on port', app.get('port'));
+    console.log('Express server listening on port', server.address().port);
   });
 });
 
