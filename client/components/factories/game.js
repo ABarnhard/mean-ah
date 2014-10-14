@@ -111,7 +111,12 @@
       return [fullText.trim().replace('..', '.').replace('  ', ' ')];
     }
 
+    function tallyWin(player){
+      $rootScope.$broadcast('player-won', player);
+    }
+
     return {
+      tallyWin:tallyWin,
       parseWinner:parseWinner,
       parseRound:parseRound,
       registerAndJoin:registerAndJoin,

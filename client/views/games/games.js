@@ -129,6 +129,7 @@
     // register Angular event handlers
     $scope.$on('socket:player-joined', function(event, data){
       data = angular.fromJson(data);
+      $scope.game.gameData[data.player] = {wins:0};
       $scope.game.players.push(data.player);
     });
 
@@ -187,13 +188,24 @@
 
     $scope.$on('socket:winner', function(event, play){
       play = angular.fromJson(play);
+      //$scope.game.gameData[play.player].wins += 1;
+      Game.tallyWin(play.player);
+      // tallyWin(play.player);
       Game.displayWinner(angular.toJson({question:$scope.game.round.qcard.text, play:play}));
       $scope.playedAnswers = null;
       if(play.gameOver){
         Game.cleanLocalStorage('The Game Has Ended').then(Game.goToLobby);
       }
     });
-
+    /*
+    function tallyWin(player){
+      var $p = angular.element('div[player='+player+']'),
+          wins = $p.attr('wins');
+      wins = parseInt(wins);
+      wins += 1;
+      $p.attr('wins', wins);
+    }
+    */
     $scope.$on('socket:deal-cards', function(event, data){
       data = angular.fromJson(data);
       var newHand = $scope.game.hand.concat(data.cards);

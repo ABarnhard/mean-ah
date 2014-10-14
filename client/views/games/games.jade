@@ -6,7 +6,7 @@
   .row
     .col-xs-12
       .players
-        div(ab-player, ng-repeat='player in game.players', player='{{player}}', playedRound='', wins='0', cardczar='{{game.cardCzar === alias}}')
+        div(ab-player, ng-repeat='player in game.players', player='{{player}}', wins='{{game.gameData[player].wins}}')
   .row
     .col-xs-12
       .gameboard(ng-show='!game.isOpen')
