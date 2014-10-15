@@ -36,7 +36,7 @@
             Game.cleanLocalStorage('Game Has Ended, Choose Another Game').then(Game.errorToLobby);
           }else{
             // emit the connect event to make sure player's socket connection is in the game room
-            Socket.emit('player-connect', angular.toJson({roomId:gameId, player:$scope.alias}), function(err, data){
+            Socket.emit('player-connect', angular.toJson({gameId:gameId, player:$scope.alias}), function(err, data){
               $localForage.getItem('hand').then(function(hand){
                 // look up hand saved in local storage
                 $scope.game = res.data.game;

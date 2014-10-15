@@ -44,10 +44,11 @@ exports.startGame = function(data, cb){
 
 exports.playerConnect = function(data, cb){
   data = JSON.parse(data);
-  roomId = data.roomId;
+  roomId = data.gameId;
   this.join(roomId);
   this.join(data.player);
-  cb();
+  Io.to(data.player).emit('confirm-connect', roomId);
+  cb(null, roomId);
 };
 
 // data = {gameId:'roomId of game'}
