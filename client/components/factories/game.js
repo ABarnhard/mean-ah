@@ -64,6 +64,7 @@
       // console.log(gameInfo);
       gameInfo = angular.fromJson(gameInfo);
       $localForage.setItem('gameId', gameInfo.gameId).then(function(){
+        // alerts navbar controller that player has joined a game so it displays the Current Game menu
         $rootScope.$broadcast('game-joined', gameInfo.gameId);
         $location.path('/game');
       });

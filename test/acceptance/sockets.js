@@ -9,7 +9,6 @@ var expect    = require('chai').expect,
     app       = require('../../server/index'),
     io        = require('socket.io-client'),
     request   = require('supertest'),
-    //socketUrl = 'http://192.168.200.201:',
     socketUrl = 'http://localhost:',
     portFound = false,
     options   = {transports: ['websocket'], 'force new connection': true};
@@ -61,6 +60,36 @@ describe('sockets', function(){
           expect(data).to.equal('200000000000000000000001');
         });
       });
+    });
+  });
+
+  describe('event join-game', function(){
+    it('should alert everone in game room that another player joined', function(done){
+      var client1 = io.connect(socketUrl, options),
+          json1   = '{"gameId":"200000000000000000000001", "player":"bob"}';
+
+      client1.on('connect', function(data){
+
+        client1.on('player-joined', function(data){
+          data = JSON.parse(data);
+          expect(data.player).to.equal('bob');
+          client1.disconnect();
+          done();
+        });
+
+        client1.emit('player-connect', json1, function(err, roomId){
+          var json2 = '{"gameId":"200000000000000000000001", "player":"bob"}',
+              client2 = io.connect(socketUrl, options);
+          client2.on('connect', function(data){
+            client2.emit('join-game', json2, function(err, data){
+              data = JSON.parse(data);
+              expect(data.gameId).to.equal('200000000000000000000001');
+              client2.disconnect();
+            });
+          });
+        });
+      });
+
     });
   });
 
