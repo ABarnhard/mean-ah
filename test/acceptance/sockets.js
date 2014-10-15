@@ -9,7 +9,8 @@ var expect    = require('chai').expect,
     app       = require('../../server/index'),
     io        = require('socket.io-client'),
     request   = require('supertest'),
-    socketUrl = 'http://192.168.200.201:',
+    //socketUrl = 'http://192.168.200.201:',
+    socketUrl = 'http://localhost:',
     portFound = false,
     options   = {transports: ['websocket'], 'force new connection': true};
 
@@ -23,6 +24,7 @@ describe('sockets', function(){
       request(app).get('/').end(function(err, res){
         if(!portFound){
           socketUrl += app.address().port;
+          console.log(app.address());
           portFound = true;
         }
         done();
@@ -45,7 +47,7 @@ describe('sockets', function(){
     });
   });
 
-  describe('player-connect', function(){
+  describe('event player-connect', function(){
     it('Should add the player to the game room', function(done){
       var client1 = io.connect(socketUrl, options),
           json   = '{"gameId":"200000000000000000000001", "player":"john"}';
