@@ -93,6 +93,27 @@ describe('sockets', function(){
     });
   });
 
+  describe('event start-game', function(){
+    it('should alert all users that game has begun', function(done){
+      var client1 = io.connect(socketUrl, options),
+          json1   = '{"gameId":"200000000000000000000001", "player":"bob"}',
+          json2   = '{"gameId":"200000000000000000000001"}';
+
+      client1.on('connect', function(data){
+        client1.on('game-start', function(){
+          done();
+        });
+
+        client1.emit('join-game', json1, function(){
+          client1.emit('start-game', json2, function(){
+            // do nothing
+          });
+        });
+      });
+
+    });
+  });
+
 });
 
 /*
