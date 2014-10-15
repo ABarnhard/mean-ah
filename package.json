@@ -10,8 +10,8 @@
     "coveralls": "./node_modules/coveralls/bin/coveralls.js"
   },
   "scripts": {
-    "test": "mocha test --recursive -R spec --timeout 5000",
-    "watch": "mocha test --recursive -R spec --watch --timeout 5000",
+    "test": "mocha test --recursive -R spec --timeout 8000",
+    "watch": "mocha test --recursive -R spec --watch --timeout 8000",
     "syntax": "./node_modules/grunt-cli/bin/grunt build",
     "coveralls": "mocha test --recursive -r blanket -R mocha-lcov-reporter | coveralls"
   },
