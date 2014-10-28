@@ -43,6 +43,13 @@
                 $scope.game.answers = [];
                 $scope.game.hand = hand || [];
                 $scope.game.play = _.findWhere($scope.game.round.answers || [], {player:$scope.alias});
+                if($scope.game.round.answers){
+                  // we already removed the player from game.players before sending it back from DB;
+                  // so we don't need to subtract 1 when checking for end of round;
+                  if(($scope.game.players.length) === $scope.game.round.answers.length && $scope.game.cardCzar === $scope.alias){
+                    $scope.playedAnswers = $scope.game.round;
+                  }
+                }
                 $scope.game.isOwner = ($scope.game.owner === $scope.alias);
                 $scope.isLoaded = true;
               });

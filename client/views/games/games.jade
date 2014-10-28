@@ -9,6 +9,10 @@
         div(ab-player, ng-repeat='player in game.players', player='{{player}}', wins='{{game.gameData[player].wins}}')
   .row
     .col-xs-12
+      .waiting-screen(ng-show='game.isOpen')
+        .row
+          .col-xs-12
+            h2 Waiting for game to begin
       .gameboard(ng-show='!game.isOpen')
         .row
           .col-xs-12
@@ -27,7 +31,7 @@
                   .col-xs-12
                     .played
                       div(ab-acard, atext='{{card.text}}', ng-repeat='card in play.answers') {{card.text}}
-        .row#hand-wrapper(ng-hide='game.cardCzar === alias')
+        .row#hand-wrapper(ng-hide='game.cardCzar === alias || game.play')
           .col-xs-12
             .row.button-holder
               .col-xs-12
