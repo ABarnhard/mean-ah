@@ -2659,3 +2659,193 @@
 {"id":2659,"cardType":"A","text":"tim Hortons.","numAnswers":0,"expansion":"cck"}
 {"id":2660,"cardType":"A","text":"Quintland.","numAnswers":0,"expansion":"cck"}
 {"id":2661,"cardType":"A","text":"Karla Momolka.","numAnswers":0,"expansion":"cck"}
+{"id":2662,"cardType":"Q","text":"A Bad Haircut - The perfect start to a bad hair day.","numAnswers":1,"expansion":"atoa"}
+{"id":2663,"cardType":"Q","text":"A Bakery - Some bakers start work at 3:00 in the morning, so breads and donuts are fresh for breakfast.","numAnswers":1,"expansion":"atoa"}
+{"id":2664,"cardType":"Q","text":"A Broken Leg - I was riding my bike when I hit this big rock...","numAnswers":1,"expansion":"atoa"}
+{"id":2665,"cardType":"Q","text":"A Bull Fight - Also known as \"la fiesta brava\" (the brave festival). A whole lot of bull.","numAnswers":1,"expansion":"atoa"}
+{"id":2666,"cardType":"Q","text":"A Cabin In The Woods - Henry David Thoreau went to Walden Pond for two years. All we're asking for is one lousy weekend!","numAnswers":1,"expansion":"atoa"}
+{"id":2667,"cardType":"Q","text":"A Can Of Worms - Now you've opened it.","numAnswers":1,"expansion":"atoa"}
+{"id":2668,"cardType":"Q","text":"A Car Crash - \"Hey, it was an accident!\"","numAnswers":1,"expansion":"atoa"}
+{"id":2669,"cardType":"Q","text":"A Cheap Motel - No charge for the cockroaches.","numAnswers":1,"expansion":"atoa"}
+{"id":2670,"cardType":"Q","text":"A Cookbook - The best ones include favorite family recipes.","numAnswers":1,"expansion":"atoa"}
+{"id":2671,"cardType":"Q","text":"A Crawl Space - Where you'll find something the cat dragged in.","numAnswers":1,"expansion":"atoa"}
+{"id":2672,"cardType":"Q","text":"A Crown - A crown is a symbol of royalty.","numAnswers":1,"expansion":"atoa"}
+{"id":2673,"cardType":"Q","text":"A Desert - Hot, dry and sandy.","numAnswers":1,"expansion":"atoa"}
+{"id":2674,"cardType":"Q","text":"A Dollar - Spend it wisely!","numAnswers":1,"expansion":"atoa"}
+{"id":2675,"cardType":"Q","text":"A Dozen Red Roses - When eleven just won't do.","numAnswers":1,"expansion":"atoa"}
+{"id":2676,"cardType":"Q","text":"A Fairy - A tiny creature who has magical powers and can fly, like Tinkerbell.","numAnswers":1,"expansion":"atoa"}
+{"id":2677,"cardType":"Q","text":"A Few Good Men - Is that too much to ask?","numAnswers":1,"expansion":"atoa"}
+{"id":2678,"cardType":"Q","text":"A Flat Tire - \"Whaddya mean, there's no spare?\"","numAnswers":1,"expansion":"atoa"}
+{"id":2679,"cardType":"Q","text":"A Fool & His Money - Are soon parted... especially on Wall Street.","numAnswers":1,"expansion":"atoa"}
+{"id":2680,"cardType":"Q","text":"A Forest - Home to Bambi, Winnie the Pooh, Robin Hood, and many woodland animals.","numAnswers":1,"expansion":"atoa"}
+{"id":2681,"cardType":"Q","text":"A French Maid - Ooh, la, la!","numAnswers":1,"expansion":"atoa"}
+{"id":2682,"cardType":"Q","text":"A Full Moon - \"When the moon hits your eye like a big pizza pie, that's amore!\" -Dean Martin","numAnswers":1,"expansion":"atoa"}
+{"id":2683,"cardType":"Q","text":"A Funeral - A ceremony held to honor a person who has died.","numAnswers":1,"expansion":"atoa"}
+{"id":2684,"cardType":"Q","text":"A Giant - A very large and powerful person. When Jack climbed the bean stalk, he met a hungry giant.","numAnswers":1,"expansion":"atoa"}
+{"id":2685,"cardType":"Q","text":"A Haunted House - Maybe if people would STOP building their dream homes on ancient burial grounds...","numAnswers":1,"expansion":"atoa"}
+{"id":2686,"cardType":"Q","text":"A High School Bathroom - \"Fools rush in where angels fear to tread\" -Alexander Pope","numAnswers":1,"expansion":"atoa"}
+{"id":2687,"cardType":"Q","text":"A Hole In One - Par for the course?","numAnswers":1,"expansion":"atoa"}
+{"id":2688,"cardType":"Q","text":"A Honeymoon - America's top honeymoon spots are Hawaii, Niagara Falls, Las Vegas and Florida. You can get there by air, land, sea... or shotgun.","numAnswers":1,"expansion":"atoa"}
+{"id":2689,"cardType":"Q","text":"A Little White Lie - If you can't say anything nice...","numAnswers":1,"expansion":"atoa"}
+{"id":2690,"cardType":"Q","text":"A Locker Room - Steamy atmosphere... bawdy humor... sweaty bodies... HEY! Sounds like Cable TV!","numAnswers":1,"expansion":"atoa"}
+{"id":2691,"cardType":"Q","text":"A Million Dollars - If I had a million dollars...","numAnswers":1,"expansion":"atoa"}
+{"id":2692,"cardType":"Q","text":"A Morgue - \"Given strange eons, even death may die...\" -H.P. Lovecraft","numAnswers":1,"expansion":"atoa"}
+{"id":2693,"cardType":"Q","text":"A Mummy - \"Walk like an Egyptian.\" - The Bangles","numAnswers":1,"expansion":"atoa"}
+{"id":2694,"cardType":"Q","text":"A Nine Iron - A golf club best used on short shots or large opponents.","numAnswers":1,"expansion":"atoa"}
+{"id":2695,"cardType":"A","text":"Absurd - (ridiculous, senseless, foolish)","numAnswers":0,"expansion":"atoa"}
+{"id":2696,"cardType":"A","text":"Abundant - (plentiful, ample, numerous)","numAnswers":0,"expansion":"atoa"}
+{"id":2697,"cardType":"A","text":"Addictive - (obsessive, consuming, captivating)","numAnswers":0,"expansion":"atoa"}
+{"id":2698,"cardType":"A","text":"Adorable - (lovable, charming, delightful)","numAnswers":0,"expansion":"atoa"}
+{"id":2699,"cardType":"A","text":"Adorable - (lovable, cute)","numAnswers":0,"expansion":"atoa"}
+{"id":2700,"cardType":"A","text":"Aged - (old, ancient, mature)","numAnswers":0,"expansion":"atoa"}
+{"id":2701,"cardType":"A","text":"Amazing - (astonishing, surprising, wonderful)","numAnswers":0,"expansion":"atoa"}
+{"id":2702,"cardType":"A","text":"Amazing - (surprising, wonderful)","numAnswers":0,"expansion":"atoa"}
+{"id":2703,"cardType":"A","text":"Boring - (dull, tedious, monotonous)","numAnswers":0,"expansion":"atoa"}
+{"id":2704,"cardType":"A","text":"Boring - (not interesting, dull)","numAnswers":0,"expansion":"atoa"}
+{"id":2705,"cardType":"A","text":"Brains & Brawn - (solid, strong, capable)","numAnswers":0,"expansion":"atoa"}
+{"id":2706,"cardType":"A","text":"Brave - (fearless, courageous)","numAnswers":0,"expansion":"atoa"}
+{"id":2707,"cardType":"A","text":"Bright - (brilliant, radiant, shiny)","numAnswers":0,"expansion":"atoa"}
+{"id":2708,"cardType":"A","text":"Bright & Shining - (radiant, sparkling, gleaming)","numAnswers":0,"expansion":"atoa"}
+{"id":2709,"cardType":"A","text":"Brilliant - (dazzling, gleaming, intelligent)","numAnswers":0,"expansion":"atoa"}
+{"id":2710,"cardType":"A","text":"Calm - (peaceful, tranquil, placid)","numAnswers":0,"expansion":"atoa"}
+{"id":2711,"cardType":"A","text":"Careful - (cautious, thoughtful)","numAnswers":0,"expansion":"atoa"}
+{"id":2712,"cardType":"A","text":"Caring - (concerned, interested)","numAnswers":0,"expansion":"atoa"}
+{"id":2713,"cardType":"A","text":"Casual - (easygoing, blase, nonchalant)","numAnswers":0,"expansion":"atoa"}
+{"id":2714,"cardType":"A","text":"Charismatic - (alluring, magnetic, charming)","numAnswers":0,"expansion":"atoa"}
+{"id":2715,"cardType":"A","text":"Charming - (captivating, enchanting, fascinating)","numAnswers":0,"expansion":"atoa"}
+{"id":2716,"cardType":"A","text":"Cheerful - (happy, lively)","numAnswers":0,"expansion":"atoa"}
+{"id":2717,"cardType":"A","text":"Cheesy - (trashy, tawdry, far-fetched)","numAnswers":0,"expansion":"atoa"}
+{"id":2718,"cardType":"A","text":"Chewy - (gummy, rubbery, stringy)","numAnswers":0,"expansion":"atoa"}
+{"id":2719,"cardType":"A","text":"Chubby - (plump, round)","numAnswers":0,"expansion":"atoa"}
+{"id":2720,"cardType":"A","text":"Chunky - (lumpy, chubby, bumpy)","numAnswers":0,"expansion":"atoa"}
+{"id":2721,"cardType":"A","text":"Classic - (timeless, definitive, vintage)","numAnswers":0,"expansion":"atoa"}
+{"id":2722,"cardType":"A","text":"Clean - (washed, pure, tidy)","numAnswers":0,"expansion":"atoa"}
+{"id":2723,"cardType":"A","text":"Clear - (understandable, uncluttered, transparent)","numAnswers":0,"expansion":"atoa"}
+{"id":2724,"cardType":"A","text":"Clever - (intelligent, ingenious, witty)","numAnswers":0,"expansion":"atoa"}
+{"id":2725,"cardType":"A","text":"Clueless - (unaware, oblivious, ignorant)","numAnswers":0,"expansion":"atoa"}
+{"id":2726,"cardType":"A","text":"Clumsy - (awkward, bumbling, uncoordinated)","numAnswers":0,"expansion":"atoa"}
+{"id":2727,"cardType":"A","text":"Dashing - (gallant, bold, elegant)","numAnswers":0,"expansion":"atoa"}
+{"id":2728,"cardType":"A","text":"Dazed & Confused - (stunned, bewildered, disoriented)","numAnswers":0,"expansion":"atoa"}
+{"id":2729,"cardType":"A","text":"Dead - (deceased, expired, unresponsive)","numAnswers":0,"expansion":"atoa"}
+{"id":2730,"cardType":"A","text":"Dead & Gone - (deceased, defunct, passe)","numAnswers":0,"expansion":"atoa"}
+{"id":2731,"cardType":"A","text":"Deadly - (fatal, lethal, murderous)","numAnswers":0,"expansion":"atoa"}
+{"id":2732,"cardType":"A","text":"Delicate - (dainty, tender, elegant)","numAnswers":0,"expansion":"atoa"}
+{"id":2733,"cardType":"A","text":"Delicious - (tasty, pleasing, appetizing)","numAnswers":0,"expansion":"atoa"}
+{"id":2734,"cardType":"A","text":"Delightful - (pleasing, enjoyable, charming)","numAnswers":0,"expansion":"atoa"}
+{"id":2735,"cardType":"A","text":"Demanding - (difficult, exacting, bothersome)","numAnswers":0,"expansion":"atoa"}
+{"id":2736,"cardType":"A","text":"Depressing - (dismal, gloomy, sad)","numAnswers":0,"expansion":"atoa"}
+{"id":2737,"cardType":"A","text":"Desperate - (frantic, headlong, reckless)","numAnswers":0,"expansion":"atoa"}
+{"id":2738,"cardType":"A","text":"Devious - (sneaky, shifty, tricky)","numAnswers":0,"expansion":"atoa"}
+{"id":2739,"cardType":"A","text":"Difficult - (complicated, hard)","numAnswers":0,"expansion":"atoa"}
+{"id":2740,"cardType":"A","text":"Dignified - (stately, honorable, distinguished)","numAnswers":0,"expansion":"atoa"}
+{"id":2741,"cardType":"A","text":"Dirty - (unclean, soiled, impure)","numAnswers":0,"expansion":"atoa"}
+{"id":2742,"cardType":"A","text":"Enormous - (large, huge, gigantic)","numAnswers":0,"expansion":"atoa"}
+{"id":2743,"cardType":"A","text":"Entertaining - (amusing, festive, enjoyable)","numAnswers":0,"expansion":"atoa"}
+{"id":2744,"cardType":"A","text":"Eternal - (timeless, immortal, perpetual)","numAnswers":0,"expansion":"atoa"}
+{"id":2745,"cardType":"A","text":"European - (of Europe, from Europe, about Europe)","numAnswers":0,"expansion":"atoa"}
+{"id":2746,"cardType":"A","text":"Evil - (wicked, corrupt, depraved)","numAnswers":0,"expansion":"atoa"}
+{"id":2747,"cardType":"A","text":"Excellent - (very good, outstanding)","numAnswers":0,"expansion":"atoa"}
+{"id":2748,"cardType":"A","text":"Exciting - (thrilling, breathtaking, arousing)","numAnswers":0,"expansion":"atoa"}
+{"id":2749,"cardType":"A","text":"Exhausting - (weakening, tiring, draining)","numAnswers":0,"expansion":"atoa"}
+{"id":2750,"cardType":"A","text":"Expensive - (costly, valuable, exorbitant)","numAnswers":0,"expansion":"atoa"}
+{"id":2751,"cardType":"A","text":"Explosive - (bursting, blasting, dangerous)","numAnswers":0,"expansion":"atoa"}
+{"id":2752,"cardType":"A","text":"Exquisite - (excellent, refined, flawless)","numAnswers":0,"expansion":"atoa"}
+{"id":2753,"cardType":"A","text":"Extreme - (exceptional, superlative, radical)","numAnswers":0,"expansion":"atoa"}
+{"id":2754,"cardType":"A","text":"Fabulous - (marvelous, wonderful, incredible)","numAnswers":0,"expansion":"atoa"}
+{"id":2755,"cardType":"A","text":"Fake - (unreal, counterfeit, deceptive)","numAnswers":0,"expansion":"atoa"}
+{"id":2756,"cardType":"A","text":"Fast & Loose - (deceitful, fraudulent, reckless)","numAnswers":0,"expansion":"atoa"}
+{"id":2757,"cardType":"A","text":"Fat - (plump, thick)","numAnswers":0,"expansion":"atoa"}
+{"id":2758,"cardType":"A","text":"Fat & Happy - (content, satisfied, assured)","numAnswers":0,"expansion":"atoa"}
+{"id":2759,"cardType":"A","text":"Favorite - (preferred, desired)","numAnswers":0,"expansion":"atoa"}
+{"id":2760,"cardType":"A","text":"Fearful - (scared, worried)","numAnswers":0,"expansion":"atoa"}
+{"id":2761,"cardType":"A","text":"Feminine - (womanly, ladylike, unmanly)","numAnswers":0,"expansion":"atoa"}
+{"id":2762,"cardType":"A","text":"Filthy - (dirty, foul, unclean)","numAnswers":0,"expansion":"atoa"}
+{"id":2763,"cardType":"A","text":"Fine - (worthy, delicate, all right)","numAnswers":0,"expansion":"atoa"}
+{"id":2764,"cardType":"A","text":"Flaky - (foolish, eccentric, crispy)","numAnswers":0,"expansion":"atoa"}
+{"id":2765,"cardType":"A","text":"Flamboyant - (ornate, pompous, extravagant)","numAnswers":0,"expansion":"atoa"}
+{"id":2766,"cardType":"A","text":"Flat - (smooth, level)","numAnswers":0,"expansion":"atoa"}
+{"id":2767,"cardType":"A","text":"Flavorful - (tasty, savory, pungent)","numAnswers":0,"expansion":"atoa"}
+{"id":2768,"cardType":"A","text":"Flawed - (imperfect, defective, unsound)","numAnswers":0,"expansion":"atoa"}
+{"id":2769,"cardType":"A","text":"Flirtatious - (brazen, saucy, forward)","numAnswers":0,"expansion":"atoa"}
+{"id":2770,"cardType":"A","text":"Foot Loose & Fancy Free - (lighthearted, carefree, spontaneous)","numAnswers":0,"expansion":"atoa"}
+{"id":2771,"cardType":"A","text":"Foreign - (alien, unfamiliar, exotic)","numAnswers":0,"expansion":"atoa"}
+{"id":2772,"cardType":"A","text":"Fragile - (delicate, frail, breakable)","numAnswers":0,"expansion":"atoa"}
+{"id":2773,"cardType":"A","text":"Gigantic - (huge, large)","numAnswers":0,"expansion":"atoa"}
+{"id":2774,"cardType":"A","text":"Glamorous - (beautiful, dazzling, stylish)","numAnswers":0,"expansion":"atoa"}
+{"id":2775,"cardType":"A","text":"Glitzy - (flashy, showy, gaudy)","numAnswers":0,"expansion":"atoa"}
+{"id":2776,"cardType":"A","text":"Global - (world-wide, spherical, universal)","numAnswers":0,"expansion":"atoa"}
+{"id":2777,"cardType":"A","text":"Gloomy - (dreary, depressing, sullen)","numAnswers":0,"expansion":"atoa"}
+{"id":2778,"cardType":"A","text":"Glorious - (magnificent, delightful, splendid)","numAnswers":0,"expansion":"atoa"}
+{"id":2779,"cardType":"A","text":"Good - (not bad, fine)","numAnswers":0,"expansion":"atoa"}
+{"id":2780,"cardType":"A","text":"Goody-Goody - (sweet, well-behaved, virtuous)","numAnswers":0,"expansion":"atoa"}
+{"id":2781,"cardType":"A","text":"Goofy - (silly, foolish, giddy)","numAnswers":0,"expansion":"atoa"}
+{"id":2782,"cardType":"A","text":"Gorgeous - (beautiful, stunning, magnificent)","numAnswers":0,"expansion":"atoa"}
+{"id":2783,"cardType":"A","text":"Gorgeous - (beautiful, dazzling)","numAnswers":0,"expansion":"atoa"}
+{"id":2784,"cardType":"A","text":"Hale & Hearty - (healthy, vigorous, robust)","numAnswers":0,"expansion":"atoa"}
+{"id":2785,"cardType":"A","text":"Handsome - (attractive, elegant, fine)","numAnswers":0,"expansion":"atoa"}
+{"id":2786,"cardType":"A","text":"Handy - (convenient, available, capable)","numAnswers":0,"expansion":"atoa"}
+{"id":2787,"cardType":"A","text":"Happy - (glad, jolly)","numAnswers":0,"expansion":"atoa"}
+{"id":2788,"cardType":"A","text":"Hard - (not soft, difficult)","numAnswers":0,"expansion":"atoa"}
+{"id":2789,"cardType":"A","text":"Hardworking - (industrious, diligent, busy)","numAnswers":0,"expansion":"atoa"}
+{"id":2790,"cardType":"A","text":"Harmful - (hurtful, unhealthy, damaging)","numAnswers":0,"expansion":"atoa"}
+{"id":2791,"cardType":"A","text":"Harsh - (severe, glaring, brutal)","numAnswers":0,"expansion":"atoa"}
+{"id":2792,"cardType":"A","text":"Haunting - (unforgettable, bewitching, unearthly)","numAnswers":0,"expansion":"atoa"}
+{"id":2793,"cardType":"A","text":"Hazardous - (risky, dangerous, perilous)","numAnswers":0,"expansion":"atoa"}
+{"id":2794,"cardType":"A","text":"Healthy - (hearty, robust, wholesome)","numAnswers":0,"expansion":"atoa"}
+{"id":2795,"cardType":"A","text":"Heartless - (insensitive, cruel, uncaring)","numAnswers":0,"expansion":"atoa"}
+{"id":2796,"cardType":"A","text":"Heavy - (not light, bulky)","numAnswers":0,"expansion":"atoa"}
+{"id":2797,"cardType":"A","text":"Helpful - (useful, assisting)","numAnswers":0,"expansion":"atoa"}
+{"id":2798,"cardType":"A","text":"Mesmerizing - (fascinating, hypnotizing, charming)","numAnswers":0,"expansion":"atoa"}
+{"id":2799,"cardType":"A","text":"Messy - (sloppy, disorderly, unclean)","numAnswers":0,"expansion":"atoa"}
+{"id":2800,"cardType":"A","text":"Mischievous - (naughty, prankish, sly)","numAnswers":0,"expansion":"atoa"}
+{"id":2801,"cardType":"A","text":"Miserable - (wretched, pitiful, forlorn)","numAnswers":0,"expansion":"atoa"}
+{"id":2802,"cardType":"A","text":"Misunderstood - (not grasped, not learned, not absorbed)","numAnswers":0,"expansion":"atoa"}
+{"id":2803,"cardType":"A","text":"Modern - (contemporary, fashionable, trendy)","numAnswers":0,"expansion":"atoa"}
+{"id":2804,"cardType":"A","text":"Mushy - (soft, squishy)","numAnswers":0,"expansion":"atoa"}
+{"id":2805,"cardType":"A","text":"Mysterious - (secretive, puzzling, strange)","numAnswers":0,"expansion":"atoa"}
+{"id":2806,"cardType":"A","text":"Mystical - (spiritual, secretive, esoteric)","numAnswers":0,"expansion":"atoa"}
+{"id":2807,"cardType":"A","text":"Naive - (unsophisticated, childlike, simple)","numAnswers":0,"expansion":"atoa"}
+{"id":2808,"cardType":"A","text":"Nasty - (mean, inclement, offensive)","numAnswers":0,"expansion":"atoa"}
+{"id":2809,"cardType":"A","text":"Natural - (pure, simple, unadorned)","numAnswers":0,"expansion":"atoa"}
+{"id":2810,"cardType":"A","text":"Naughty & Nice - (impish, mischievous, playful)","numAnswers":0,"expansion":"atoa"}
+{"id":2811,"cardType":"A","text":"Neat - (tidy, orderly, cool)","numAnswers":0,"expansion":"atoa"}
+{"id":2812,"cardType":"A","text":"Neat & Clean - (spotless, tidy, shipshape)","numAnswers":0,"expansion":"atoa"}
+{"id":2813,"cardType":"A","text":"Odd - (unusual, strange)","numAnswers":0,"expansion":"atoa"}
+{"id":2814,"cardType":"A","text":"Offensive - (insulting, vulgar, attacking)","numAnswers":0,"expansion":"atoa"}
+{"id":2815,"cardType":"A","text":"Old - (aged, elderly, antiquated)","numAnswers":0,"expansion":"atoa"}
+{"id":2816,"cardType":"A","text":"Old & Cranky - (crabby, cantankerous, aged)","numAnswers":0,"expansion":"atoa"}
+{"id":2817,"cardType":"A","text":"Old & Wise - (experienced, judicious, shrewd)","numAnswers":0,"expansion":"atoa"}
+{"id":2818,"cardType":"A","text":"On The Up & Up - (trustworthy, irreproachable, honest)","numAnswers":0,"expansion":"atoa"}
+{"id":2819,"cardType":"A","text":"Orderly - (methodical, formal, systematic)","numAnswers":0,"expansion":"atoa"}
+{"id":2820,"cardType":"A","text":"Ordinary - (usual, common, plain)","numAnswers":0,"expansion":"atoa"}
+{"id":2821,"cardType":"A","text":"Organic - (natural, clean, biological)","numAnswers":0,"expansion":"atoa"}
+{"id":2822,"cardType":"A","text":"Outrageous - (shocking, scandalous, disgraceful)","numAnswers":0,"expansion":"atoa"}
+{"id":2823,"cardType":"A","text":"Overwhelming - (exhaustive, breathtaking, monumental)","numAnswers":0,"expansion":"atoa"}
+{"id":2824,"cardType":"A","text":"Painful - (hurtful, agonizing, unbearable)","numAnswers":0,"expansion":"atoa"}
+{"id":2825,"cardType":"A","text":"Pale - (faded, colorless)","numAnswers":0,"expansion":"atoa"}
+{"id":2826,"cardType":"A","text":"Pathetic - (pitiful, distressing, heart-rending)","numAnswers":0,"expansion":"atoa"}
+{"id":2827,"cardType":"A","text":"Patriotic - (nationalistic, loyal, public-spirited)","numAnswers":0,"expansion":"atoa"}
+{"id":2828,"cardType":"A","text":"Peaceful - (serene, restful, calm)","numAnswers":0,"expansion":"atoa"}
+{"id":2829,"cardType":"A","text":"Perfect - (faultless, consummate, exact)","numAnswers":0,"expansion":"atoa"}
+{"id":2830,"cardType":"A","text":"Quick - (fast, speedy)","numAnswers":0,"expansion":"atoa"}
+{"id":2831,"cardType":"A","text":"Quick & Dirty - (cheap, shoddy, inferior)","numAnswers":0,"expansion":"atoa"}
+{"id":2832,"cardType":"A","text":"Quiet - (peaceful, silent, calm)","numAnswers":0,"expansion":"atoa"}
+{"id":2833,"cardType":"A","text":"Responsible - (accountable, obligated, mature)","numAnswers":0,"expansion":"atoa"}
+{"id":2834,"cardType":"A","text":"Revolutionary - (innovative, rebellious, radical)","numAnswers":0,"expansion":"atoa"}
+{"id":2835,"cardType":"A","text":"Rich - (wealthy, affluent, moneyed)","numAnswers":0,"expansion":"atoa"}
+{"id":2836,"cardType":"A","text":"Ridiculous - (preposterous, absurd, ludicrous)","numAnswers":0,"expansion":"atoa"}
+{"id":2837,"cardType":"A","text":"Risky - (hazardous, daring, speculative)","numAnswers":0,"expansion":"atoa"}
+{"id":2838,"cardType":"A","text":"Rough - (scratchy, uneven, jagged)","numAnswers":0,"expansion":"atoa"}
+{"id":2839,"cardType":"A","text":"Rough & Ready - (crude, makeshift, prepared)","numAnswers":0,"expansion":"atoa"}
+{"id":2840,"cardType":"A","text":"Round - (circular, ring shaped)","numAnswers":0,"expansion":"atoa"}
+{"id":2841,"cardType":"A","text":"Sad - (unhappy, gloomy)","numAnswers":0,"expansion":"atoa"}
+{"id":2842,"cardType":"A","text":"Saintly - (virtuous, angelic, divine)","numAnswers":0,"expansion":"atoa"}
+{"id":2843,"cardType":"A","text":"Sappy - (gooey, mushy, romantic)","numAnswers":0,"expansion":"atoa"}
+{"id":2844,"cardType":"A","text":"Scary - (frightening, absurd, ugly)","numAnswers":0,"expansion":"atoa"}
+{"id":2845,"cardType":"A","text":"Scenic - (picturesque, dramatic, panoramic)","numAnswers":0,"expansion":"atoa"}
+{"id":2846,"cardType":"A","text":"Scented - (perfumed, fragrant)","numAnswers":0,"expansion":"atoa"}
+{"id":2847,"cardType":"A","text":"Secretive - (concealed, covert, veiled)","numAnswers":0,"expansion":"atoa"}
+{"id":2848,"cardType":"A","text":"Selfish - (stingy, greedy, miserly)","numAnswers":0,"expansion":"atoa"}
+{"id":2849,"cardType":"A","text":"Sensational - (thrilling, startling, melodramatic)","numAnswers":0,"expansion":"atoa"}
+{"id":2850,"cardType":"A","text":"Senseless - (meaningless, absurd, foolish)","numAnswers":0,"expansion":"atoa"}
+{"id":2851,"cardType":"A","text":"Sensitive - (susceptible, sympathetic, tender)","numAnswers":0,"expansion":"atoa"}
