@@ -2659,193 +2659,156 @@
 {"id":2659,"cardType":"A","text":"tim Hortons.","numAnswers":0,"expansion":"cck"}
 {"id":2660,"cardType":"A","text":"Quintland.","numAnswers":0,"expansion":"cck"}
 {"id":2661,"cardType":"A","text":"Karla Momolka.","numAnswers":0,"expansion":"cck"}
-{"id":2662,"cardType":"Q","text":"A Bad Haircut - The perfect start to a bad hair day.","numAnswers":1,"expansion":"atoa"}
-{"id":2663,"cardType":"Q","text":"A Bakery - Some bakers start work at 3:00 in the morning, so breads and donuts are fresh for breakfast.","numAnswers":1,"expansion":"atoa"}
-{"id":2664,"cardType":"Q","text":"A Broken Leg - I was riding my bike when I hit this big rock...","numAnswers":1,"expansion":"atoa"}
-{"id":2665,"cardType":"Q","text":"A Bull Fight - Also known as \"la fiesta brava\" (the brave festival). A whole lot of bull.","numAnswers":1,"expansion":"atoa"}
-{"id":2666,"cardType":"Q","text":"A Cabin In The Woods - Henry David Thoreau went to Walden Pond for two years. All we're asking for is one lousy weekend!","numAnswers":1,"expansion":"atoa"}
-{"id":2667,"cardType":"Q","text":"A Can Of Worms - Now you've opened it.","numAnswers":1,"expansion":"atoa"}
-{"id":2668,"cardType":"Q","text":"A Car Crash - \"Hey, it was an accident!\"","numAnswers":1,"expansion":"atoa"}
-{"id":2669,"cardType":"Q","text":"A Cheap Motel - No charge for the cockroaches.","numAnswers":1,"expansion":"atoa"}
-{"id":2670,"cardType":"Q","text":"A Cookbook - The best ones include favorite family recipes.","numAnswers":1,"expansion":"atoa"}
-{"id":2671,"cardType":"Q","text":"A Crawl Space - Where you'll find something the cat dragged in.","numAnswers":1,"expansion":"atoa"}
-{"id":2672,"cardType":"Q","text":"A Crown - A crown is a symbol of royalty.","numAnswers":1,"expansion":"atoa"}
-{"id":2673,"cardType":"Q","text":"A Desert - Hot, dry and sandy.","numAnswers":1,"expansion":"atoa"}
-{"id":2674,"cardType":"Q","text":"A Dollar - Spend it wisely!","numAnswers":1,"expansion":"atoa"}
-{"id":2675,"cardType":"Q","text":"A Dozen Red Roses - When eleven just won't do.","numAnswers":1,"expansion":"atoa"}
-{"id":2676,"cardType":"Q","text":"A Fairy - A tiny creature who has magical powers and can fly, like Tinkerbell.","numAnswers":1,"expansion":"atoa"}
-{"id":2677,"cardType":"Q","text":"A Few Good Men - Is that too much to ask?","numAnswers":1,"expansion":"atoa"}
-{"id":2678,"cardType":"Q","text":"A Flat Tire - \"Whaddya mean, there's no spare?\"","numAnswers":1,"expansion":"atoa"}
-{"id":2679,"cardType":"Q","text":"A Fool & His Money - Are soon parted... especially on Wall Street.","numAnswers":1,"expansion":"atoa"}
-{"id":2680,"cardType":"Q","text":"A Forest - Home to Bambi, Winnie the Pooh, Robin Hood, and many woodland animals.","numAnswers":1,"expansion":"atoa"}
-{"id":2681,"cardType":"Q","text":"A French Maid - Ooh, la, la!","numAnswers":1,"expansion":"atoa"}
-{"id":2682,"cardType":"Q","text":"A Full Moon - \"When the moon hits your eye like a big pizza pie, that's amore!\" -Dean Martin","numAnswers":1,"expansion":"atoa"}
-{"id":2683,"cardType":"Q","text":"A Funeral - A ceremony held to honor a person who has died.","numAnswers":1,"expansion":"atoa"}
-{"id":2684,"cardType":"Q","text":"A Giant - A very large and powerful person. When Jack climbed the bean stalk, he met a hungry giant.","numAnswers":1,"expansion":"atoa"}
-{"id":2685,"cardType":"Q","text":"A Haunted House - Maybe if people would STOP building their dream homes on ancient burial grounds...","numAnswers":1,"expansion":"atoa"}
-{"id":2686,"cardType":"Q","text":"A High School Bathroom - \"Fools rush in where angels fear to tread\" -Alexander Pope","numAnswers":1,"expansion":"atoa"}
-{"id":2687,"cardType":"Q","text":"A Hole In One - Par for the course?","numAnswers":1,"expansion":"atoa"}
-{"id":2688,"cardType":"Q","text":"A Honeymoon - America's top honeymoon spots are Hawaii, Niagara Falls, Las Vegas and Florida. You can get there by air, land, sea... or shotgun.","numAnswers":1,"expansion":"atoa"}
-{"id":2689,"cardType":"Q","text":"A Little White Lie - If you can't say anything nice...","numAnswers":1,"expansion":"atoa"}
-{"id":2690,"cardType":"Q","text":"A Locker Room - Steamy atmosphere... bawdy humor... sweaty bodies... HEY! Sounds like Cable TV!","numAnswers":1,"expansion":"atoa"}
-{"id":2691,"cardType":"Q","text":"A Million Dollars - If I had a million dollars...","numAnswers":1,"expansion":"atoa"}
-{"id":2692,"cardType":"Q","text":"A Morgue - \"Given strange eons, even death may die...\" -H.P. Lovecraft","numAnswers":1,"expansion":"atoa"}
-{"id":2693,"cardType":"Q","text":"A Mummy - \"Walk like an Egyptian.\" - The Bangles","numAnswers":1,"expansion":"atoa"}
-{"id":2694,"cardType":"Q","text":"A Nine Iron - A golf club best used on short shots or large opponents.","numAnswers":1,"expansion":"atoa"}
-{"id":2695,"cardType":"A","text":"Absurd - (ridiculous, senseless, foolish)","numAnswers":0,"expansion":"atoa"}
-{"id":2696,"cardType":"A","text":"Abundant - (plentiful, ample, numerous)","numAnswers":0,"expansion":"atoa"}
-{"id":2697,"cardType":"A","text":"Addictive - (obsessive, consuming, captivating)","numAnswers":0,"expansion":"atoa"}
-{"id":2698,"cardType":"A","text":"Adorable - (lovable, charming, delightful)","numAnswers":0,"expansion":"atoa"}
-{"id":2699,"cardType":"A","text":"Adorable - (lovable, cute)","numAnswers":0,"expansion":"atoa"}
-{"id":2700,"cardType":"A","text":"Aged - (old, ancient, mature)","numAnswers":0,"expansion":"atoa"}
-{"id":2701,"cardType":"A","text":"Amazing - (astonishing, surprising, wonderful)","numAnswers":0,"expansion":"atoa"}
-{"id":2702,"cardType":"A","text":"Amazing - (surprising, wonderful)","numAnswers":0,"expansion":"atoa"}
-{"id":2703,"cardType":"A","text":"Boring - (dull, tedious, monotonous)","numAnswers":0,"expansion":"atoa"}
-{"id":2704,"cardType":"A","text":"Boring - (not interesting, dull)","numAnswers":0,"expansion":"atoa"}
-{"id":2705,"cardType":"A","text":"Brains & Brawn - (solid, strong, capable)","numAnswers":0,"expansion":"atoa"}
-{"id":2706,"cardType":"A","text":"Brave - (fearless, courageous)","numAnswers":0,"expansion":"atoa"}
-{"id":2707,"cardType":"A","text":"Bright - (brilliant, radiant, shiny)","numAnswers":0,"expansion":"atoa"}
-{"id":2708,"cardType":"A","text":"Bright & Shining - (radiant, sparkling, gleaming)","numAnswers":0,"expansion":"atoa"}
-{"id":2709,"cardType":"A","text":"Brilliant - (dazzling, gleaming, intelligent)","numAnswers":0,"expansion":"atoa"}
-{"id":2710,"cardType":"A","text":"Calm - (peaceful, tranquil, placid)","numAnswers":0,"expansion":"atoa"}
-{"id":2711,"cardType":"A","text":"Careful - (cautious, thoughtful)","numAnswers":0,"expansion":"atoa"}
-{"id":2712,"cardType":"A","text":"Caring - (concerned, interested)","numAnswers":0,"expansion":"atoa"}
-{"id":2713,"cardType":"A","text":"Casual - (easygoing, blase, nonchalant)","numAnswers":0,"expansion":"atoa"}
-{"id":2714,"cardType":"A","text":"Charismatic - (alluring, magnetic, charming)","numAnswers":0,"expansion":"atoa"}
-{"id":2715,"cardType":"A","text":"Charming - (captivating, enchanting, fascinating)","numAnswers":0,"expansion":"atoa"}
-{"id":2716,"cardType":"A","text":"Cheerful - (happy, lively)","numAnswers":0,"expansion":"atoa"}
-{"id":2717,"cardType":"A","text":"Cheesy - (trashy, tawdry, far-fetched)","numAnswers":0,"expansion":"atoa"}
-{"id":2718,"cardType":"A","text":"Chewy - (gummy, rubbery, stringy)","numAnswers":0,"expansion":"atoa"}
-{"id":2719,"cardType":"A","text":"Chubby - (plump, round)","numAnswers":0,"expansion":"atoa"}
-{"id":2720,"cardType":"A","text":"Chunky - (lumpy, chubby, bumpy)","numAnswers":0,"expansion":"atoa"}
-{"id":2721,"cardType":"A","text":"Classic - (timeless, definitive, vintage)","numAnswers":0,"expansion":"atoa"}
-{"id":2722,"cardType":"A","text":"Clean - (washed, pure, tidy)","numAnswers":0,"expansion":"atoa"}
-{"id":2723,"cardType":"A","text":"Clear - (understandable, uncluttered, transparent)","numAnswers":0,"expansion":"atoa"}
-{"id":2724,"cardType":"A","text":"Clever - (intelligent, ingenious, witty)","numAnswers":0,"expansion":"atoa"}
-{"id":2725,"cardType":"A","text":"Clueless - (unaware, oblivious, ignorant)","numAnswers":0,"expansion":"atoa"}
-{"id":2726,"cardType":"A","text":"Clumsy - (awkward, bumbling, uncoordinated)","numAnswers":0,"expansion":"atoa"}
-{"id":2727,"cardType":"A","text":"Dashing - (gallant, bold, elegant)","numAnswers":0,"expansion":"atoa"}
-{"id":2728,"cardType":"A","text":"Dazed & Confused - (stunned, bewildered, disoriented)","numAnswers":0,"expansion":"atoa"}
-{"id":2729,"cardType":"A","text":"Dead - (deceased, expired, unresponsive)","numAnswers":0,"expansion":"atoa"}
-{"id":2730,"cardType":"A","text":"Dead & Gone - (deceased, defunct, passe)","numAnswers":0,"expansion":"atoa"}
-{"id":2731,"cardType":"A","text":"Deadly - (fatal, lethal, murderous)","numAnswers":0,"expansion":"atoa"}
-{"id":2732,"cardType":"A","text":"Delicate - (dainty, tender, elegant)","numAnswers":0,"expansion":"atoa"}
-{"id":2733,"cardType":"A","text":"Delicious - (tasty, pleasing, appetizing)","numAnswers":0,"expansion":"atoa"}
-{"id":2734,"cardType":"A","text":"Delightful - (pleasing, enjoyable, charming)","numAnswers":0,"expansion":"atoa"}
-{"id":2735,"cardType":"A","text":"Demanding - (difficult, exacting, bothersome)","numAnswers":0,"expansion":"atoa"}
-{"id":2736,"cardType":"A","text":"Depressing - (dismal, gloomy, sad)","numAnswers":0,"expansion":"atoa"}
-{"id":2737,"cardType":"A","text":"Desperate - (frantic, headlong, reckless)","numAnswers":0,"expansion":"atoa"}
-{"id":2738,"cardType":"A","text":"Devious - (sneaky, shifty, tricky)","numAnswers":0,"expansion":"atoa"}
-{"id":2739,"cardType":"A","text":"Difficult - (complicated, hard)","numAnswers":0,"expansion":"atoa"}
-{"id":2740,"cardType":"A","text":"Dignified - (stately, honorable, distinguished)","numAnswers":0,"expansion":"atoa"}
-{"id":2741,"cardType":"A","text":"Dirty - (unclean, soiled, impure)","numAnswers":0,"expansion":"atoa"}
-{"id":2742,"cardType":"A","text":"Enormous - (large, huge, gigantic)","numAnswers":0,"expansion":"atoa"}
-{"id":2743,"cardType":"A","text":"Entertaining - (amusing, festive, enjoyable)","numAnswers":0,"expansion":"atoa"}
-{"id":2744,"cardType":"A","text":"Eternal - (timeless, immortal, perpetual)","numAnswers":0,"expansion":"atoa"}
-{"id":2745,"cardType":"A","text":"European - (of Europe, from Europe, about Europe)","numAnswers":0,"expansion":"atoa"}
-{"id":2746,"cardType":"A","text":"Evil - (wicked, corrupt, depraved)","numAnswers":0,"expansion":"atoa"}
-{"id":2747,"cardType":"A","text":"Excellent - (very good, outstanding)","numAnswers":0,"expansion":"atoa"}
-{"id":2748,"cardType":"A","text":"Exciting - (thrilling, breathtaking, arousing)","numAnswers":0,"expansion":"atoa"}
-{"id":2749,"cardType":"A","text":"Exhausting - (weakening, tiring, draining)","numAnswers":0,"expansion":"atoa"}
-{"id":2750,"cardType":"A","text":"Expensive - (costly, valuable, exorbitant)","numAnswers":0,"expansion":"atoa"}
-{"id":2751,"cardType":"A","text":"Explosive - (bursting, blasting, dangerous)","numAnswers":0,"expansion":"atoa"}
-{"id":2752,"cardType":"A","text":"Exquisite - (excellent, refined, flawless)","numAnswers":0,"expansion":"atoa"}
-{"id":2753,"cardType":"A","text":"Extreme - (exceptional, superlative, radical)","numAnswers":0,"expansion":"atoa"}
-{"id":2754,"cardType":"A","text":"Fabulous - (marvelous, wonderful, incredible)","numAnswers":0,"expansion":"atoa"}
-{"id":2755,"cardType":"A","text":"Fake - (unreal, counterfeit, deceptive)","numAnswers":0,"expansion":"atoa"}
-{"id":2756,"cardType":"A","text":"Fast & Loose - (deceitful, fraudulent, reckless)","numAnswers":0,"expansion":"atoa"}
-{"id":2757,"cardType":"A","text":"Fat - (plump, thick)","numAnswers":0,"expansion":"atoa"}
-{"id":2758,"cardType":"A","text":"Fat & Happy - (content, satisfied, assured)","numAnswers":0,"expansion":"atoa"}
-{"id":2759,"cardType":"A","text":"Favorite - (preferred, desired)","numAnswers":0,"expansion":"atoa"}
-{"id":2760,"cardType":"A","text":"Fearful - (scared, worried)","numAnswers":0,"expansion":"atoa"}
-{"id":2761,"cardType":"A","text":"Feminine - (womanly, ladylike, unmanly)","numAnswers":0,"expansion":"atoa"}
-{"id":2762,"cardType":"A","text":"Filthy - (dirty, foul, unclean)","numAnswers":0,"expansion":"atoa"}
-{"id":2763,"cardType":"A","text":"Fine - (worthy, delicate, all right)","numAnswers":0,"expansion":"atoa"}
-{"id":2764,"cardType":"A","text":"Flaky - (foolish, eccentric, crispy)","numAnswers":0,"expansion":"atoa"}
-{"id":2765,"cardType":"A","text":"Flamboyant - (ornate, pompous, extravagant)","numAnswers":0,"expansion":"atoa"}
-{"id":2766,"cardType":"A","text":"Flat - (smooth, level)","numAnswers":0,"expansion":"atoa"}
-{"id":2767,"cardType":"A","text":"Flavorful - (tasty, savory, pungent)","numAnswers":0,"expansion":"atoa"}
-{"id":2768,"cardType":"A","text":"Flawed - (imperfect, defective, unsound)","numAnswers":0,"expansion":"atoa"}
-{"id":2769,"cardType":"A","text":"Flirtatious - (brazen, saucy, forward)","numAnswers":0,"expansion":"atoa"}
-{"id":2770,"cardType":"A","text":"Foot Loose & Fancy Free - (lighthearted, carefree, spontaneous)","numAnswers":0,"expansion":"atoa"}
-{"id":2771,"cardType":"A","text":"Foreign - (alien, unfamiliar, exotic)","numAnswers":0,"expansion":"atoa"}
-{"id":2772,"cardType":"A","text":"Fragile - (delicate, frail, breakable)","numAnswers":0,"expansion":"atoa"}
-{"id":2773,"cardType":"A","text":"Gigantic - (huge, large)","numAnswers":0,"expansion":"atoa"}
-{"id":2774,"cardType":"A","text":"Glamorous - (beautiful, dazzling, stylish)","numAnswers":0,"expansion":"atoa"}
-{"id":2775,"cardType":"A","text":"Glitzy - (flashy, showy, gaudy)","numAnswers":0,"expansion":"atoa"}
-{"id":2776,"cardType":"A","text":"Global - (world-wide, spherical, universal)","numAnswers":0,"expansion":"atoa"}
-{"id":2777,"cardType":"A","text":"Gloomy - (dreary, depressing, sullen)","numAnswers":0,"expansion":"atoa"}
-{"id":2778,"cardType":"A","text":"Glorious - (magnificent, delightful, splendid)","numAnswers":0,"expansion":"atoa"}
-{"id":2779,"cardType":"A","text":"Good - (not bad, fine)","numAnswers":0,"expansion":"atoa"}
-{"id":2780,"cardType":"A","text":"Goody-Goody - (sweet, well-behaved, virtuous)","numAnswers":0,"expansion":"atoa"}
-{"id":2781,"cardType":"A","text":"Goofy - (silly, foolish, giddy)","numAnswers":0,"expansion":"atoa"}
-{"id":2782,"cardType":"A","text":"Gorgeous - (beautiful, stunning, magnificent)","numAnswers":0,"expansion":"atoa"}
-{"id":2783,"cardType":"A","text":"Gorgeous - (beautiful, dazzling)","numAnswers":0,"expansion":"atoa"}
-{"id":2784,"cardType":"A","text":"Hale & Hearty - (healthy, vigorous, robust)","numAnswers":0,"expansion":"atoa"}
-{"id":2785,"cardType":"A","text":"Handsome - (attractive, elegant, fine)","numAnswers":0,"expansion":"atoa"}
-{"id":2786,"cardType":"A","text":"Handy - (convenient, available, capable)","numAnswers":0,"expansion":"atoa"}
-{"id":2787,"cardType":"A","text":"Happy - (glad, jolly)","numAnswers":0,"expansion":"atoa"}
-{"id":2788,"cardType":"A","text":"Hard - (not soft, difficult)","numAnswers":0,"expansion":"atoa"}
-{"id":2789,"cardType":"A","text":"Hardworking - (industrious, diligent, busy)","numAnswers":0,"expansion":"atoa"}
-{"id":2790,"cardType":"A","text":"Harmful - (hurtful, unhealthy, damaging)","numAnswers":0,"expansion":"atoa"}
-{"id":2791,"cardType":"A","text":"Harsh - (severe, glaring, brutal)","numAnswers":0,"expansion":"atoa"}
-{"id":2792,"cardType":"A","text":"Haunting - (unforgettable, bewitching, unearthly)","numAnswers":0,"expansion":"atoa"}
-{"id":2793,"cardType":"A","text":"Hazardous - (risky, dangerous, perilous)","numAnswers":0,"expansion":"atoa"}
-{"id":2794,"cardType":"A","text":"Healthy - (hearty, robust, wholesome)","numAnswers":0,"expansion":"atoa"}
-{"id":2795,"cardType":"A","text":"Heartless - (insensitive, cruel, uncaring)","numAnswers":0,"expansion":"atoa"}
-{"id":2796,"cardType":"A","text":"Heavy - (not light, bulky)","numAnswers":0,"expansion":"atoa"}
-{"id":2797,"cardType":"A","text":"Helpful - (useful, assisting)","numAnswers":0,"expansion":"atoa"}
-{"id":2798,"cardType":"A","text":"Mesmerizing - (fascinating, hypnotizing, charming)","numAnswers":0,"expansion":"atoa"}
-{"id":2799,"cardType":"A","text":"Messy - (sloppy, disorderly, unclean)","numAnswers":0,"expansion":"atoa"}
-{"id":2800,"cardType":"A","text":"Mischievous - (naughty, prankish, sly)","numAnswers":0,"expansion":"atoa"}
-{"id":2801,"cardType":"A","text":"Miserable - (wretched, pitiful, forlorn)","numAnswers":0,"expansion":"atoa"}
-{"id":2802,"cardType":"A","text":"Misunderstood - (not grasped, not learned, not absorbed)","numAnswers":0,"expansion":"atoa"}
-{"id":2803,"cardType":"A","text":"Modern - (contemporary, fashionable, trendy)","numAnswers":0,"expansion":"atoa"}
-{"id":2804,"cardType":"A","text":"Mushy - (soft, squishy)","numAnswers":0,"expansion":"atoa"}
-{"id":2805,"cardType":"A","text":"Mysterious - (secretive, puzzling, strange)","numAnswers":0,"expansion":"atoa"}
-{"id":2806,"cardType":"A","text":"Mystical - (spiritual, secretive, esoteric)","numAnswers":0,"expansion":"atoa"}
-{"id":2807,"cardType":"A","text":"Naive - (unsophisticated, childlike, simple)","numAnswers":0,"expansion":"atoa"}
-{"id":2808,"cardType":"A","text":"Nasty - (mean, inclement, offensive)","numAnswers":0,"expansion":"atoa"}
-{"id":2809,"cardType":"A","text":"Natural - (pure, simple, unadorned)","numAnswers":0,"expansion":"atoa"}
-{"id":2810,"cardType":"A","text":"Naughty & Nice - (impish, mischievous, playful)","numAnswers":0,"expansion":"atoa"}
-{"id":2811,"cardType":"A","text":"Neat - (tidy, orderly, cool)","numAnswers":0,"expansion":"atoa"}
-{"id":2812,"cardType":"A","text":"Neat & Clean - (spotless, tidy, shipshape)","numAnswers":0,"expansion":"atoa"}
-{"id":2813,"cardType":"A","text":"Odd - (unusual, strange)","numAnswers":0,"expansion":"atoa"}
-{"id":2814,"cardType":"A","text":"Offensive - (insulting, vulgar, attacking)","numAnswers":0,"expansion":"atoa"}
-{"id":2815,"cardType":"A","text":"Old - (aged, elderly, antiquated)","numAnswers":0,"expansion":"atoa"}
-{"id":2816,"cardType":"A","text":"Old & Cranky - (crabby, cantankerous, aged)","numAnswers":0,"expansion":"atoa"}
-{"id":2817,"cardType":"A","text":"Old & Wise - (experienced, judicious, shrewd)","numAnswers":0,"expansion":"atoa"}
-{"id":2818,"cardType":"A","text":"On The Up & Up - (trustworthy, irreproachable, honest)","numAnswers":0,"expansion":"atoa"}
-{"id":2819,"cardType":"A","text":"Orderly - (methodical, formal, systematic)","numAnswers":0,"expansion":"atoa"}
-{"id":2820,"cardType":"A","text":"Ordinary - (usual, common, plain)","numAnswers":0,"expansion":"atoa"}
-{"id":2821,"cardType":"A","text":"Organic - (natural, clean, biological)","numAnswers":0,"expansion":"atoa"}
-{"id":2822,"cardType":"A","text":"Outrageous - (shocking, scandalous, disgraceful)","numAnswers":0,"expansion":"atoa"}
-{"id":2823,"cardType":"A","text":"Overwhelming - (exhaustive, breathtaking, monumental)","numAnswers":0,"expansion":"atoa"}
-{"id":2824,"cardType":"A","text":"Painful - (hurtful, agonizing, unbearable)","numAnswers":0,"expansion":"atoa"}
-{"id":2825,"cardType":"A","text":"Pale - (faded, colorless)","numAnswers":0,"expansion":"atoa"}
-{"id":2826,"cardType":"A","text":"Pathetic - (pitiful, distressing, heart-rending)","numAnswers":0,"expansion":"atoa"}
-{"id":2827,"cardType":"A","text":"Patriotic - (nationalistic, loyal, public-spirited)","numAnswers":0,"expansion":"atoa"}
-{"id":2828,"cardType":"A","text":"Peaceful - (serene, restful, calm)","numAnswers":0,"expansion":"atoa"}
-{"id":2829,"cardType":"A","text":"Perfect - (faultless, consummate, exact)","numAnswers":0,"expansion":"atoa"}
-{"id":2830,"cardType":"A","text":"Quick - (fast, speedy)","numAnswers":0,"expansion":"atoa"}
-{"id":2831,"cardType":"A","text":"Quick & Dirty - (cheap, shoddy, inferior)","numAnswers":0,"expansion":"atoa"}
-{"id":2832,"cardType":"A","text":"Quiet - (peaceful, silent, calm)","numAnswers":0,"expansion":"atoa"}
-{"id":2833,"cardType":"A","text":"Responsible - (accountable, obligated, mature)","numAnswers":0,"expansion":"atoa"}
-{"id":2834,"cardType":"A","text":"Revolutionary - (innovative, rebellious, radical)","numAnswers":0,"expansion":"atoa"}
-{"id":2835,"cardType":"A","text":"Rich - (wealthy, affluent, moneyed)","numAnswers":0,"expansion":"atoa"}
-{"id":2836,"cardType":"A","text":"Ridiculous - (preposterous, absurd, ludicrous)","numAnswers":0,"expansion":"atoa"}
-{"id":2837,"cardType":"A","text":"Risky - (hazardous, daring, speculative)","numAnswers":0,"expansion":"atoa"}
-{"id":2838,"cardType":"A","text":"Rough - (scratchy, uneven, jagged)","numAnswers":0,"expansion":"atoa"}
-{"id":2839,"cardType":"A","text":"Rough & Ready - (crude, makeshift, prepared)","numAnswers":0,"expansion":"atoa"}
-{"id":2840,"cardType":"A","text":"Round - (circular, ring shaped)","numAnswers":0,"expansion":"atoa"}
-{"id":2841,"cardType":"A","text":"Sad - (unhappy, gloomy)","numAnswers":0,"expansion":"atoa"}
-{"id":2842,"cardType":"A","text":"Saintly - (virtuous, angelic, divine)","numAnswers":0,"expansion":"atoa"}
-{"id":2843,"cardType":"A","text":"Sappy - (gooey, mushy, romantic)","numAnswers":0,"expansion":"atoa"}
-{"id":2844,"cardType":"A","text":"Scary - (frightening, absurd, ugly)","numAnswers":0,"expansion":"atoa"}
-{"id":2845,"cardType":"A","text":"Scenic - (picturesque, dramatic, panoramic)","numAnswers":0,"expansion":"atoa"}
-{"id":2846,"cardType":"A","text":"Scented - (perfumed, fragrant)","numAnswers":0,"expansion":"atoa"}
-{"id":2847,"cardType":"A","text":"Secretive - (concealed, covert, veiled)","numAnswers":0,"expansion":"atoa"}
-{"id":2848,"cardType":"A","text":"Selfish - (stingy, greedy, miserly)","numAnswers":0,"expansion":"atoa"}
-{"id":2849,"cardType":"A","text":"Sensational - (thrilling, startling, melodramatic)","numAnswers":0,"expansion":"atoa"}
-{"id":2850,"cardType":"A","text":"Senseless - (meaningless, absurd, foolish)","numAnswers":0,"expansion":"atoa"}
-{"id":2851,"cardType":"A","text":"Sensitive - (susceptible, sympathetic, tender)","numAnswers":0,"expansion":"atoa"}
+{"id":2662,"cardType":"Q","text":"Absurd - (ridiculous, senseless, foolish)","numAnswers":1,"expansion":"atoa"}
+{"id":2663,"cardType":"Q","text":"Addictive - (obsessive, consuming, captivating)","numAnswers":1,"expansion":"atoa"}
+{"id":2664,"cardType":"Q","text":"Adorable - (lovable, charming, delightful)","numAnswers":1,"expansion":"atoa"}
+{"id":2665,"cardType":"Q","text":"Aged - (old, ancient, mature)","numAnswers":1,"expansion":"atoa"}
+{"id":2666,"cardType":"Q","text":"American - (U.S. Citizen, Yankee, Apple Pie)","numAnswers":1,"expansion":"atoa"}
+{"id":2667,"cardType":"Q","text":"Ancient - (elderly, old, antique)","numAnswers":1,"expansion":"atoa"}
+{"id":2668,"cardType":"Q","text":"Animated - (lively, exuberant, spirited)","numAnswers":1,"expansion":"atoa"}
+{"id":2669,"cardType":"Q","text":"Annoying - (irritating, bothersome, teasing)","numAnswers":1,"expansion":"atoa"}
+{"id":2670,"cardType":"Q","text":"Appetizing - (appealing, tasty, flavorful)","numAnswers":1,"expansion":"atoa"}
+{"id":2671,"cardType":"Q","text":"Arrogant - (egotistical, overconfident, conceited)","numAnswers":1,"expansion":"atoa"}
+{"id":2671,"cardType":"Q","text":"Awesome - (amazing, remarkable, majestic)","numAnswers":1,"expansion":"atoa"}
+{"id":2673,"cardType":"Q","text":"Awkward - (clumsy, bumbling, uncoordinated)","numAnswers":1,"expansion":"atoa"}
+{"id":2674,"cardType":"Q","text":"Believable - (trustworthy, credible, convincing)","numAnswers":1,"expansion":"atoa"}
+{"id":2675,"cardType":"Q","text":"Bogus - (fraudulent, phony, insincere)","numAnswers":1,"expansion":"atoa"}
+{"id":2676,"cardType":"Q","text":"Boisterous - (loud, rambunctious, rowdy)","numAnswers":1,"expansion":"atoa"}
+{"id":2677,"cardType":"Q","text":"Bold - (daring, brave, courageous)","numAnswers":1,"expansion":"atoa"}
+{"id":2678,"cardType":"Q","text":"Boring - (dull, tedious, monotonous)","numAnswers":1,"expansion":"atoa"}
+{"id":2679,"cardType":"Q","text":"Bright - (brilliant, radiant, shiny)","numAnswers":1,"expansion":"atoa"}
+{"id":2680,"cardType":"Q","text":"Brilliant - (dazzling, gleaming, intelligent)","numAnswers":1,"expansion":"atoa"}
+{"id":2681,"cardType":"Q","text":"Busy - (occupied, meddlesome, engrossed)","numAnswers":1,"expansion":"atoa"}
+{"id":2682,"cardType":"Q","text":"Calm - (peaceful, tranquil, placid)","numAnswers":1,"expansion":"atoa"}
+{"id":2683,"cardType":"Q","text":"Casual - (easygoing, blase, nonchalant)","numAnswers":1,"expansion":"atoa"}
+{"id":2684,"cardType":"Q","text":"Charismatic - (alluring, magnetic, charming)","numAnswers":1,"expansion":"atoa"}
+{"id":2685,"cardType":"Q","text":"Charming - (captivating, enchanting, fascinating)","numAnswers":1,"expansion":"atoa"}
+{"id":2686,"cardType":"Q","text":"Cheesy - (trashy, tawdry, far-fetched)","numAnswers":1,"expansion":"atoa"}
+{"id":2687,"cardType":"Q","text":"Chewy - (gummy, rubbery, stringy)","numAnswers":1,"expansion":"atoa"}
+{"id":2688,"cardType":"Q","text":"Chunky - (lumpy, chubby, bumpy)","numAnswers":1,"expansion":"atoa"}
+{"id":2689,"cardType":"Q","text":"Classic - (timeless, definitive, vintage)","numAnswers":1,"expansion":"atoa"}
+{"id":2690,"cardType":"Q","text":"Clean - (washed, pure, tidy)","numAnswers":1,"expansion":"atoa"}
+{"id":2691,"cardType":"A","text":"A Bad Haircut - The perfect start to a bad hair day.","numAnswers":0,"expansion":"atoa"}
+{"id":2692,"cardType":"A","text":"A Bull Fight - Also known as \"la fiesta brava\" (the brave festival). A whole lot of bull..","numAnswers":0,"expansion":"atoa"}
+{"id":2693,"cardType":"A","text":"A Car Crash - \"Hey, it was an accident!\"","numAnswers":0,"expansion":"atoa"}
+{"id":2694,"cardType":"A","text":"A Cheap Motel - No charge for the cockroaches.","numAnswers":0,"expansion":"atoa"}
+{"id":2695,"cardType":"A","text":"A Crawl Space - Where you'll find something the cat dragged in.","numAnswers":0,"expansion":"atoa"}
+{"id":2696,"cardType":"A","text":"A Dozen Red Roses - When eleven just won't do.","numAnswers":0,"expansion":"atoa"}
+{"id":2697,"cardType":"A","text":"A Flat Tire - \"Whaddya mean, there's no spare?\"","numAnswers":0,"expansion":"atoa"}
+{"id":2698,"cardType":"A","text":"A Full Moon - \"When the moon hits your eye like a big pizza pie, that's amore!\" -Dean Martin","numAnswers":0,"expansion":"atoa"}
+{"id":2699,"cardType":"A","text":"AIDS - Acquired Immune Deficiency Syndrome.","numAnswers":0,"expansion":"atoa"}
+{"id":2700,"cardType":"A","text":"Airline Food - Since when is a bag of peanuts considered a meal?","numAnswers":0,"expansion":"atoa"}
+{"id":2701,"cardType":"A","text":"Al Pacino - 1940- , Oscar winning American actor and star of \"The Godfather,\" \"Dog Day Afternoon\" and \"Scent Of A Woman.\" One very intense guy.","numAnswers":0,"expansion":"atoa"}
+{"id":2702,"cardType":"A","text":"Albert Einstein - 1879-1955, German-born American physicist and Nobel laureate who created theories of relativity. Nice hair.","numAnswers":0,"expansion":"atoa"}
+{"id":2703,"cardType":"A","text":"Alfred Hitchcock - 1899-1980, British-born American director and producer of brilliant psychological thrillers. Right, mother? MOTHER!","numAnswers":0,"expansion":"atoa"}
+{"id":2704,"cardType":"A","text":"Alien Abductions - There was a blinding light -and she was gone!","numAnswers":0,"expansion":"atoa"}
+{"id":2705,"cardType":"A","text":"Americans - How many Americans does it take to screw in a light bulb? THAT'S NOT FUNNY! WE'RE SUING!","numAnswers":0,"expansion":"atoa"}
+{"id":2706,"cardType":"A","text":"Amputations - \"A SCRATCH? Your arm's off!\" - Monty Python and the Holy Grail.","numAnswers":0,"expansion":"atoa"}
+{"id":2707,"cardType":"A","text":"Angry Hornets - Who put the bees in their bonnets?.","numAnswers":0,"expansion":"atoa"}
+{"id":2708,"cardType":"A","text":"Atlantis - Mythological city where the folks had that sinking feeling.","numAnswers":0,"expansion":"atoa"}
+{"id":2709,"cardType":"A","text":"Atomic Bombs - The Italian physicist Enrico Fermi succeeded in producing the first nuclear chain reaction in 1942, at the University of Chicago.","numAnswers":0,"expansion":"atoa"}
+{"id":2710,"cardType":"A","text":"Attack On Pearl Harbor - \"Yesterday, December 7th, 1941, a date which will live in infamy...\" -Franklin D. Roosevelt","numAnswers":0,"expansion":"atoa"}
+{"id":2711,"cardType":"A","text":"Austin Powers - Fictional British man of mystery. Yeah, bay-beee, yeah!","numAnswers":0,"expansion":"atoa"}
+{"id":2712,"cardType":"A","text":"Australian Outback - Beware of dangerous temperatures, strange animals, and didgeridoos.","numAnswers":0,"expansion":"atoa"}
+{"id":2713,"cardType":"A","text":"Babe Ruth - 1895-1948, American baseball legend, and one heck of a candy bar!","numAnswers":0,"expansion":"atoa"}
+{"id":2714,"cardType":"A","text":"Babies - Little bundles of joy ... and who needs sleep, anyway?","numAnswers":0,"expansion":"atoa"}
+{"id":2715,"cardType":"A","text":"Baby Showers - Baby showers may bring flowers ...","numAnswers":0,"expansion":"atoa"}
+{"id":2716,"cardType":"A","text":"Backstreet Boys - The latest American pop boy band. Which one do you think is the cutest?","numAnswers":0,"expansion":"atoa"}
+{"id":2717,"cardType":"A","text":"Bad Dogs - Bad dog, bad dog. What'cha gonna do?","numAnswers":0,"expansion":"atoa"}
+{"id":2718,"cardType":"A","text":"Bagpipes - A shrill-toned musical instrument consisting of a leather bag and pipes. Also available in plaid.","numAnswers":0,"expansion":"atoa"}
+{"id":2719,"cardType":"A","text":"Baked Beans - Add a little bacon, brown sugar and Beano!","numAnswers":0,"expansion":"atoa"}
+{"id":2720,"cardType":"A","text":"Baked Potatoes - Hot potato, couch potato, potato head, twice baked, half-baked, ... whatever.","numAnswers":0,"expansion":"atoa"}
+{"id":2721,"cardType":"A","text":"Baking Cookies - An experience only surpassed by eating them.","numAnswers":0,"expansion":"atoa"}
+{"id":2722,"cardType":"A","text":"Bald Eagles - Known for their majestic appearance and powerful flight. In 1782, the bald eagle was chosen as the emblem of the United States.","numAnswers":0,"expansion":"atoa"}
+{"id":2723,"cardType":"A","text":"Brain Surgeons - Hey, it ain't brain surgery ... oh ... wait a second ...","numAnswers":0,"expansion":"atoa"}
+{"id":2724,"cardType":"A","text":"Brains - Vital to human existence and mad scientists.","numAnswers":0,"expansion":"atoa"}
+{"id":2725,"cardType":"A","text":"Britney Spears - 1981-, American singer. From mouseketeer to international pop star.","numAnswers":0,"expansion":"atoa"}
+{"id":2726,"cardType":"A","text":"Broadway - The New York theater district. \"They say the neon lights shine bright on Broadway.\" -Barry Mann","numAnswers":0,"expansion":"atoa"}
+{"id":2727,"cardType":"A","text":"Bruce Willis - 1955- , Diehard American action movie star who has moonlighted on TV. He also starred in Pulp Fiction, Armageddon and The Sixth Sense.","numAnswers":0,"expansion":"atoa"}
+{"id":2728,"cardType":"A","text":"Bubble Gum - Crack it, snap it, pop it, and blow it!","numAnswers":0,"expansion":"atoa"}
+{"id":2729,"cardType":"A","text":"Bubbles - \"Tiny bubbles, in the wine/ Tiny bubble make me feel fine ...\" -Don Ho","numAnswers":0,"expansion":"atoa"}
+{"id":2730,"cardType":"A","text":"Bullwinkle - As in the cartoon \"The Adventures of Rocky and Bullwinkle\" - the moose half of moose and squirrel.","numAnswers":0,"expansion":"atoa"}
+{"id":2731,"cardType":"A","text":"Bumper Stickers - Your personal billboard!","numAnswers":0,"expansion":"atoa"}
+{"id":2732,"cardType":"A","text":"Bungee Jumping - Another sport hanging on by a thread.","numAnswers":0,"expansion":"atoa"}
+{"id":2733,"cardType":"A","text":"Buying A House - If only we had the money, we could get a mortgage.","numAnswers":0,"expansion":"atoa"}
+{"id":2734,"cardType":"A","text":"Cabbage - From the French word caboche, meaning \"big head.\"","numAnswers":0,"expansion":"atoa"}
+{"id":2735,"cardType":"A","text":"Cactus - Require little care and exhibit bizarre forms. As such, they are often mistaken for Survivalists.","numAnswers":0,"expansion":"atoa"}
+{"id":2736,"cardType":"A","text":"California - Sacramento is its capital, Los Angeles its largest city. Here we come.","numAnswers":0,"expansion":"atoa"}
+{"id":2737,"cardType":"A","text":"Camping Trip - When you just have to get s'more nature.","numAnswers":0,"expansion":"atoa"}
+{"id":2738,"cardType":"A","text":"Canada - Federated country of North America. The Great White North - eh?","numAnswers":0,"expansion":"atoa"}
+{"id":2739,"cardType":"A","text":"Canadians - How many Canadians does it take to screw in a lightbulb? Fifteen. Fourteen to chip it out of the ice, and one to screw it in.","numAnswers":0,"expansion":"atoa"}
+{"id":2740,"cardType":"A","text":"Captain Kirk - Fictional starship captain. \"Beam me up Scotty, there is no intelligent life on this planet!\" - bumper sticker, 1980s","numAnswers":0,"expansion":"atoa"}
+{"id":2741,"cardType":"A","text":"Car Bombs - Not including the Ford Pinto, of course.","numAnswers":0,"expansion":"atoa"}
+{"id":2742,"cardType":"A","text":"Car Horns - Blow it, buddy!","numAnswers":0,"expansion":"atoa"}
+{"id":2743,"cardType":"A","text":"Detroit - The Motor City is the world's foremost automobile manufacturing center, and the tenth largest city in the U.S.","numAnswers":0,"expansion":"atoa"}
+{"id":2744,"cardType":"A","text":"Diamonds - The hard fact: they are just highly refractive crystalline allotropes.","numAnswers":0,"expansion":"atoa"}
+{"id":2745,"cardType":"A","text":"Discos - Where you go to catch \"Saturday Night Fever.\"","numAnswers":0,"expansion":"atoa"}
+{"id":2746,"cardType":"A","text":"Discovering America - 1492, Christopher Columbus discovered that America was discovered centuries before he arrived.","numAnswers":0,"expansion":"atoa"}
+{"id":2747,"cardType":"A","text":"Disneyland - You've just won the \"Apples to Apples(R) Grand Masters Tournament.\" Where're you gonna go?","numAnswers":0,"expansion":"atoa"}
+{"id":2748,"cardType":"A","text":"Divorce - It's a trial separation that goes to trial.","numAnswers":0,"expansion":"atoa"}
+{"id":2749,"cardType":"A","text":"Doctors - Over twenty years of education and they're still \"practicing\" medicine?","numAnswers":0,"expansion":"atoa"}
+{"id":2750,"cardType":"A","text":"Doing The Dishes - You wash, I'll watch.","numAnswers":0,"expansion":"atoa"}
+{"id":2751,"cardType":"A","text":"Dolly Parton - 1967- , American singer, songwriter, and actor. Known as much for her personal style as for her successful career.","numAnswers":0,"expansion":"atoa"}
+{"id":2752,"cardType":"A","text":"Dr. Kevorkin - 1928- , Controversial advocate of doctor-assisted suicide.","numAnswers":0,"expansion":"atoa"}
+{"id":2753,"cardType":"A","text":"Dr. Seuss - 1904-1991, Theodor Suess Geisel , the cat who came up with \"The Cat in the Hat.\"","numAnswers":0,"expansion":"atoa"}
+{"id":2754,"cardType":"A","text":"Driving Off A Cliff - It was either that or hire someone to do my takes.","numAnswers":0,"expansion":"atoa"}
+{"id":2755,"cardType":"A","text":"Duct Tape - All-purpose, ... all the time ...","numAnswers":0,"expansion":"atoa"}
+{"id":2756,"cardType":"A","text":"E-Mail - You've got JUNK mail!","numAnswers":0,"expansion":"atoa"}
+{"id":2757,"cardType":"A","text":"Ear Wax - A waxy, yellowish substance that protects the ear from dust, bacteria, and from hearing things you don't want to hear.","numAnswers":0,"expansion":"atoa"}
+{"id":2758,"cardType":"A","text":"Earthquakes - The Richter scale is named after the American seismologist Charles Richter. Did the earth move for you?","numAnswers":0,"expansion":"atoa"}
+{"id":2759,"cardType":"A","text":"Earwigs - Nocturnal insects with abdominal pincers. Nothing to do with ears or wigs.","numAnswers":0,"expansion":"atoa"}
+{"id":2760,"cardType":"A","text":"East Coast - From New England to Florida. They're not like folks 'round here ...","numAnswers":0,"expansion":"atoa"}
+{"id":2761,"cardType":"A","text":"Eddie Murphy - 1961-, American comedian, actor, and producer. Best known for his work in 48 Hours, Beverly Hills Cop and on Saturday Night Live.","numAnswers":0,"expansion":"atoa"}
+{"id":2762,"cardType":"A","text":"Eleanor Roosevelt - 1884-1962, first lady, social activist, author, lecturer, and U.S. representative to the United Nations.","numAnswers":0,"expansion":"atoa"}
+{"id":2763,"cardType":"A","text":"Electric Eels - Slippery and slimy snakelike fishes that emit electrical charges. The shocking truth!","numAnswers":0,"expansion":"atoa"}
+{"id":2764,"cardType":"A","text":"Family Reunions - Just to remind you why you moved away in the first place ...","numAnswers":0,"expansion":"atoa"}
+{"id":2765,"cardType":"A","text":"Family Vacations - Dad? Dad? Are we there yet? Are we there yet? Are we? Huh? Dad?","numAnswers":0,"expansion":"atoa"}
+{"id":2766,"cardType":"A","text":"Family Values - Often said but seldom understood.","numAnswers":0,"expansion":"atoa"}
+{"id":2767,"cardType":"A","text":"Fast Food - You want fries with that?","numAnswers":0,"expansion":"atoa"}
+{"id":2768,"cardType":"A","text":"Feathers - Which weighs more, a pound of feathers or a pound of rocks?","numAnswers":0,"expansion":"atoa"}
+{"id":2769,"cardType":"A","text":"Feminists - Political and social activists who support selected women's causes.","numAnswers":0,"expansion":"atoa"}
+{"id":2770,"cardType":"A","text":"Festering Wounds - Quit picking at that!","numAnswers":0,"expansion":"atoa"}
+{"id":2771,"cardType":"A","text":"Fidel Castro - 1927-, Cuban revolutionary and Communist dictator since 1976. He earned a PhD in law in 1950.","numAnswers":0,"expansion":"atoa"}
+{"id":2772,"cardType":"A","text":"Firefighters - Emperor Augustus instituted a corps of fire-fighting \"watchmen\" in 24 B.C. Nero, on the other hand, fiddled while Rome burned.","numAnswers":0,"expansion":"atoa"}
+{"id":2773,"cardType":"A","text":"Firestorms - Some severe wildfires require more than 10,000 firefighters. And, wouldn't ya know it, some idiot parked in front of the hydrant!","numAnswers":0,"expansion":"atoa"}
+{"id":2774,"cardType":"A","text":"Fireworks - Includes firecrackers, Roman candles, and bottle rockets. It's all fun until someone loses an eye ... and a nose ... and an arm ...","numAnswers":0,"expansion":"atoa"}
+{"id":2775,"cardType":"A","text":"First Man On The Moon - July 20, 1969. \"That's one small step for a man, one giant leap for mankind.\" -Neil A. Armstrong","numAnswers":0,"expansion":"atoa"}
+{"id":2776,"cardType":"A","text":"Glazed Donuts - If you're going to be late, take a box of donuts.","numAnswers":0,"expansion":"atoa"}
+{"id":2777,"cardType":"A","text":"Global Warming - Is it hot in here, or is it just me?","numAnswers":0,"expansion":"atoa"}
+{"id":2778,"cardType":"A","text":"Going To Church - Weddings, funerals, bazaars, and bingo!","numAnswers":0,"expansion":"atoa"}
+{"id":2779,"cardType":"A","text":"Going To Grandma's - \"Grandmother, what big teeth you have!\" -Little Red Riding Hood","numAnswers":0,"expansion":"atoa"}
+{"id":2780,"cardType":"A","text":"Going To School - Secondary education? It's elementary.","numAnswers":0,"expansion":"atoa"}
+{"id":2781,"cardType":"A","text":"Going To The Dentist - This won't hurt a bit ...","numAnswers":0,"expansion":"atoa"}
+{"id":2782,"cardType":"A","text":"Going To The Gym - No pain, no gain.","numAnswers":0,"expansion":"atoa"}
+{"id":2783,"cardType":"A","text":"Gold Chains - The more, the better.","numAnswers":0,"expansion":"atoa"}
+{"id":2784,"cardType":"A","text":"Goldfish - The pet, the carnival prize, or the snack cracker.","numAnswers":0,"expansion":"atoa"}
+{"id":2785,"cardType":"A","text":"Golf-Ball-Sized Hail - ... which is almost as impressive as hail-sized golf balls ...","numAnswers":0,"expansion":"atoa"}
+{"id":2786,"cardType":"A","text":"Grace Kelly - 1929-82, Princess of Monaco and American film star of Dial M for Murder, Rear Window, and To Catch a Thief. Always chic, always elegant.","numAnswers":0,"expansion":"atoa"}
+{"id":2787,"cardType":"A","text":"Graffiti - Art in a can. We're drawn to it.","numAnswers":0,"expansion":"atoa"}
+{"id":2788,"cardType":"A","text":"Grass Skirts - Hula loves you, baby?","numAnswers":0,"expansion":"atoa"}
+{"id":2789,"cardType":"A","text":"Industrial Revolution - The first Industrial Revolution occurred in Great Britain at the end of the 1700s. The second came with the invention of the \"Clapper.\"","numAnswers":0,"expansion":"atoa"}
+{"id":2790,"cardType":"A","text":"Infomercials - One of these days, one of them may even say something informative.","numAnswers":0,"expansion":"atoa"}
+{"id":2791,"cardType":"A","text":"Inside The Sun - Consisting mostly of hydrogen, the temperature reaches almost 16,000,000 K (about 29,000,000 F).","numAnswers":0,"expansion":"atoa"}
+{"id":2792,"cardType":"A","text":"Intellectuals - They think they're so smart.","numAnswers":0,"expansion":"atoa"}
+{"id":2793,"cardType":"A","text":"Ireland - Island of the British Isles, west of Great Britain. Known for its distinctive traditional dance and music.","numAnswers":0,"expansion":"atoa"}
+{"id":2794,"cardType":"A","text":"Israel - Located on the Mediterranean, the state of Israel was reated by a 1948 U.N. mandate.","numAnswers":0,"expansion":"atoa"}
+{"id":2795,"cardType":"A","text":"Italy - European Republic, shaped like a boot - a very fashionable boot.","numAnswers":0,"expansion":"atoa"}
+{"id":2796,"cardType":"A","text":"Jack Nicholson - 1937- , American motion-picture actor of \"Chinatown,\" \"Terms Of Endearment\" and \"The Shining.\" He's as good as it gets!","numAnswers":0,"expansion":"atoa"}
+{"id":2797,"cardType":"A","text":"Jack The Ripper - Accused of murdering six women in 1888, and suspected in other murders. Still at large.","numAnswers":0,"expansion":"atoa"}
+{"id":2798,"cardType":"A","text":"Jackie Chan - 1954-, actor, director, martial artist. Screen name, Sing Lung, means \"Becoming the Dragon.\" That's \"MISTER Becoming the Dragon\" to you!","numAnswers":0,"expansion":"atoa"}
+{"id":2799,"cardType":"A","text":"Jacques Cousteau - 1910-97, French naval officer, marine explorer, and author. Best known as a documentary filmmaker.","numAnswers":0,"expansion":"atoa"}
+{"id":2800,"cardType":"A","text":"Jamaica - Third largest island of the Greater Antilles, south of Cuba. Tropical climate, reggae music, and jerk cooking.","numAnswers":0,"expansion":"atoa"}
+{"id":2801,"cardType":"A","text":"James Bond - Fictional British secret agent created by English author Ian Fleming. Shaken, but never stirred.","numAnswers":0,"expansion":"atoa"}
+{"id":2802,"cardType":"A","text":"James Dean - 1931-55, American actor of film, stage, and television. His role in Rebel Without a Cause helped define \"cool.\"","numAnswers":0,"expansion":"atoa"}
+{"id":2803,"cardType":"A","text":"Japan - An Asian constitutional monarchy. The capital city is Tokyo. Let's see ... sushi, Godzilla, earthquakes ...","numAnswers":0,"expansion":"atoa"}
+{"id":2804,"cardType":"A","text":"King Arthur - Legendary British king best known for Camelot and round tables.","numAnswers":0,"expansion":"atoa"}
+{"id":2805,"cardType":"A","text":"King Henry VIII - 1491-1547, King of England, and founder of the Church of England. Six wives, no waiting.","numAnswers":0,"expansion":"atoa"}
+{"id":2806,"cardType":"A","text":"Knock-Knock Jokes - Who's there?","numAnswers":0,"expansion":"atoa"}
+{"id":2807,"cardType":"A","text":"Labor Unions - Look for the Union label. And, while you're at it, look for Jimmy Hoffa ...","numAnswers":0,"expansion":"atoa"}
+{"id":2808,"cardType":"A","text":"Large Mouth Bass - Oh, please, let it not sing ...","numAnswers":0,"expansion":"atoa"}
+{"id":2809,"cardType":"A","text":"Las Vegas - The first casino opened in Las Vegas in 1946. Las Vegas... or it that Lost Wages?","numAnswers":0,"expansion":"atoa"}
+{"id":2810,"cardType":"A","text":"Lawyers - We'd throw some joke in here, but we're afraid of getting sued.","numAnswers":0,"expansion":"atoa"}
+{"id":2811,"cardType":"A","text":"Leaf Blowers - Toro, Toro, Toro!","numAnswers":0,"expansion":"atoa"}
+{"id":2812,"cardType":"A","text":"Leather - Animal hide. Leather you like it or not.","numAnswers":0,"expansion":"atoa"}
+{"id":2813,"cardType":"A","text":"Leeches - Any mention of lawyers, agents, or reporters would be FAR too easy ...","numAnswers":0,"expansion":"atoa"}
+{"id":2814,"cardType":"A","text":"Lemons - When life gives you lemons, make lemonade ... or, in the case of a car, take it back. There's a law, you know!","numAnswers":0,"expansion":"atoa"}
