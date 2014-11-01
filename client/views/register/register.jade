@@ -6,8 +6,8 @@
       form(role='form', novalidate, name='userForm')
         .form-group(ng-class="{'has-error': !userForm.alias.$valid}")
           label.control-label Alias
-          input.form-control#alias(type='text', name='alias', ng-model='user.alias', autofocus, required, ng-minlength='3')
-          p.help-block Minimum of 3 characters
+          input.form-control#alias(type='text', name='alias', ng-model='user.alias', autofocus, required, ng-minlength='3', ng-pattern='/^[\\w]*$/')
+          p.help-block Minimum of 3 alphanumeric characters
         .form-group(ng-class="{'has-error': !userForm.email.$valid}")
           label.control-label Email
           input.form-control#email(type='email', name='email', ng-model='user.email', required)
