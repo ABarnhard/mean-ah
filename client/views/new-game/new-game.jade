@@ -18,8 +18,13 @@
           .form-group
             .checkbox
               label
-                input(type='checkbox', ng-model='expansions.base', name='base', disabled)
+                input(type='checkbox', ng-model='expansions.base', name='base')
                 | Base
+          .form-group
+            .checkbox
+              label
+                input(type='checkbox', ng-model='expansions.atoa', name='atoa')
+                | Apples To Apples
       .row
         .col-xs-3
           p.exp-header Official Expansions
