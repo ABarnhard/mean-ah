@@ -17,7 +17,9 @@ User.findById = function(id, cb){
 
 User.register = function(o, cb){
   User.collection.find({$or:[{email:o.email},{alias:o.alias}]}).toArray(function(err, users){
-    if(users.length || o.password.length < 3){return cb();}
+    var regEx = /^[\w]*$/;
+    // if user was found, password is less than 3 chars, or alias contains non-alphanumeric chars, break & return
+    if(users.length || o.password.length < 3 || !o.alias.match(regEx)){return cb();}
     o.password = bcrypt.hashSync(o.password, 10);
     User.collection.save(o, cb);
   });
