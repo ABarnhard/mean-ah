@@ -19,6 +19,8 @@
           Socket.emit('create-game', jsonGame, function(err, jsonGameInfo){
             Game.registerAndJoin(jsonGameInfo);
           });
+        }, function(){
+          toastr.error('Games need a deck, get your shit together and select one...');
         });
       }
     };

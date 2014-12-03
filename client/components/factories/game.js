@@ -54,8 +54,12 @@
           }
         });
         scope.game.decks = expansions;
-        // console.log($scope.game);
-        deferred.resolve(angular.toJson(scope.game));
+        // if no deck was selected, reject promise
+        if(!scope.game.decks.length){
+          deferred.reject();
+        }else{
+          deferred.resolve(angular.toJson(scope.game));
+        }
       });
       return deferred.promise;
     }

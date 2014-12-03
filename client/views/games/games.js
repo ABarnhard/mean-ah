@@ -61,6 +61,9 @@
 
     $scope.startGame = function(id){
       // console.log('startGame Fired');
+      if(!$scope.game.players.length){
+        return toastr.error('You need at least 2 players in real life. Why would this be any different?');
+      }
       Socket.emit('start-game', angular.toJson({gameId:id}), function(){
         Socket.emit('draw-hand', angular.toJson({gameId:id}), function(){
           Socket.emit('start-round', angular.toJson({gameId:id}));
